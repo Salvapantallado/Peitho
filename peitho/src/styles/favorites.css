@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
+
+.fav-container {
+display: flex;
+height: 96vh;
+justify-content: center;
+
+}
+
+.fav-list h1{
+    font-size: 60px;
+    font-family: UnifrakturCook;
+    text-align: center;
+    width: 90vw;
+
+}
+
+.fav-wrapper{
+    margin: 50px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fav-name h2{
+    font-size: 30px;
+    font-family: UnifrakturCook;
+}
+
+.fav-image img{
+    width: 100px;
+    height: 100px;
+}
+
+.fav-button{
+
+}
+
+.fav-price h3{
+    font-size: 40px;
+}

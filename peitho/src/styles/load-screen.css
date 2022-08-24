@@ -1,0 +1,87 @@
+.LoadScreen{
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+    background-color: #bfbcd1;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* animation: curtain 6s; */
+    animation: curtain 1s;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.LoadScreen video {
+    height: 700px;
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.LoadScreen h1 {
+    opacity: 0;
+    animation: vanish 1s;
+    /* animation: vanish 3s; */
+}
+
+.LoadScreenOut {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: 3;
+    background-color: #bfbcd1;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: curtain2 1s;
+    /* animation: curtain2 4s; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+@keyframes vanish {
+    0%{
+        opacity: 1;
+        pointer-events: all;
+    }
+    80%{
+        opacity: 1;
+        pointer-events: all;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes curtain {
+    0%{
+        opacity: 1;
+        pointer-events: all;        
+    }
+    70%{
+        opacity: 1;
+        pointer-events: all;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes curtain2 {
+    0%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,18 @@
+Agregar a la navbar el link TELAS DISPONIBLES / TABLA DE MEDIDAS / CAMBIAR EL ICONO DE FAVS.
+
+Cambiar polleras => faldas.
+
+Cambiar main image => banner con opacidad baja y frase centrada.
+
+Mensaje / saludo introductorio a la página.
+
+Cambiar ticker / barra peitho a peitho - frase en el medio - peitho.
+
+Redecorar crear prenda / editar prenda y detalles de prenda.
+
+En detalles de prenda, si el array de imagenes posee mas de una, 
+actualizar el estado dependiendo del item activo.
+
+Remover landing.
+
+Disposicion del inicio => Burbujas - banner  - 

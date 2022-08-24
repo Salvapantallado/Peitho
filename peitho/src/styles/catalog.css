@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
+
+
+.container {
+	height: 100%;
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.container h1{
+	font-family: UnifrakturCook;
+	font-size: 60px;
+}
+.catalog-container {
+	display: flex;
+	width: 100%;
+	/* margin: 20px; */
+	flex-direction: row;
+	align-items: flex-start;
+	overflow-x: hidden;
+}
+
+.catalog-container .category-bubbles{
+	display: grid;
+    justify-content: center;
+    height: auto;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+    width: 20vw;
+	gap: 30px;
+    background-color: transparent;
+}
+
+.container-pagination{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	gap: 30px;
+	margin: 10px;
+}
+
+.container-pagination button{
+	height: 70px;
+	width: 70px;
+	border-radius: 50%;
+	background: linear-gradient(rgb(184, 139, 139),rgb(138, 138, 201),rgb(182, 231, 182));
+	cursor: pointer;
+}
+
+@media screen and (max-width: 875px) {
+	.catalog-container {
+		display: flex;
+		width: 100%;
+		/* margin: 20px; */
+		flex-direction: column;
+		align-items: center;
+	}
+	.catalog-container .category-bubbles{
+		display: grid;
+		justify-content: center;
+		height: auto;
+		grid-template-columns: 100px 100px 100px;
+		width: 90vw;
+		gap: 30px;
+		background-color: transparent;
+	}
+	.container h1{
+		margin: 0;
+	}
+}

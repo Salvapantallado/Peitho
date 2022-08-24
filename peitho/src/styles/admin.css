@@ -1,0 +1,22 @@
+.adminTable__edit-button{
+    background-color: sandybrown;
+    border-radius: 30%;
+}
+
+.adminTable__edit-button a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.adminTable__delete-button{
+    background-color: rgb(168, 47, 72);
+    border-radius: 30%;
+    
+}
+
+.adminTable__delete-button button{
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+}

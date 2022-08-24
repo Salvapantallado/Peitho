@@ -1,0 +1,85 @@
+.detail {
+    display: flex;
+    height: 94vh;
+}
+
+.detail-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+    height: 70vh;
+    flex-direction: row;
+    margin: auto;
+    border: 1px solid black;
+    position: relative;
+
+}
+
+.detail-wrapper img {
+    height: 100%;
+    width: auto;
+}
+
+.detail-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 500px;
+    justify-content: space-evenly;
+    margin: 0 15px 0 15px;
+}
+
+.detail-container h1{
+    font-size: 40px;
+}
+.detail-container p{
+    font-size: 20px;
+}
+
+.detail-buttons img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.add-fav {
+    width: 40px;
+    height: 40px;
+    display: flex;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      /* background-color: white; */
+      border-radius: 50%;
+      transition: 0.5s ease-in;
+  }
+  
+  
+  
+  .card:hover .add-fav img {
+    opacity:1;
+    transform: none;
+   
+  }
+  .card .add-fav img:hover {
+    opacity:1;
+    
+  }
+
+  .go-back-button button{
+    all: unset;
+    cursor: pointer;
+  }
+  .go-back-button{
+    width: 40px;
+    height: 40px;
+    display: flex;
+      position: absolute;
+      top: 20px;
+      /* background-color: white; */
+      border-radius: 50%;
+      transition: 0.5s ease-in;
+      z-index: 3;
+  }
