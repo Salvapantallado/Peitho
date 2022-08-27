@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 // import { createBrowserHistory } from "history";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  clearproductToEdit,
   editProduct,
   getAllProducts,
-  getproductToEdit,
-  postProduct,
 } from "../../actions";
 import ImageUploading from "react-images-uploading";
 
@@ -101,7 +98,7 @@ export default function EditProduct() {
 
       alert("Producto editado!");
 
-      navigate("/inicio");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }

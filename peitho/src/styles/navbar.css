@@ -26,12 +26,18 @@
 }
 
 .navbar button {
-  border: none;
-  background: none;
   font-size: 18px;
   text-decoration: none;
   color: black;
   font-family: UnifrakturCook;
+  cursor: pointer;
+}
+
+.navbar button {
+  border: none;
+  background: none;
+  font-size: 18px;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -56,6 +62,7 @@
 
 .mobile-navbar h2 {
   font-size: 35px;
+  width: fit-content;
 }
 
 .mobile-navbar h2:hover {
@@ -63,6 +70,7 @@
 }
 
 .mobile-navbar button {
+  display: flex;
   border: none;
   background: none;
   font-size: 18px;
@@ -71,6 +79,19 @@
   font-family: UnifrakturCook;
   cursor: pointer;
 }
+
+.mobile-navbar .fav-icon img{
+	height: auto;
+	width: 20px;
+  }
+
+  .mobile-navbar .fav-number p{
+    height: 10px;
+    width: 10px;
+    font-size: 9px;
+    top: 0;
+    margin: 0;
+  }
 
 .fav-icon {
   position: absolute;
@@ -146,12 +167,18 @@
     z-index: 3;
     animation: showMenu 1s;
     transition: 0.5s ease-in-out;
+    align-items: center;
   }
   .mobile-links {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-top: 15vh;
+    align-items: center;
 }
+
+
+
   .close-icon{
     display: flex;
     position: absolute;

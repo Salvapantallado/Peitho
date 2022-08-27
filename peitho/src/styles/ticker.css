@@ -6,7 +6,7 @@
 }
 
 .ticker-wrapper img {
-    height: 50px;
+    height: 4vh;
     width: auto;
     -webkit-user-drag: none;
     user-select: none;
@@ -20,8 +20,8 @@
     -webkit-animation: scrolling 12s linear infinite;
     animation: scrolling 12s linear infinite;
     animation-play-state: "running";
-    width: 4000px;
-    transition: 2s ease-in-out;
+    width: 250vw;
+    transition: 0.25s ease-in-out;
 }
 
 .ticker-item {

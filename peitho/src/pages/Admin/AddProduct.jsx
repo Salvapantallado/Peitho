@@ -65,7 +65,7 @@ export default function AddProduct() {
 
     alert("Producto agregado!");
 
-    navigate("/inicio");
+    navigate("/");
   }
 
   return (

@@ -84,8 +84,8 @@
   height: 40px;
   display: flex;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 5%;
+  right: 7%;
   /* background-color: white; */
   border-radius: 50%;
   transition: 0.5s ease-in;
@@ -97,8 +97,8 @@
   height: 40px;
   display: flex;
   position: absolute;
-  top: 2%;
-  right: 2%;
+  top:  5%;
+  right: 7%;
   /* background-color: white; */
   border-radius: 50%;
   transition: 0.5s ease-in;
@@ -170,6 +170,12 @@
     top: 4px;
     right: 0;
   }
+  .favs-added {
+    width: 30px;
+    height: 30px;
+    top: 4px;
+    right: 0;
+  }
 
   .add-favs img {
     width: 30px;
@@ -178,5 +184,23 @@
   .favs-added img {
     width: 30px;
     height: 30px;
+  }
+  .cards-container:hover img {
+    opacity: 1;
+  }
+  
+  .cards-container img:hover {
+    transform: none;
+    opacity: 1;
+  }
+  .product-card .card-body {
+    visibility: visible;
+    padding: 3px;
+}
+  .card-body h3 {
+    font-size: 10px;
+  }
+  .card-body h4 {
+    font-size: 12px;
   }
 }

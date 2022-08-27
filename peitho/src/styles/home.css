@@ -41,11 +41,13 @@
 }
 
 .instagram img{
-    height: 800px;
+    height: auto;
+    width: 90vw;
 }
 
 .icon img{
     height: 30px;
+    width: auto;
 }
 
 /* From cssbuttons.io */
