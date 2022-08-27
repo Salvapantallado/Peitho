@@ -195,8 +195,8 @@
     max-width: 65vw;
     min-width: 200px;
     width: auto;
-    min-height: 315px;
-    height: 50vh;
+    min-height: 350px;
+    height: 45vh;
     margin: 0 2vw;
   }
   .arrimgs img{
@@ -208,7 +208,7 @@
   }
   .image-box{
     height: 55vh;
-    min-height: 350px;
+    min-height: 500px;
   }
   .detail-container .add-favs {
     right: 6%;

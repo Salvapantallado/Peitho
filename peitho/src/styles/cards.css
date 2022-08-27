@@ -89,7 +89,7 @@
   /* background-color: white; */
   border-radius: 50%;
   transition: 0.5s ease-in;
-  z-index: 3;
+  z-index: 2;
 }
 
 .add-favs {
@@ -102,7 +102,7 @@
   /* background-color: white; */
   border-radius: 50%;
   transition: 0.5s ease-in;
-  z-index: 3;
+  z-index: 2;
 }
 .add-favs img {
   width: 100%;
