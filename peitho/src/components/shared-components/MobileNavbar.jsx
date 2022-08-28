@@ -17,7 +17,12 @@ export default function MobileNavbar({ loadScreen, setLoadScreen }) {
     }, 1500);
   };
 
-  const menuIcon = <MenuRoundedIcon style={{paddingLeft: '5%'}}onClick={() => setOpen(!open)} />;
+  const menuIcon = (
+    <MenuRoundedIcon
+      style={{ paddingLeft: "5%" }}
+      onClick={() => setOpen(!open)}
+    />
+  );
   const closeIcon = <CloseRoundedIcon onClick={() => setOpen(!open)} />;
 
   return (
@@ -26,20 +31,26 @@ export default function MobileNavbar({ loadScreen, setLoadScreen }) {
       {open ? (
         <>
           <div className="mobile-buttons">
-            <div className="close-icon">
-                {closeIcon}
-            </div>
+            <div className="close-icon">{closeIcon}</div>
             <div className="mobile-links">
-
-            <button onClick={() => LoadCurtain("/")}>
-              <h2>Inicio</h2>
-            </button>
-            <button onClick={() => LoadCurtain("/catalogo")}>
-              <h2>Catalogo</h2>
-            </button>
-            <button onClick={() => LoadCurtain("/admin")}>
-              <h2>Admin Add</h2>
-            </button>
+              <button onClick={() => LoadCurtain("/")}>
+                <h2>Inicio</h2>
+              </button>
+              <button onClick={() => LoadCurtain("/catalogo")}>
+                <h2>Catalogo</h2>
+              </button>
+              <button onClick={() => LoadCurtain("/admin")}>
+                <h2>Admin Add</h2>
+              </button>
+              <button onClick={() => LoadCurtain("/")}>
+                <h2>Tabla de medidas</h2>
+              </button>
+              <button onClick={() => LoadCurtain("/telas-disponibles")}>
+                <h2>Telas disponibles</h2>
+              </button>
+              <button onClick={() => LoadCurtain("/admin")}>
+                <h2>Admin Add</h2>
+              </button>
             </div>
           </div>
         </>
@@ -54,10 +65,7 @@ export default function MobileNavbar({ loadScreen, setLoadScreen }) {
             <div />
           )}
 
-          <img
-            src="/ImgHelpers/heart.png"
-            alt="favoriteIcon"
-          />
+          <img src="/ImgHelpers/heart.png" alt="favoriteIcon" />
         </button>
       </div>
     </nav>

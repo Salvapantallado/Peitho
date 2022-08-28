@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllProducts, getFavorites } from "../../actions";
+import { getFavorites } from "../../actions";
+import Footer from "../../components/shared-components/Footer";
 import LoadScreen from "../../components/shared-components/LoadScreen";
 import LoadScreenOut from "../../components/shared-components/LoadScreenOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
@@ -90,6 +91,7 @@ export default function Favorites() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

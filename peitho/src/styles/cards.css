@@ -82,6 +82,7 @@
 .favs-added {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
   display: flex;
   position: absolute;
   top: 5%;
@@ -95,6 +96,7 @@
 .add-favs {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
   display: flex;
   position: absolute;
   top:  5%;
@@ -164,24 +166,14 @@
     width: 100%;
   }
 
-  .add-favs {
-    width: 30px;
-    height: 30px;
-    top: 4px;
-    right: 0;
-  }
-  .favs-added {
+  .add-favs, .favs-added {
     width: 30px;
     height: 30px;
     top: 4px;
     right: 0;
   }
 
-  .add-favs img {
-    width: 30px;
-    height: 30px;
-  }
-  .favs-added img {
+  .add-favs img, .favs-added img {
     width: 30px;
     height: 30px;
   }

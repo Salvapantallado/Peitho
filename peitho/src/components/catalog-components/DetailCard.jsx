@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   clearProductDetail,
+  getAllProducts,
   getFavorites,
   getProductDetail,
 } from "../../actions";
@@ -12,25 +13,40 @@ import MobileNavbar from "../shared-components/MobileNavbar";
 import Ticker from "../shared-components/Ticker";
 import LoadScreen from "../../components/shared-components/LoadScreen";
 import LoadScreenOut from "../../components/shared-components/LoadScreenOut";
+import Footer from "../shared-components/Footer";
 
 export default function DetailCard() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
+  const allProducts = useSelector((state) => state.allProducts);
   const favProducts = useSelector((state) => state.favoriteProducts);
   const [loadScreen, setLoadScreen] = useState(false);
   const [previewImage, setPreviewImage] = useState();
   const { id } = useParams();
+  const [others, setOthers] = useState([])
 
+  const noDetailArr = allProducts.filter(x => x.id !== productDetail.id)
+  const othersArr = noDetailArr.sort(() => Math.random() - 0.5).slice(0, 6)
+  console.log(others, allProducts);
+  
   useEffect(() => {
     setLoadScreen(false);
+  }, [])
+
+  useEffect(() => {
+    setOthers(othersArr)
+  }, [productDetail])
+
+  useEffect(() => {
     setTimeout(() => {
       setPreviewImage(
         productDetail.image?.length > 1 ? productDetail.image[0] : "lol"
       );
-    }, 300);
+    }, 1500);
   }, [productDetail.image]);
 
   useEffect(() => {
+    dispatch(getAllProducts())
     dispatch(getProductDetail(id));
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
     dispatch(getFavorites(LSArray));
@@ -56,7 +72,6 @@ export default function DetailCard() {
 
     // console.log(LSArray);
   }
-
   return (
     <div>
       {loadScreen ? <LoadScreenOut /> : <LoadScreen />}
@@ -65,37 +80,37 @@ export default function DetailCard() {
       <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
       <div className="detail">
         <div className="box">
-
-        <div className="detail-link">
-          <span>
-            <a href="/">Inicio</a> <span>/</span> <a href="/catalogo">Catalogo</a> <span> / </span> <span>{productDetail.name}</span>
+          <div className="detail-link">
+            <span>
+              <a href="/">Inicio</a> <span>/</span>{" "}
+              <a href="/catalogo">Catalogo</a> <span> / </span>{" "}
+              <span>{productDetail.name}</span>
             </span>
-        </div>
-        {productDetail ? (
-          <>
-            <div className="detail-box">
-              <div className="image-box">
-                <div className="detail-imgs">
-                  {productDetail.image?.length > 1
-                    ? productDetail.image?.map((arrimg, index) => (
-                      <div className="arrimgs" key={index}>
-                          <img
-                            className={
-                              arrimg === previewImage ? null : "inactive"
-                            }
-                            draggable="false"
-                            src={arrimg}
-                            alt=""
-                            role="button"
-                            onClick={() => setPreviewImage(arrimg)}
+          </div>
+          {productDetail ? (
+            <>
+              <div className="detail-box">
+                <div className="image-box">
+                  <div className="detail-imgs">
+                    {productDetail.image?.length > 1
+                      ? productDetail.image?.map((arrimg, index) => (
+                          <div className="arrimgs" key={index}>
+                            <img
+                              className={
+                                arrimg === previewImage ? null : "inactive"
+                              }
+                              draggable="false"
+                              src={arrimg}
+                              alt=""
+                              role="button"
+                              onClick={() => setPreviewImage(arrimg)}
                             />
-                        </div>
-                      ))
-                    : null}
-                </div>
-                <div className="prev-img">
-
-                <img
+                          </div>
+                        ))
+                      : null}
+                  </div>
+                  <div className="prev-img" key={previewImage}>
+                    {/* <img
                   src={
                     (productDetail.image?.length > 1 &&
                       productDetail.image[0] === previewImage) ||
@@ -104,52 +119,103 @@ export default function DetailCard() {
                       : previewImage
                     }
                     alt="detailed product pic"
-                    />
-                    </div>
-              </div>
-              <div className="detail-wrapper">
-                <div className="detail-container">
-                  {favProducts !== null &&
-                  favProducts.some((prod) => prod.id === productDetail.id) ? (
-                    <div className="favs-added">
-                      <button onClick={() => handleClick(productDetail)}>
-                        <img src="/ImgHelpers/FavAdded.png" alt="added fav" />
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="add-favs">
-                      <button onClick={() => handleClick(productDetail)}>
-                        <img src="/ImgHelpers/AddFav.png" alt="add fav" />
-                      </button>
-                    </div>
-                  )}
-                  <h2>{productDetail.name}</h2>
-                  {productDetail.description2 !== "" ? (
-                    <div className="detail-description">
-                      <h1>ARS ${productDetail.price}</h1>
-                      <p>{productDetail.description}</p>
-                      <br />
-                      <p>{productDetail.description2}</p>
-                    </div>
-                  ) : (
-                    <div>
-                      <p>{productDetail.description}</p>
-                    </div>
-                  )}
-                  <h2>$ {productDetail.price}</h2>
+                    /> */}
+                    {(previewImage && previewImage === "lol") ? (
+                      <img src={productDetail.image[0]} alt="" />
+                    ) : (
+                      <img src={previewImage} alt="" />
+                    )}
+                  </div>
+                </div>
+                <div className="detail-wrapper">
+                  <div className="detail-container">
+                    {favProducts !== null &&
+                    favProducts.some((prod) => prod.id === productDetail.id) ? (
+                      <div className="favs-added">
+                        <button onClick={() => handleClick(productDetail)}>
+                          <img src="/ImgHelpers/FavAdded.png" alt="added fav" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="add-favs">
+                        <button onClick={() => handleClick(productDetail)}>
+                          <img src="/ImgHelpers/AddFav.png" alt="add fav" />
+                        </button>
+                      </div>
+                    )}
+                    <h2>{productDetail.name}</h2>
+                    {productDetail.description2 !== "" ? (
+                      <div className="detail-description">
+                        <h1>ARS ${productDetail.price}</h1>
+                        <p>{productDetail.description}</p>
+                        <br />
+                        <p>{productDetail.description2}</p>
+                      </div>
+                    ) : (
+                      <div>
+                        <p>{productDetail.description}</p>
+                      </div>
+                    )}
+                    <h2>$ {productDetail.price}</h2>
 
-                  <div className="detail-buttons">
-                    <button>Reservar</button>
+                    <div className="detail-buttons">
+                      <button>Reservar</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </>
-        ) : (
-          <p>Cargando...</p>
+            </>
+          ) : (
+            <p>Cargando...</p>
           )}
-          </div>
+        </div>
+        <div className="other-items">
+            <div style={{width: "80vw", display: "flex", justifyContent: "flex-start"}}>
+              <h1>También te puede interesar</h1>
+            </div>
+            <div className="cards-container">
+        <div className="cards-grid">
+          {others && others.length !== 0
+            ? others.map((product) => (
+                <div className="product-card" key={product.id}>
+                  <div className="card animate__animated animate__fadeInRight">
+                    <a href={`/catalogo/${product.id}`}>
+                      <img
+                        src={
+                          product.image.length !== 1
+                            ? product.image[0]
+                            : product.image
+                        }
+                        alt="product sample"
+                      />
+                      <div className="card-body">
+                        <h3>{product.name}</h3>
+                        <h4>$ {product.price}</h4>
+                      </div>
+                    </a>
+                    {favProducts !== null &&
+                    favProducts.some((prod) => prod.id === product.id) ? (
+                      <div className="favs-added">
+                        <button onClick={() => handleClick(product)}>
+                          <img src="/ImgHelpers/FavAdded.png" alt="added fav" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="add-favs">
+                        <button onClick={() => handleClick(product)}>
+                          <img src="/ImgHelpers/AddFav.png" alt="add fav" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            :  null}
+        </div>
       </div>
+        </div>
+      </div>
+      <Footer/>
     </div>
   );
 }

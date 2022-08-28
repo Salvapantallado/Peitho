@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
+import Footer from "../../components/shared-components/Footer";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Navbar from "../../components/shared-components/Navbar";
 import Ticker from "../../components/shared-components/Ticker";
@@ -22,6 +23,7 @@ export default function Admin() {
       <div className="container">
         <EnhancedTable />
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import Pagination from "../../components/catalog-components/pagination";
 import LoadScreen from "../../components/shared-components/LoadScreen";
 import LoadScreenOut from "../../components/shared-components/LoadScreenOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
+import Footer from "../../components/shared-components/Footer";
 
 export default function Catalog({flag, setFlag}) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,6 +50,7 @@ export default function Catalog({flag, setFlag}) {
               productsPerPage={productsPerPage}
             />
         </div>
+        <Footer/>
       </div>
     </>
   );

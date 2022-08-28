@@ -8,18 +8,18 @@ import Ticker from "../../components/shared-components/Ticker";
 import LoadScreen from "../../components/shared-components/LoadScreen";
 import LoadScreenOut from "../../components/shared-components/LoadScreenOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
+import Footer from "../../components/shared-components/Footer";
 
-export default function AvailableCloth({
-    // flag, 
-    // setFlag
-}) {
+export default function AvailableCloth(
+  // {flag, setFlag}
+  ) {
 //   const [currentPage, setCurrentPage] = useState(1);
 //   let currentFilter = useState([]);
 //   let [currentProducts] = useState([]);
 //   const [productsPerPage] = useState(8);
   const [loadScreen, setLoadScreen] = useState(false);
 
-  let pageNumber = 0;
+  // let pageNumber = 0;
   return (
     <>
       {loadScreen ? <LoadScreenOut /> : <LoadScreen />}
@@ -37,6 +37,7 @@ export default function AvailableCloth({
            
           </div>
         </div>
+        <Footer/>
       </div>
     </>
   );

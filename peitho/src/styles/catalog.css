@@ -17,6 +17,7 @@
 .catalog-container {
 	display: flex;
 	width: 100%;
+	min-height: 47vw;
 	/* margin: 20px; */
 	flex-direction: row;
 	align-items: flex-start;

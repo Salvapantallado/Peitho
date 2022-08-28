@@ -11,6 +11,7 @@ import { getFavorites } from "../actions";
 import LoadScreen from "../components/shared-components/LoadScreen";
 import LoadScreenOut from "../components/shared-components/LoadScreenOut";
 import MobileNavbar from "../components/shared-components/MobileNavbar";
+import Footer from "../components/shared-components/Footer";
 
 export default function Home({flag, setFlag}) {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ export default function Home({flag, setFlag}) {
             <Instagram />
           </div>
         </div>
+        <Footer/>
       </div>
     </>
   );

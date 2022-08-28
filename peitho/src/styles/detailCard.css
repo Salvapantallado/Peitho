@@ -2,19 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  height: auto;
 }
 
 .detail-wrapper {
   display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 50vh;
-    /* padding: 1%; */
-    flex-direction: row;
-    /* border: 1px solid black; */
-    position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  /* padding: 1%; */
+  flex-direction: row;
+  /* border: 1px solid black; */
+  position: relative;
 }
 
 .detail-wrapper img {
@@ -59,24 +59,23 @@
 
 .inactive {
   transition: 0.25s ease-in-out;
-  filter:brightness(0.3);
+  filter: brightness(0.3);
 }
 
-.detail-link{
+.detail-link {
   height: 5vh;
-    margin: 4vh 0 2vh 1vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  margin: 4vh 0 2vh 1vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.detail-link a{
+.detail-link a {
   text-decoration: none;
   color: #c59fc3;
-  
 }
 
-.box{
+.box {
   width: 70vw;
 }
 
@@ -86,10 +85,10 @@
   align-items: flex-start;
   width: auto;
   height: 70vh;
-  margin: 0 1vw 10vh 1vw;
+  margin: 0 1vw 0 1vw;
 }
 
-.image-box{
+.image-box {
   display: flex;
 }
 /* .image-box img{
@@ -101,10 +100,10 @@
 
 .detail-imgs {
   display: flex;
-    flex-direction: column;
-    height: 70vh;
-    /* margin-right: 1vw; */
-    gap: 1vh;
+  flex-direction: column;
+  height: 70vh;
+  /* margin-right: 1vw; */
+  gap: 1vh;
 }
 
 .arrimgs img {
@@ -112,15 +111,15 @@
   width: 100px;
   cursor: pointer; */
   cursor: pointer;
-    height: 12vh;
-    width: 6vw;
+  height: 12vh;
+  width: 6vw;
 }
 
-.prev-img img{
+.prev-img img {
   width: auto;
-    max-width: 20vw;
-    height: 52vh;
-    margin: 0 2vw;
+  max-width: 20vw;
+  height: 52vh;
+  margin: 0 2vw;
 }
 
 .detail-container .favs-added {
@@ -173,25 +172,71 @@
   z-index: 3;
 }
 
+.other-items {
+  margin-bottom: 5vh;
+}
+
+.other-items .card img {
+  width: 200px;
+  height: 250px;
+  transform: none;
+}
+
+.other-items .add-favs img,
+.other-items .favs-added img {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff69;
+  border-radius: 50%;
+}
+
+.other-items .cards-container:hover img {
+  opacity: 1;
+}
+
+.other-items .cards-container img:hover {
+  transform: none;
+  opacity: 1;
+}
+
+.prev-img {
+  animation: fade-in-right 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  transition: 1s ease-in-out;
+}
+@keyframes fade-in-right {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 875px) {
+  .detail {
+    height: 100%;
+  }
   .box {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 0 5vw;
   }
-  .detail-box{
+  .detail-box {
     justify-content: unset;
     flex-direction: column;
     align-items: center;
+    height: auto;
   }
-  .detail-link{
+  .detail-link {
     margin: 4vh 0 2vh 4vw;
   }
-  .detail-container{
-    margin: 10%;
+  .detail-container {
+    margin: 0 10% 10% 10%;
   }
-  .prev-img img{
+  .prev-img img {
     max-width: 65vw;
     min-width: 200px;
     width: auto;
@@ -199,21 +244,56 @@
     height: 45vh;
     margin: 0 2vw;
   }
-  .arrimgs img{
+
+  .arrimgs img {
     height: 10vh;
     min-height: 70px;
     width: auto;
     min-width: 75px;
     max-height: 11vh;
   }
-  .image-box{
+  .image-box {
     height: 55vh;
     min-height: 500px;
   }
   .detail-container .add-favs {
+    border-radius: 50%;
     right: 6%;
   }
   .detail-container .favs-added {
+    border-radius: 50%;
     right: 6%;
+  }
+
+  .other-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: -webkit-fill-available;
+  }
+
+  .other-items .cards-container {
+    width: 100%;
+  }
+  .other-items .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 3fr));
+  }
+
+  .other-items .card img {
+    width: 100px;
+    height: auto;
+    max-height: 110px;
+    object-fit: cover;
+    z-index: 1;
+    transform-origin: center;
+    transform: none;
+    transition: 0.5s;
+  }
+  .other-items .add-favs img,
+  .other-items .favs-added img {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff69;
+    border-radius: 50%;
   }
 }
