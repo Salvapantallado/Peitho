@@ -14,15 +14,16 @@
 
 .main-img_text::before{
     content: "";
-    background-image: url("https://i.pinimg.com/originals/47/4f/f3/474ff3319df17354e29327d37d37fc2d.png");
-    background-size: cover;
+    background-image: url("../images/Home/Bannerfinalfinal.jpeg");
+    background-size: auto;
+    /* filter:contrast(0.7); */
     background-repeat: round;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-   opacity: 0.65;
+   /* opacity: 0.65; */
     
     /* display: flex;
     width: 100%;
@@ -37,25 +38,22 @@
     position: relative;
 }
 .main-img_text h1{
-    font-size: 64px;
+    font-size: 108px;
     /* filter: opacity(1); */
 }
 
 
 .main-img_text h2{
-    font-size: 30px;
+    font-size: 44px;
 }
 
 .main-img_text h3{
-    font-size: 25px;
+    font-size: 33px;
 }
 
-.main-img img{
-    height: auto;
-    max-height: 40vh;
-    width: 100vw;
-    filter:opacity(0.6);
-    margin-bottom: -4px;
+.banner-text {
+    text-shadow: -1px -1px 0 #bfbcd1, 1px -1px 0 #bfbcd1, -1px 2px 0 #bfbcd1, 1px 0px 0 #bfbcd1;
+    text-align: center;
 }
 
 @media screen and (max-width: 875px) {
@@ -66,10 +64,12 @@
     .main-img_text{
         top: 8%;
         line-height: 20px;
+        background-size: cover;
+        height: 25vh;
     }
     
     .main-img_text h1{
-        font-size: 30px;
+        font-size: 40px;
     }
     
     

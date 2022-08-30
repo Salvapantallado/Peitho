@@ -1,8 +1,12 @@
-   .ticker-wrapper {
+@import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
+
+.ticker-wrapper {
     display: flex;
     position: relative;
     overflow: hidden;
     height: 4vh;
+    background-color: black;
+    
 }
 
 .ticker-wrapper img {
@@ -17,14 +21,17 @@
 
 .ticker {
     display: flex;
-    -webkit-animation: scrolling 12s linear infinite;
-    animation: scrolling 12s linear infinite;
+    height: 100%;
+    align-items: center;
+    -webkit-animation: scrolling 24s linear infinite;
+    animation: scrolling 24s linear infinite;
     animation-play-state: "running";
     width: 250vw;
     transition: 0.25s ease-in-out;
 }
 
 .ticker-item {
+    height: 100%;
     white-space: nowrap;
     border-color: rgba(243,244,246, 1);
     border-top-width: 2px;
@@ -32,11 +39,47 @@
     border-left-width: 2px;
 }
 
+.ticker-text {
+    font-size: 18px;
+    width: 100%;
+    /* height: 100%; */
+    padding: 0 10px;
+    color: #fff;
+    font-family: UnifrakturCook;
+    background-color: #000;
+    white-space: nowrap;
+}
+.ticker-text span {
+    white-space: nowrap;
+    width: inherit;
+    height: 100%;
+}
+
 @keyframes scrolling {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-850px);
+        transform: translateX(-1850px);
+    }
+}
+
+@media screen and (max-width: 875px) {
+    .ticker-wrapper, .ticker-wrapper img{
+        height: 3vh;
+    }
+
+    .ticker-wrapper img{
+        padding-left: 15px;
+    }
+    .ticker-text {
+        font-size: 18px;
+        padding: 0;
+        display: inline-flex;
+    }
+
+    .ticker-text span{
+        white-space: nowrap;
+        padding-left: 15px;
     }
 }
