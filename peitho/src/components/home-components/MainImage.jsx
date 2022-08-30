@@ -1,5 +1,4 @@
 import "../../styles/mainImage.css";
-import Banner1 from "../../images/Home/banner1.jpeg"
 
 export default function MainImage() {
   return (
