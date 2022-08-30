@@ -15,9 +15,7 @@
 .main-img_text::before{
     content: "";
     background-image: url("../images/Home/Bannerfinalfinal.jpeg");
-    background-size: auto;
-    /* filter:contrast(0.7); */
-    background-repeat: round;
+    background-size: contain;
     position: absolute;
     top: 0;
     left: 0;
