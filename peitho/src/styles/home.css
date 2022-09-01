@@ -205,10 +205,16 @@
         justify-content: start;
         margin-bottom: 15px;
     }  
+
+    .product-info h2{
+        font-size: 36px;
+        text-decoration: underline;
+        margin: 0;
+    }
     .section-title{
         background: #675f9c;
         width: 95vw;
-        /* margin-bottom: 20px; */
+        margin-bottom: 20px;
         font-size: 18px;
         padding: 10px 0;
     }
