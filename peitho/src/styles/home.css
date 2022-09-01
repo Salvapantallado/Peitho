@@ -202,16 +202,24 @@
     .product-carousel{
         overflow-x: scroll;
         width: 90vw;
+        justify-content: start;
+        margin-bottom: 15px;
     }  
     .section-title{
         background: #675f9c;
         width: 95vw;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
+        font-size: 18px;
+        padding: 10px 0;
+    }
+    .section-title h2{
+        margin: 0;
     }
     .popular-grids{
         width: 100vw;
         display: grid;
-        grid-template-columns: 33vw 33vw 33vw;
+        grid-template-columns: 30vw 30vw 30vw;
+        gap: 3vw;
         justify-items: center;
         justify-content: center;
     }
@@ -221,13 +229,10 @@
         padding-top: 30px;
         align-items: center;
     }
-    .style-container h1{
-        font-size: 48px;
-    }
     .peitho-style{
         display: flex;
         justify-content: center;
-        padding: 30px;
+        padding: 15px;
     }
     .peitho-alternativo, .peitho-cute{
         margin: 10px;
