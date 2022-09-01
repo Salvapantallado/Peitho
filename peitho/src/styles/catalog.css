@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
 
 
-.container {
+.catalog-wrapper {
 	height: 100%;
 	width: auto;
 	display: flex;
@@ -10,7 +10,7 @@
 	flex-direction: column;
 }
 
-.container h1{
+.catalog-wrapper h1{
 	font-family: UnifrakturCook;
 	font-size: 60px;
 }

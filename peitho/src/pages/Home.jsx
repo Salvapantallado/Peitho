@@ -1,5 +1,5 @@
 import HomeProducts from "../components/home-components/HomeProducts";
-import Instagram from "../components/home-components/Instagram";
+// import Instagram from "../components/home-components/Instagram";
 import MainImage from "../components/home-components/MainImage";
 import CategoryBubble from "../components/shared-components/CategoryBubbles";
 import Navbar from "../components/shared-components/Navbar";
@@ -50,7 +50,7 @@ export default function Home({flag, setFlag}) {
             <div>
               <HomeProducts />
             </div>
-            <Instagram />
+            {/* <Instagram /> */}
           </div>
         </div>
         <Footer/>

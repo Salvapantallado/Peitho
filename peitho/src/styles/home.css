@@ -30,6 +30,102 @@
 }
 
 
+.section-title{
+    font-family: UnifrakturCook;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0px 0px 15px black);
+    border-radius: 10px 0;
+}
+
+.product-info{
+    font-family: UnifrakturCook;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-carousel{
+    /* overflow-x: scroll; */
+    display: inline-flex;
+    width: auto;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-carousel img{
+    height: 200px;
+    max-width: 160px;
+    width: auto;
+    margin: 5px;
+}
+
+.popular-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popular-grids{
+    width: 80vw;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    justify-items: center;
+    justify-content: center;
+}
+
+.popular-grids img{
+    height: 200px;
+    /* max-width: 160px; */
+    width: 140px;
+}
+
+.style-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #8c89a1;
+}
+
+.peitho-style{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+.peitho-cute, .peitho-alternativo{
+    display: flex;
+    flex-direction: column;
+    margin: 3em;
+    padding: 30px;
+}
+
+.peitho-cute h2, .peitho-alternativo h2{
+    font-family: UnifrakturCook;
+    font-size: 36px;
+}
+
+.peitho-cute img, .peitho-alternativo img{
+    width: auto;
+    height: 60vh;
+}
+
+.peitho-cute{
+    background: #FCE4EC;
+    box-shadow: #c7a7ff 4px 4px 0px 4px;
+    color:#c7a7ff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 2px 0 #000, 1px 0px 0 #000;
+}
+
+.peitho-alternativo{
+    background: #2d2d33;
+    box-shadow: #5c5c5c 4px 4px 0px 4px;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 2px 0 #fff, 1px 0px 0 #fff;
+}
+
 .instagram {
     display: flex;
     justify-content: center;
@@ -102,7 +198,47 @@
    }
 
 
-   @media screen and (max-width: 875px){        
+   @media screen and (max-width: 875px){      
+    .product-carousel{
+        overflow-x: scroll;
+        width: 90vw;
+    }  
+    .section-title{
+        background: #675f9c;
+        width: 95vw;
+        margin-bottom: 20px;
+    }
+    .popular-grids{
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 33vw 33vw 33vw;
+        justify-items: center;
+        justify-content: center;
+    }
+    .style-container{
+        width: 100vw;
+        align-items: normal;
+        padding-top: 30px;
+        align-items: center;
+    }
+    .style-container h1{
+        font-size: 48px;
+    }
+    .peitho-style{
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+    }
+    .peitho-alternativo, .peitho-cute{
+        margin: 10px;
+        padding: 10px;
+    }
+    .peitho-alternativo h2, .peitho-cute h2{
+    font-size: 20px;
+    }
+    .peitho-alternativo img, .peitho-cute img{
+        height: 25vh;
+    }
     .instagram {
         display: flex;
         justify-content: center;
@@ -157,7 +293,7 @@
        
        .instagram button span {
         background-color: #FFC8DD;
-        padding: 16px 24px;
+        padding: 0;
         border-radius: 6px;
         width: 100%;
         height: 100%;

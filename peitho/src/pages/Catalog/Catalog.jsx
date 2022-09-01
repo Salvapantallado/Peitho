@@ -25,7 +25,7 @@ export default function Catalog({flag, setFlag}) {
         <Ticker />
         <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
         <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
-        <div className="container">
+        <div className="catalog-wrapper">
           {/* <div className="background" /> */}
 
           <h1>Catalogo</h1>

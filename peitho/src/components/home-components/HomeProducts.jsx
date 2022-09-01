@@ -1,34 +1,33 @@
 import "../../styles/homeProducts.css";
+import NewestProduct from "./NewestProduct";
+import Popular from "./Popular";
 
-import Cute1 from "../../images/Home/PeithoCute/Cute-1.jpeg";
-import Cute2 from "../../images/Home/PeithoCute/Cute-2.jpeg";
-import Cute3 from "../../images/Home/PeithoCute/Cute-3.jpeg";
-import Cute4 from "../../images/Home/PeithoCute/Cute-4.jpeg";
-import Cute5 from "../../images/Home/PeithoCute/Cute-5.jpeg";
-import Cute6 from "../../images/Home/PeithoCute/Cute-6.jpeg";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../../actions";
+import { useEffect } from "react";
+import ChooseYourStyle from "./ChooseStyle";
 
 export default function HomeProducts() {
+	const dispatch = useDispatch();
+	const allProducts = useSelector((state) => state.allProducts);
+
+	useEffect(() => {
+	  dispatch(getAllProducts());
+	}, [dispatch]);
+  
 	return (
-		<div>
+		<div className="homeproducts-container">
 			<div className="home-products">
-				<img src={Cute1} alt="Primer foto" />
-
-				<img src={Cute2} alt="Segunda foto" />
-
-				<img src={Cute3} alt="Tercer foto" />
-
-				<img src={Cute4} alt="Cuarta foto" />
-
-				<img src={Cute5} alt="Quinta foto" />
-
-				<img src={Cute6} alt="Sexta foto" />
+				<NewestProduct allProducts={allProducts}/>
+				<Popular allProducts={allProducts}/>
 			</div>
 			<div className="product-button">
 				<Link to="/catalogo">
 					<button>Ver todos los productos</button>
 				</Link>
 			</div>
+			<ChooseYourStyle/>
 		</div>
 	);
 }

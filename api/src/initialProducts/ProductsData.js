@@ -195,7 +195,7 @@ const products = [
 		description2: "",
 		price2: 0,
 		category: ["camisas"],
-		image: ["/ProductImages/Camisa-corta.jpg"],
+		image: ["/ProductImages/Camisa-corta.jpg", "/ProductImages/Campera-Angus.jfif", "/ProductImages/Cadenas.jpg", "/ProductImages/Pantalon-recto.jfif", "/ProductImages/Cargo.jpg", "/ProductImages/Camisa-corta.jpg"],
 	},
 ];
 

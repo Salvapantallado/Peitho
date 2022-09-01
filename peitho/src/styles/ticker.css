@@ -69,11 +69,16 @@
         height: 3vh;
     }
 
+    .ticker-wrapper{
+        height: 2vh;
+    }
+
     .ticker-wrapper img{
         padding-left: 15px;
+        height: 100%;
     }
     .ticker-text {
-        font-size: 18px;
+        font-size: 13px;
         padding: 0;
         display: inline-flex;
     }

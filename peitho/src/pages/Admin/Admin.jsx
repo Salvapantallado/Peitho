@@ -3,7 +3,7 @@ import Footer from "../../components/shared-components/Footer";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Navbar from "../../components/shared-components/Navbar";
 import Ticker from "../../components/shared-components/Ticker";
-import "../../styles/landing.css";
+// import "../../styles/landing.css";
 import EnhancedTable from "./AdminTable2";
 
 export default function Admin() {
