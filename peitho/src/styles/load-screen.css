@@ -13,7 +13,59 @@
     bottom: 0;
 }
 
-.LoadScreen{
+.screen1-in, .screen2-in, .screen3-in, .screen1-out, .screen2-out, .screen3-out{
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+    z-index: 6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.screen1-in{
+    background-color:   #33323a;
+    animation: openScreen1 ease-in-out 3s;
+    transform: translate(-100%);
+}
+
+.screen2-in{
+    background-color: #67647a;
+    animation: openScreen2 ease-in-out 2s;
+    transform: translate(-100%);
+}
+
+.screen3-in{
+    background-color:  #bfbcd1;
+    animation: openScreen3 ease-in-out 1s;
+    transform: translate(-100%);
+}
+
+.screen1-out{
+    background-color: #33323a;
+    animation: closeScreen1 ease-in-out 1s;
+    transform: translate(0%);
+}
+
+.screen2-out{
+    background-color: #67647a;
+    animation: closeScreen2 ease-in-out 2s;
+    transform: translate(0%);
+}
+
+.screen3-out{
+    background-color:  #bfbcd1;
+    animation: closeScreen3 ease-in-out 3s;
+    transform: translate(0%);
+}
+
+.HomeLoad{
     height: 100vh;
     width: 100%;
     opacity: 0;
@@ -34,7 +86,7 @@
     overflow-x: hidden;
 }
 
-.LoadScreen video {
+.HomeLoad video {
     height: 700px;
     width: 900px;
     display: flex;
@@ -43,13 +95,13 @@
     z-index: 4;
 }
 
-.LoadScreen h1 {
+.HomeLoad h1 {
     opacity: 0;
     animation: vanish 1s;
-    /* animation: vanish 3s; */
+    /* animation: vanish 3s; */ 
 }
 
-.LoadScreenOut {
+.HomeLoadOut {
     height: 100%;
     width: 100%;
     opacity: 0;
@@ -63,6 +115,67 @@
     /* animation: curtain2 4s; */
     overflow-y: hidden;
     overflow-x: hidden;
+}
+
+@keyframes openScreen1 {
+    0%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(100%);
+    }
+}
+
+@keyframes closeScreen1 {
+    0%{
+        transform: translate(-100%);
+    }
+    70%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+@keyframes openScreen2 {
+    0%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(100%);
+    }
+}
+
+@keyframes closeScreen2 {
+    0%{
+        transform: translate(-100%);
+    }
+    70%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(0);
+    }
+}
+@keyframes openScreen3 {
+    0%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(100%);
+    }
+}
+
+@keyframes closeScreen3 {
+    0%{
+        transform: translate(-100%);
+    }
+    70%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(0);
+    }
 }
 
 @keyframes vanish {

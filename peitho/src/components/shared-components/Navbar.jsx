@@ -2,23 +2,43 @@ import { useSelector } from "react-redux";
 import "../../styles/navbar.css";
 
 
-export default function Navbar({loadScreen, setLoadScreen}) {
+export default function Navbar({screenTransition, setScreenTransition}) {
   const NumberOfFavorites = useSelector((state) => state.favoriteProducts);
   console.log(NumberOfFavorites);
 
   const LoadCurtain = async(e) => {
-    setLoadScreen(!loadScreen)
+    setScreenTransition(!screenTransition)
     setTimeout(() => {
-      setLoadScreen(!loadScreen)
+      setScreenTransition(!screenTransition)
       window.location.href = e
-    }, 100)
+    }, 2000)
   }
 
+  const navbar = document.querySelector(".navbar");
+  const spot = document.querySelector(".spot");
+
+  const handleScroll = (entries) => {
+    const spotIsVisible = entries[0].isIntersecting;
+    if(spotIsVisible) navbar.classList.remove("fixed-top");
+    else navbar.classList.add("fixed-top");
+  };
+
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshhold: 0,
+  }
+
+ 
+  const observer = new IntersectionObserver(handleScroll, options);
+  if(navbar !== null) observer.observe(spot)
+
   // useEffect(() => {
-  //   setLoadScreen(false)
+  //   setLoadScreen(false) 
   // }, [])
 
   return (
+    <>
     <nav className="navbar">
       <button onClick={() => LoadCurtain("/")}><h2>Inicio</h2></button>
       <button onClick={() => LoadCurtain("/catalogo")}><h2>Catalogo</h2></button>
@@ -46,5 +66,7 @@ export default function Navbar({loadScreen, setLoadScreen}) {
           </button>
       </div>
     </nav>
+    <div className="spot" />
+    </>
   );
 }

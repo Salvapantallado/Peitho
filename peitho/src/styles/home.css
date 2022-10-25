@@ -1,6 +1,8 @@
 .home {
     height: 100%;
     width: auto;
+	overflow-x: hidden;
+
 }
 
 
@@ -197,6 +199,14 @@
     transform: scale(0.9);
    }
 
+   .wrapper{
+    position: relative;
+    background: #1f1144;
+   }
+
+   canvas{
+    height: 500px;
+   }
 
    @media screen and (max-width: 875px){      
     .product-carousel{

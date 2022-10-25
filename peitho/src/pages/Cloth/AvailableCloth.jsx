@@ -5,8 +5,8 @@ import Navbar from "../../components/shared-components/Navbar";
 // import CategoryBubble from "../../components/shared-components/CategoryBubbles";
 import Ticker from "../../components/shared-components/Ticker";
 // import Pagination from "../../components/catalog-components/pagination";
-import LoadScreen from "../../components/shared-components/LoadScreen";
-import LoadScreenOut from "../../components/shared-components/LoadScreenOut";
+import TransitionIn from "../../components/shared-components/TransitionIn";
+import TransitionOut from "../../components/shared-components/TransitionOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Footer from "../../components/shared-components/Footer";
 
@@ -17,16 +17,16 @@ export default function AvailableCloth(
 //   let currentFilter = useState([]);
 //   let [currentProducts] = useState([]);
 //   const [productsPerPage] = useState(8);
-  const [loadScreen, setLoadScreen] = useState(false);
+const [screenTransition, setScreenTransition] = useState(false);
 
   // let pageNumber = 0;
   return (
     <>
-      {loadScreen ? <LoadScreenOut /> : <LoadScreen />}
+      {screenTransition ? <TransitionOut /> : <TransitionIn />}
       <div>
         <Ticker />
-        <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
-        <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
+        <Navbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
+        <MobileNavbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
         <div className="container">
           {/* <div className="background" /> */}
 

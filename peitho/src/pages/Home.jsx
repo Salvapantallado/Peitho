@@ -1,22 +1,28 @@
+import React, { Suspense, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getFavorites } from "../actions";
+
 import HomeProducts from "../components/home-components/HomeProducts";
-// import Instagram from "../components/home-components/Instagram";
 import MainImage from "../components/home-components/MainImage";
 import CategoryBubble from "../components/shared-components/CategoryBubbles";
 import Navbar from "../components/shared-components/Navbar";
-import React, { useEffect, useState } from "react";
-import "../styles/home.css";
 import Ticker from "../components/shared-components/Ticker";
-import { useDispatch } from "react-redux";
-import { getFavorites } from "../actions";
-import LoadScreen from "../components/shared-components/LoadScreen";
-import LoadScreenOut from "../components/shared-components/LoadScreenOut";
+import HomeLoad from "../components/shared-components/HomeLoad";
+// import HomeLoadOut from "../components/shared-components/HomeLoadOut";
 import MobileNavbar from "../components/shared-components/MobileNavbar";
 import Footer from "../components/shared-components/Footer";
+import TransitionOut from "../components/shared-components/TransitionOut";
 
-export default function Home({flag, setFlag}) {
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Sew from "../components/home-components/Sew";
+
+import "../styles/home.css";
+
+export default function Home({ flag, setFlag }) {
   const dispatch = useDispatch();
   const [localFavorites, setLocalFavorites] = useState([]);
-  const [loadScreen, setLoadScreen] = useState(false);
+  const [screenTransition, setScreenTransition] = useState(false);
 
   useEffect(() => {
     dispatch(getFavorites(localFavorites));
@@ -31,30 +37,47 @@ export default function Home({flag, setFlag}) {
   }, [setLocalFavorites]);
 
   useEffect(() => {
-    setLoadScreen(false);
+    setScreenTransition(false);
   }, []);
 
   console.log(flag, "flag home");
   return (
     <>
       <div className="home">
-        {loadScreen ? <LoadScreenOut /> : <LoadScreen />}
+        {screenTransition ? <TransitionOut /> : <HomeLoad />}
         <Ticker />
         <MainImage />
-        <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
-        <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
-        <CategoryBubble flag={flag} setFlag={setFlag}/>
+        <Navbar
+          screenTransition={screenTransition}
+          setScreenTransition={setScreenTransition}
+        />
+        <MobileNavbar
+          screenTransition={screenTransition}
+          setScreenTransition={setScreenTransition}
+        />
+        <CategoryBubble flag={flag} setFlag={setFlag} />
         <div className="container">
           {/* <div className="background" /> */}
           <div className="home-container">
             <div>
               <HomeProducts />
             </div>
-            {/* <Instagram /> */}
+            {/* <div className="wrapper">
+              <Canvas className="canvas">
+                <OrbitControls enableZoom={false}/>
+                <ambientLight intensity={1}/>
+                <directionalLight position={[0, 1, 1]} intensity={1} />
+                <directionalLight position={[1, 1, 0]} intensity={1} />
+                <Suspense fallback={null}>
+                  <Sew />
+                </Suspense>
+              </Canvas>
+            </div> */}
           </div>
         </div>
-        <Footer/>
-      </div>
+        <Footer />
+      </div> 
     </>
   );
 }
+

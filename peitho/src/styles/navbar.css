@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
 
 .navbar {
-  top: 0;
+  position: relative;
   width: 100%;
   height: 6vh;
   background-color: #bfbcd1;
@@ -10,8 +10,17 @@
   justify-content: space-around;
   align-items: center;
   font-family: UnifrakturCook;
+  transition: all 1s ease-out;
   /* border: 2px black;
   border-style: none none solid none; */
+}
+
+.navbar.fixed-top{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 6vh;
+  z-index: 3;
 }
 .navbar img {
   height: 60px;
@@ -154,16 +163,23 @@
     max-width: 100vw;
 
   }
+  .mobile-navbar.fixed-top{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 6vh;
+    z-index: 3;
+  }
   .mobile-buttons {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    position: absolute;
-    top: 4vh;
+    position: fixed;
+    top: 2vh;
     background: #bfbcd1;
     left: 0;
     width: 100vw;
-    height: 96vh;
+    height: 98vh;
     z-index: 3;
     animation: showMenu 1s;
     transition: 0.5s ease-in-out;

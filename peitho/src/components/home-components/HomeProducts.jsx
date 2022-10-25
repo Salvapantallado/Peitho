@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../actions";
 import { useEffect } from "react";
 import ChooseYourStyle from "./ChooseStyle";
+import Maniqui from "./maniqui.png";
 
 export default function HomeProducts() {
 	const dispatch = useDispatch();

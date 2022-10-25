@@ -1,9 +1,9 @@
 import "../../styles/load-screen.css";
 
-export default function LoadScreenOut() {
+export default function HomeLoadOut() {
   return (
     <div className="sticky">
-      <div className="LoadScreenOut" />
+      <div className="HomeLoadOut" />
     </div>
   );
 }

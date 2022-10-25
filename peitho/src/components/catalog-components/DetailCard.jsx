@@ -11,8 +11,8 @@ import "../../styles/detailCard.css";
 import Navbar from "../shared-components/Navbar";
 import MobileNavbar from "../shared-components/MobileNavbar";
 import Ticker from "../shared-components/Ticker";
-import LoadScreen from "../../components/shared-components/LoadScreen";
-import LoadScreenOut from "../../components/shared-components/LoadScreenOut";
+import TransitionIn from "../../components/shared-components/TransitionIn";
+import TransitionOut from "../../components/shared-components/TransitionOut";
 import Footer from "../shared-components/Footer";
 
 export default function DetailCard() {
@@ -20,7 +20,8 @@ export default function DetailCard() {
   const productDetail = useSelector((state) => state.productDetail);
   const allProducts = useSelector((state) => state.allProducts);
   const favProducts = useSelector((state) => state.favoriteProducts);
-  const [loadScreen, setLoadScreen] = useState(false);
+  const [screenTransition, setScreenTransition] = useState(false);
+
   const [previewImage, setPreviewImage] = useState();
   const { id } = useParams();
   const [others, setOthers] = useState([])
@@ -30,7 +31,7 @@ export default function DetailCard() {
   console.log(others, allProducts);
   
   useEffect(() => {
-    setLoadScreen(false);
+    setScreenTransition(false);
   }, [])
 
   useEffect(() => {
@@ -74,10 +75,10 @@ export default function DetailCard() {
   }
   return (
     <div>
-      {loadScreen ? <LoadScreenOut /> : <LoadScreen />}
+      {screenTransition ? <TransitionOut /> : <TransitionIn />}
       <Ticker />
-      <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
-      <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
+      <Navbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
+      <MobileNavbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
       <div className="detail">
         <div className="box">
           <div className="detail-link">

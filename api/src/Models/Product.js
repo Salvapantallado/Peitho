@@ -26,6 +26,9 @@ module.exports = (sequelize) => {
 			price2: {
 				type: DataTypes.DECIMAL,
 			},
+			product_qty: {
+				type: DataTypes.INTEGER,
+			}
 		},
 		{
 			// timestamps: false,

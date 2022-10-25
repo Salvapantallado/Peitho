@@ -19,6 +19,7 @@ const products = [
 		price2: 0,
 		category: ["tops"],
 		image: ["/ProductImages/Top-microtul.jfif", "/ProductImages/Falda-media-campana.jpg"],
+		product_qty: 1,
 	},
 
 	// polleras
@@ -31,6 +32,7 @@ const products = [
 		price2: 2550,
 		category: ["faldas"],
 		image: ["/ProductImages/Falda-media-campana.jpg"],
+		product_qty: 1,
 	},
 	{
 		name: "Falda Bailarina",
@@ -41,6 +43,7 @@ const products = [
 		price2: 0,
 		category: ["faldas"],
 		image: ["/ProductImages/Falda-Bailarina.jpg"],
+		product_qty: 1,
 	},
 	{
 		name: "Falda Cuadrille",
@@ -51,6 +54,7 @@ const products = [
 		price2: 0,
 		category: ["faldas"],
 		image: ["/ProductImages/Falda-cuadrille.jfif"],
+		product_qty: 1,
 	},
 	{
 		name: "Falda Lea",
@@ -61,6 +65,7 @@ const products = [
 		price2: 0,
 		category: ["faldas"],
 		image: ["/ProductImages/Falda-Lea.jfif"],
+		product_qty: 1,
 	},
 	{
 		name: "Falda tableada",
@@ -71,6 +76,7 @@ const products = [
 		price2: 2550,
 		category: ["faldas"],
 		image: ["/ProductImages/Falda-tableada.jpg"],
+		product_qty: 1,
 	},
 	{
 		name: "Falda Cutie",
@@ -81,6 +87,7 @@ const products = [
 		price2: 0,
 		category: ["faldas"],
 		image: ["/ProductImages/Falda-cute.jpeg"],
+		product_qty: 1,
 	},
 	{
 		name: "Pollera Evasé",
@@ -91,6 +98,7 @@ const products = [
 		price2: 1850,
 		category: ["faldas"],
 		image: ["/ProductImages/Pollera-Evasé.jpg"],
+		product_qty: 1,
 	},
 
 	// vestidos
@@ -103,6 +111,7 @@ const products = [
 		price2: 0,
 		category: ["vestidos"],
 		image: ["/ProductImages/Vestido-Rosie.jpeg"],
+		product_qty: 1,
 	},
 	{
 		name: "Vestido San Valentín Otoño",
@@ -112,6 +121,7 @@ const products = [
 		price2: 0,
 		category: ["vestidos"],
 		image: ["/ProductImages/Vestido-Otoño.jpeg"],
+		product_qty: 1,
 	},
 	{
 		name: "Vestido Panda",
@@ -121,6 +131,7 @@ const products = [
 		price2: 0,
 		category: ["vestidos"],
 		image: ["/ProductImages/Vestido-Panda.jpg"],
+		product_qty: 1,
 	},
 	{
 		name: "Vestido San Valentín",
@@ -130,6 +141,7 @@ const products = [
 		price2: 0,
 		category: ["vestidos"],
 		image: ["/ProductImages/Vestido-SanValentin.jpeg"],
+		product_qty: 1,
 	},
 	{
 		name: "Vestido Victoria",
@@ -139,6 +151,7 @@ const products = [
 		price2: 0,
 		category: ["vestidos"],
 		image: ["/ProductImages/Vestido-Victoria.jfif"],
+		product_qty: 1,
 	},
 
 	// pantalones
@@ -151,6 +164,7 @@ const products = [
 		price2: 0,
 		category: ["pantalones"],
 		image: ["/ProductImages/Cargo.jpg"],
+		product_qty: 1,
 	},
 	{
 		name: "Pantalón Recto",
@@ -161,6 +175,7 @@ const products = [
 		price2: 0,
 		category: ["pantalones"],
 		image: ["/ProductImages/Pantalon-recto.jfif"],
+		product_qty: 1,
 	},
 
 	// abrigos
@@ -183,6 +198,7 @@ const products = [
 		price2: 0,
 		category: ["abrigos"],
 		image: ["/ProductImages/Campera-Angus.jfif"],
+		product_qty: 1,
 	},
 
 
@@ -196,6 +212,7 @@ const products = [
 		price2: 0,
 		category: ["camisas"],
 		image: ["/ProductImages/Camisa-corta.jpg", "/ProductImages/Campera-Angus.jfif", "/ProductImages/Cadenas.jpg", "/ProductImages/Pantalon-recto.jfif", "/ProductImages/Cargo.jpg", "/ProductImages/Camisa-corta.jpg"],
+		product_qty: 1,
 	},
 ];
 

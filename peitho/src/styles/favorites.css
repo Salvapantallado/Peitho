@@ -15,11 +15,27 @@ justify-content: center;
 
 }
 
+.fav-card{
+    border: 1px solid #181818;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 15%;
+    margin: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.fav-row{
+    display: flex;
+    align-items: center;
+}
+
 .fav-wrapper{
-    margin: 50px;
+    /* margin: 50px; */
     border: 2px solid black;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
