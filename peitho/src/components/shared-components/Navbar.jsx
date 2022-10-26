@@ -45,7 +45,7 @@ export default function Navbar({screenTransition, setScreenTransition}) {
       {/* <button onClick={() => LoadCurtain("/favoritos")}><h2>Favoritos</h2></button> */}
       <button onClick={() => LoadCurtain("/")}><h2>Tabla de medidas</h2></button>
       <button onClick={() => LoadCurtain("/telas-disponibles")}><h2>Telas disponibles</h2></button>
-      <button onClick={() => LoadCurtain("/admin")}><h2>Admin Add</h2></button>
+      {/* <button onClick={() => LoadCurtain("/admin")}><h2>Admin Add</h2></button> */}
       {/* <NavLink to="/inicio">Cosa 4</NavLink> */}
 
       <div className="fav-icon">

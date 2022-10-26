@@ -14,7 +14,7 @@ export default function NewestProduct({allProducts}) {
       {lastProduct ? 
       <div className="product-info">
         <div>
-          <h2>{lastProduct.name}</h2>
+          <h3>{lastProduct.name}</h3>
         </div>
         <div className="product-carousel">
           {lastProduct?.image.map((product, index) => (

@@ -21,7 +21,7 @@ justify-content: center;
     display: flex;
     flex-direction: column;
     border-radius: 0 15%;
-    margin: 25px;
+    /* margin: 25px; */
     align-items: center;
     justify-content: center;
 }

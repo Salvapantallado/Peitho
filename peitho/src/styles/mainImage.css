@@ -7,7 +7,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: UnifrakturCook;
     flex-direction: column;
     line-height: 20px;
 }
@@ -34,10 +33,15 @@
 }
 .main-img_text h1, h2, h3 {
     position: relative;
+    font-family: "Kirimaru";
 }
 .main-img_text h1{
     font-size: 108px;
     /* filter: opacity(1); */
+}
+
+.main-img_text strong{
+    font-family: UnifrakturCook;
 }
 
 
@@ -67,9 +71,12 @@
     }
     
     .main-img_text h1{
-        font-size: 40px;
+        font-size: 30px;
     }
     
+    .main-img_text strong {
+        font-size: 35px;
+    }
     
     .main-img_text h2{
         font-size: 15px;

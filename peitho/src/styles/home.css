@@ -221,6 +221,13 @@
         text-decoration: underline;
         margin: 0;
     }
+
+    .product-info h3{
+        font-size: 20px;
+        text-decoration: underline;
+        margin: 0
+    }
+
     .section-title{
         background: #675f9c;
         width: 95vw;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { getFavorites } from "../../actions";
 import Footer from "../../components/shared-components/Footer";
 import TransitionIn from "../../components/shared-components/TransitionIn";
@@ -15,7 +14,6 @@ export default function Favorites() {
   const [screenTransition, setScreenTransition] = useState(false);
   const [message, setMessage] = useState("");
   const [deletedItem, setDeletedItem] = useState({});
-  const [numb, setNumb] = useState(0);
 
   useEffect(() => {
     setScreenTransition(false);
@@ -129,9 +127,8 @@ export default function Favorites() {
 if(localFavorites.length){
   const testing = localFavorites.map(x => x.price * x.product_qty)
   const testingSum = testing.reduce((a, b) => a + b)
-  console.log(testing);
   return testingSum
-} return null
+} return
   }
 
   return (
