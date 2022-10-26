@@ -2,7 +2,7 @@
 
 .fav-container {
 display: flex;
-height: 96vh;
+min-height: 96vh;
 justify-content: center;
 
 }
@@ -29,6 +29,13 @@ justify-content: center;
 .fav-row{
     display: flex;
     align-items: center;
+    justify-content: space-around;
+}
+
+.fav-qty{
+    display: flex;
+    font-size: 26px;
+    flex-direction: row;
 }
 
 .fav-wrapper{

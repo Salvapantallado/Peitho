@@ -28,6 +28,7 @@
 
 .navbar h2 {
   font-size: 35px;
+  margin: 0;
 }
 
 .navbar h2:hover {
