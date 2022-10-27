@@ -19,10 +19,11 @@ import Sew from "../components/home-components/Sew";
 
 import "../styles/home.css";
 
-export default function Home({ flag, setFlag }) {
+export default function Home({ flag, setFlag, screenTransition,
+  setScreenTransition }) {
   const dispatch = useDispatch();
   const [localFavorites, setLocalFavorites] = useState([]);
-  const [screenTransition, setScreenTransition] = useState(false);
+
 
   useEffect(() => {
     dispatch(getFavorites(localFavorites));

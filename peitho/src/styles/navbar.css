@@ -63,8 +63,6 @@
   align-items: center;
   flex-direction: row;
   font-family: "Kirimaru";
-  /* border: 2px black;
-  border-style: none none solid none; */
 }
 
 .mobile-navbar img {
@@ -128,36 +126,8 @@
   justify-content: center;
   align-items: center;
   margin: 3px 0 0 5px;
-  /* animation: LengthPop 0.25s; */
-  /* transition: 0.5s ease-in-out; */
 }
 
-/* @keyframes LengthPop {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-} */
-
-/* @keyframes showMenu {
-  from {
-    width: 0;
-  }
-  to{
-    width: 100vw;
-  }
-}
-
-@keyframes hideMenu {
-  from {
-    width: 100vw;
-  }
-  to{
-    width: 0;
-  }
-} */
 
 @media (max-width: 875px) {
   .mobile-navbar {
@@ -176,7 +146,6 @@
   .mobile-buttons {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     position: fixed;
     top: 0;
     background: #bfbcd1;
@@ -184,14 +153,9 @@
     width: 100vw;
     height: 100vh;
     z-index: 3;
-    /* animation: showMenu 1s; */
-    /* transition: 0.5s ease-in-out; */
     align-items: center;
-
-
     transform: translateX(-100%);
     transition: 1s ease-in-out;
-    /* animation: closing 1s ease-in; */
   }
   .mobile-links {
     position: relative;
@@ -209,7 +173,6 @@
     top: 0;
     z-index: 3;
     overflow-y: hidden;
-    /* right: 100%; */
   }
 
   .close-icon{
@@ -226,25 +189,6 @@
   }
   .opened{
     transform: translateX(0);
-    /* animation: opening 1s ease-in */
   }
-
-  /* @keyframes opening {
-    from{
-      transform: translateX(-100%);
-    }
-    to{
-      transform: translateX(0)
-    }
-  } */
-
-  /* @keyframes closing {
-    from{
-      transform: translateX(0)
-    }
-    to{
-      transform: translateX(-100%);
-    }
-  } */
 
 }

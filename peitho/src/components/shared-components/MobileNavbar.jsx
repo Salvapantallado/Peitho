@@ -19,7 +19,7 @@ export default function MobileNavbar({
   const LoadCurtain = async (e) => {
     setScreenTransition(!screenTransition);
     setTimeout(() => {
-      setOpen(false)
+      // setOpen(false)
       setScreenTransition(!screenTransition);
       window.location.href = e;
     }, 1500);

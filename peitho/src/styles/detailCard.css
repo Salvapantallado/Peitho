@@ -70,7 +70,8 @@
   align-items: center;
 }
 
-.detail-link a {
+.detail-link button {
+  all: unset;
   text-decoration: none;
   color: #c59fc3;
 }

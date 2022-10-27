@@ -15,12 +15,11 @@ import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
 import Footer from "../shared-components/Footer";
 
-export default function DetailCard() {
+export default function DetailCard({screenTransition, setScreenTransition}) {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const allProducts = useSelector((state) => state.allProducts);
   const favProducts = useSelector((state) => state.favoriteProducts);
-  const [screenTransition, setScreenTransition] = useState(false);
 
   const [previewImage, setPreviewImage] = useState();
   const { id } = useParams();
@@ -71,7 +70,14 @@ export default function DetailCard() {
       localStorage.setItem("Obj", JSON.stringify(filtered));
     }
 
-    // console.log(LSArray);
+    
+  }
+  const LoadCurtain = async(e) => {
+    setScreenTransition(!screenTransition)
+    setTimeout(() => {
+      setScreenTransition(!screenTransition)
+      window.location.href = e
+    }, 2000)
   }
   return (
     <div>
@@ -83,8 +89,8 @@ export default function DetailCard() {
         <div className="box">
           <div className="detail-link">
             <span>
-              <a href="/">Inicio</a> <span>/</span>{" "}
-              <a href="/catalogo">Catalogo</a> <span> / </span>{" "}
+              <button onClick={() => LoadCurtain("/")}>Inicio</button> <span>/</span>{" "}
+              <button onClick={() => LoadCurtain("/catalogo")}>Catalogo</button> <span> / </span>{" "}
               <span>{productDetail.name}</span>
             </span>
           </div>

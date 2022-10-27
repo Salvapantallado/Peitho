@@ -19,19 +19,19 @@ import AvailableCloth from "./pages/Cloth/AvailableCloth";
 function App() {
 	const history = createBrowserHistory();
 	const [flag, setFlag] = useState("")
-	console.log(flag);
+	const [screenTransition, setScreenTransition] = useState(false);
 	return (
 		<Provider store={Store}>
 			<Router history={history}>
 				{/* <Navbar />
 			<CategoryBubble /> */}
 				<Routes>
-					<Route exact path="/" element={<Home flag={flag} setFlag={setFlag} />} />
-					<Route exact path="/catalogo" element={<Catalog flag={flag} setFlag={setFlag} />} />
-					<Route exact path="/catalogo/:id" element={<DetailCard />} />
-					<Route exact path="/telas-disponibles" element={<AvailableCloth/>} />
-					<Route exact path="/favoritos" element={<Favorites/>} />
-					<Route exact path="/admin" element={<Admin/>} />
+					<Route exact path="/" element={<Home flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
+					<Route exact path="/catalogo" element={<Catalog flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
+					<Route exact path="/catalogo/:id" element={<DetailCard screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
+					<Route exact path="/telas-disponibles" element={<AvailableCloth screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
+					<Route exact path="/favoritos" element={<Favorites screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
+					<Route exact path="/admin" element={<Admin screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
 					<Route exact path="/admin/editar/:id" element={<EditProduct/>} />
 					<Route exact path="/admin/agregar" element={<AddProduct/>} />
 				</Routes>
