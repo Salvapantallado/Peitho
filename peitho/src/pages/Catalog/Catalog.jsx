@@ -17,6 +17,7 @@ export default function Catalog({flag, setFlag}) {
   const [productsPerPage] = useState(8);
   const [screenTransition, setScreenTransition] = useState(false);
   let pageNumber = 0;
+
   return (
     <>
       {screenTransition ? <TransitionOut /> : <TransitionIn />}

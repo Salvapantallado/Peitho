@@ -72,7 +72,7 @@
     pointer-events: none;
     z-index: 6;
     background-color: #bfbcd1;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
