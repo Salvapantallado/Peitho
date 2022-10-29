@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { filterItems, getAllProducts, getFavorites } from "../../actions";
@@ -59,11 +60,13 @@ export default function Card({
       LSArray.push(data);
       dispatch(getFavorites(LSArray));
       localStorage.setItem("Obj", JSON.stringify(LSArray));
+      toast.success(`${data.name} añadido a favoritos!`);
     }
     if (dataExists) {
       let filtered = LSArray.filter((item) => item.id !== data.id);
       dispatch(getFavorites(filtered));
       localStorage.setItem("Obj", JSON.stringify(filtered));
+      toast.error(`${data.name} eliminado de favoritos!`);
     }
     console.log(LSArray);
   }
@@ -84,9 +87,8 @@ export default function Card({
         setFlag(JSON.parse(localStorage.getItem("flag")));
         console.log(flag, "test");
         setTimeout(() => {
-
-          localStorage.removeItem("flag")
-        }, 400)
+          localStorage.removeItem("flag");
+        }, 400);
       }
     } catch (err) {
       console.log(err);
@@ -105,6 +107,7 @@ export default function Card({
   return (
     <>
       <div className="category-wrapper">
+        <Toaster position="bottom-center" reverseOrder={false} />
         <div className="category-button">
           <button onClick={() => (filter("all"), setCurrentPage(1))}>
             Remove filter

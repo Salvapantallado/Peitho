@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { getFavorites } from "../../actions";
 import Footer from "../../components/shared-components/Footer";
@@ -7,6 +8,10 @@ import TransitionOut from "../../components/shared-components/TransitionOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Navbar from "../../components/shared-components/Navbar";
 import Ticker from "../../components/shared-components/Ticker";
+import { Link } from "react-router-dom";
+
+import {FaMinus, FaPlus} from "react-icons/fa";
+
 import "../../styles/favorites.css";
 export default function Favorites() {
   const dispatch = useDispatch();
@@ -34,18 +39,20 @@ export default function Favorites() {
     dispatch(getFavorites(localFavorites));
   }, [localFavorites]);
 
-  function handleDelete(id) {
-    let filteredItem = localFavorites.filter((x) => x.id === id);
+  function handleDelete(item) {
+    let filteredItem = localFavorites.filter((x) => x.id === item.id);
     setDeletedItem(filteredItem);
-    let filteredArray = localFavorites.filter((x) => x.id !== id);
+    let filteredArray = localFavorites.filter((x) => x.id !== item.id);
     setLocalFavorites(filteredArray);
 
     console.log(localFavorites);
 
     if (localFavorites.length > 1) {
       localStorage.setItem("Obj", JSON.stringify(localFavorites));
+      toast.error(`${item.name} eliminado de favoritos.`)
     } else {
       localStorage.removeItem("Obj");
+      toast.error(`${item.name} eliminado de favoritos.`)
     }
 
     console.log(localFavorites);
@@ -54,10 +61,11 @@ export default function Favorites() {
   function restoreItem() {
     if (deletedItem.length > 0) {
       const auxArr = [];
-      auxArr.push(...localFavorites, deletedItem[0])
+      auxArr.push(...localFavorites, deletedItem[0]);
       console.log(auxArr);
       auxArr.sort((a, b) => a.id - b.id);
-      setLocalFavorites(auxArr)
+      toast.success(`${deletedItem[0].name} fue restaurado.`)
+      setLocalFavorites(auxArr);
       setDeletedItem({});
       return;
     }
@@ -66,13 +74,17 @@ export default function Favorites() {
   const CopyInfo = (arr) => {
     const productQuantities = arr.map((item) => item.product_qty);
     if (arr && arr.length === 1) {
-      setMessage(`Hola! Me interesa la prenda ${arr[0].name}(${productQuantities})! :)`);
+      setMessage(
+        `Hola! Me interesa la prenda ${arr[0].name}(${productQuantities})! :)`
+      );
       navigator.clipboard.writeText(
         `Hola! Me interesa la prenda ${arr[0].name}(${productQuantities})! :)`
       );
     }
     if (arr && arr.length > 1) {
-      const productNames = arr.map((item) => item.name + `(${item.product_qty})`);
+      const productNames = arr.map(
+        (item) => item.name + `(${item.product_qty})`
+      );
       // const productQuantities = arr.map((item) => item.product_qty);
       // const productMix = productNames + `(${productQuantities})`;
       // console.log(productMix, 'mix');
@@ -99,7 +111,7 @@ export default function Favorites() {
               ...item,
               product_qty:
                 item.product_qty -
-                (item.product_qty > 1 ? 1 : handleDelete(item.id)),
+                (item.product_qty > 1 ? 1 : handleDelete(item)),
             }
           : item
       )
@@ -124,16 +136,18 @@ export default function Favorites() {
   };
 
   function PriceMix() {
-if(localFavorites.length){
-  const testing = localFavorites.map(x => x.price * x.product_qty)
-  const testingSum = testing.reduce((a, b) => a + b)
-  return testingSum
-} return
+    if (localFavorites.length) {
+      const testing = localFavorites.map((x) => x.price * x.product_qty);
+      const testingSum = testing.reduce((a, b) => a + b);
+      return '$' + testingSum;
+    }
+    return;
   }
 
   return (
     <div>
       {screenTransition ? <TransitionOut /> : <TransitionIn />}
+      <Toaster />
       <Ticker />
       <Navbar
         screenTransition={screenTransition}
@@ -145,10 +159,13 @@ if(localFavorites.length){
       />
       <div className="fav-container">
         <div className="fav-list">
+          <div className="fav-banner">
           <h1>Lista de favoritos</h1>
+
+          </div>
           {localFavorites?.map((product) => (
             <div className="fav-row" key={product.id}>
-              <div className="fav-card">
+              {/* <div className="fav-card">
                 {product.image.length !== 1 ? (
                   <div className="fav-image">
                     <img src={product.image[0]} alt="prenda" />
@@ -159,27 +176,50 @@ if(localFavorites.length){
                   </div>
                 )}
                 <h2>{product.name}</h2>
+              </div> */}
+              <div className="fav-card-wrapper">
+                <div className="fav-product-card" key={product.id}>
+                  <div className="fav-card">
+                    <Link to={`/catalogo/${product.id}`}>
+                      <img
+                        src={
+                          product.image.length !== 1
+                            ? product.image[0]
+                            : product.image
+                        }
+                        alt="product sample"
+                      />
+                      <div className="fav-card-body">
+                        <h3>{product.name}</h3>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
               </div>
 
               <div className="fav-qty">
-                <button onClick={() => removeQuantity(product.id)}>-</button>
+                {/* <button onClick={() => removeQuantity(product.id)}> */}
+                  <FaMinus onClick={() => removeQuantity(product.id)}/>
+                  {/* </button> */}
                 <div>
                   <span>{product.product_qty}</span>
                 </div>
-                <button onClick={() => addQuantity(product.id)}>+</button>
+                {/* <button onClick={() => addQuantity(product.id)}> */}
+                <FaPlus onClick={() => addQuantity(product.id)}/>
+                {/* </button> */}
               </div>
 
-              <div>{product.price * product.product_qty}</div>
+              <div>{`$${product.price * product.product_qty}`}</div>
               <div>
-                <button onClick={() => handleDelete(product.id)}>X</button>
+                {/* <button onClick={() => handleDelete(product.id)}> */}
+                  <FaPlus style={{transform: "rotate(45deg)", color: 'red'}} onClick={() => handleDelete(product)}/>
+                {/* </button> */}
               </div>
             </div>
           ))}
-              <div>
-                <div>
-                  Total: {PriceMix()}
-                  </div>
-                </div>
+          <div>
+            <div className="total-fav">Total: {PriceMix()}</div>
+          </div>
           <div>
             {deletedItem.length > 0 ? (
               <button onClick={() => restoreItem()}>undo</button>

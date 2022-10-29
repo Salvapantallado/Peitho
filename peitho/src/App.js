@@ -15,6 +15,7 @@ import Admin from "./pages/Admin/Admin";
 import EditProduct from "./pages/Admin/EditProduct";
 import { useState } from "react";
 import AvailableCloth from "./pages/Cloth/AvailableCloth";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 	const history = createBrowserHistory();
@@ -25,6 +26,7 @@ function App() {
 			<Router history={history}>
 				{/* <Navbar />
 			<CategoryBubble /> */}
+			<ScrollToTop />
 				<Routes>
 					<Route exact path="/" element={<Home flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
 					<Route exact path="/catalogo" element={<Catalog flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />

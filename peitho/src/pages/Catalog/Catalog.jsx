@@ -27,8 +27,10 @@ export default function Catalog({flag, setFlag}) {
         <MobileNavbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
         <div className="catalog-wrapper">
           {/* <div className="background" /> */}
+        <div className="banner">
 
           <h1>Catalogo</h1>
+        </div>
 
           <div className="catalog-container">
             {/* <CategoryBubble /> */}
