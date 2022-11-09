@@ -25,7 +25,7 @@ export default function Favorites() {
   }, []);
 
   useEffect(() => {
-    if (localStorage !== 0) {
+    if (localStorage.length !== 0) {
       const localData = JSON.parse(localStorage.getItem("Obj"));
       return setLocalFavorites(localData);
     }
