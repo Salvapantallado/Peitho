@@ -123,6 +123,14 @@
   margin: 5px;
 }
 
+.no-favs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 400px;
+}
+
 @media screen and (max-width: 875px) {
   .fav-card img {
     width: 100px;

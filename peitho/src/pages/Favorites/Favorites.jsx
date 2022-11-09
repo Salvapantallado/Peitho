@@ -220,8 +220,6 @@ export default function Favorites() {
                 />
                 {/* </button> */}
               </div>
-            </div>
-          ))}
           <div>
             <div className="total-fav">Total: {localFavorites !== null ? PriceMix() : 0}</div>
           </div>
@@ -232,6 +230,15 @@ export default function Favorites() {
             <button onClick={() => CopyInfo(localFavorites)}>Copiar</button>
             <span>{message}</span>
           </div>
+            </div>
+          ))}
+          {localFavorites.length === 0 || localFavorites === null ? (
+            <div className="no-favs">
+              <span>
+              Todavía no agregaste ninguna prenda a tu lista, podés hacerlo en el <a href="/catalogo">Catálogo</a>.
+              </span>
+              </div>
+          ) : null }
         </div>
       </div>
       <Footer />
