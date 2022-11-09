@@ -47,7 +47,7 @@ export default function Favorites() {
 
     console.log(localFavorites);
 
-    if (localFavorites && localFavorites.length > 1) {
+    if (localFavorites.length > 1 && localFavorites !== null) {
       localStorage.setItem("Obj", JSON.stringify(localFavorites));
       toast.error(`${item.name} eliminado de favoritos.`)
     } else {
@@ -59,7 +59,7 @@ export default function Favorites() {
   }
 
   function restoreItem() {
-    if (deletedItem && deletedItem.length > 0) {
+    if (deletedItem.length > 0 && deletedItem !== null) {
       const auxArr = [];
       auxArr.push(...localFavorites, deletedItem[0]);
       console.log(auxArr);
@@ -81,7 +81,7 @@ export default function Favorites() {
         `Hola! Me interesa la prenda ${arr[0].name}(${productQuantities})! :)`
       );
     }
-    if (arr && arr.length > 1) {
+    if (arr.length > 1 && arr !== null) {
       const productNames = arr.map(
         (item) => item.name + `(${item.product_qty})`
       );
