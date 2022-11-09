@@ -47,7 +47,7 @@ export default function Favorites() {
 
     console.log(localFavorites);
 
-    if (localFavorites.length > 1) {
+    if (localFavorites && localFavorites.length > 1) {
       localStorage.setItem("Obj", JSON.stringify(localFavorites));
       toast.error(`${item.name} eliminado de favoritos.`)
     } else {
@@ -59,7 +59,7 @@ export default function Favorites() {
   }
 
   function restoreItem() {
-    if (deletedItem.length > 0) {
+    if (deletedItem && deletedItem.length > 0) {
       const auxArr = [];
       auxArr.push(...localFavorites, deletedItem[0]);
       console.log(auxArr);
