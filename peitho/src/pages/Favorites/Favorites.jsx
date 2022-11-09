@@ -8,7 +8,7 @@ import TransitionOut from "../../components/shared-components/TransitionOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Navbar from "../../components/shared-components/Navbar";
 import Ticker from "../../components/shared-components/Ticker";
-import { Link } from "react-router-dom";
+import { Link, UNSAFE_LocationContext } from "react-router-dom";
 
 import {FaMinus, FaPlus} from "react-icons/fa";
 
@@ -136,12 +136,14 @@ export default function Favorites() {
   };
 
   function PriceMix() {
-    if (localFavorites.length !== 0 && localFavorites !== null) {
+    if(localFavorites.length === 0 && localFavorites === null){
+      return
+    }
+    // if (localFavorites.length !== 0 && localFavorites !== null) {
       const testing = localFavorites.map((x) => x.price * x.product_qty);
       const testingSum = testing.reduce((a, b) => a + b);
       return '$' + testingSum;
-    }
-    return
+    // }
   }
 
   return (
