@@ -232,7 +232,7 @@ export default function Favorites() {
           </div>
             </div>
           ))}
-          {localFavorites.length === 0 || localFavorites === null ? (
+          {localFavorites === null ? (
             <div className="no-favs">
               <span>
               Todavía no agregaste ninguna prenda a tu lista, podés hacerlo en el <a href="/catalogo">Catálogo</a>.
