@@ -136,12 +136,14 @@ export default function Favorites() {
   };
 
   function PriceMix() {
-    if (localFavorites.length && localFavorites !== null) {
-      const testing = localFavorites.map((x) => x.price * x.product_qty);
-      const testingSum = testing.reduce((a, b) => a + b);
-      return '$' + testingSum;
-    }
-    return;
+    // if (localFavorites && localFavorites !== null) {
+      function Mixing() {
+        const testing = localFavorites.map((x) => x.price * x.product_qty);
+        const testingSum = testing.reduce((a, b) => a + b);
+        return '$' + testingSum;
+      }
+    
+    localFavorites && localFavorites !== null ? Mixing() : null 
   }
 
   return (
