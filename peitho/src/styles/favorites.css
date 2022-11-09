@@ -129,7 +129,15 @@
   align-items: center;
   /* width: 50vw; */
   height: 400px;
-  font-size: 26px;
+}
+
+.no-favs-box{
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 33px;
+  font-weight: bold;
 }
 
 
