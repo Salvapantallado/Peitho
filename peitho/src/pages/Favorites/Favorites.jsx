@@ -223,7 +223,7 @@ export default function Favorites() {
             </div>
           ))}
           <div>
-            <div className="total-fav">Total: {PriceMix()}</div>
+            <div className="total-fav">Total: {localFavorites !== null ? PriceMix() : 0}</div>
           </div>
           <div>
             {deletedItem.length > 0 ? (
