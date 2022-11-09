@@ -222,7 +222,7 @@ export default function Favorites() {
               </div>
             </div>
           ))}
-          {localFavorites !== null || localFavorites.length !== 0 ? (
+          {localFavorites !== null || localFavorites?.length > 0 ? (
             <>
               <div>
                 <div className="total-fav">
@@ -237,8 +237,15 @@ export default function Favorites() {
                 <span>{message}</span>
               </div>
             </>
-          ) : null}
-          {localFavorites === null || localFavorites.length === 0 ? (
+          ) : (<div className="no-favs">
+          <div className="no-favs-box">
+          <span>
+            Todavía no agregaste ninguna prenda a tu lista, podés hacerlo en
+            el <a href="/catalogo">Catálogo</a>.
+          </span>
+          </div>
+        </div>)}
+          {/* {localFavorites === null || localFavorites?.length === 0 ? (
             <div className="no-favs">
               <div className="no-favs-box">
               <span>
@@ -247,7 +254,7 @@ export default function Favorites() {
               </span>
               </div>
             </div>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
       <Footer />
