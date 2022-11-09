@@ -237,7 +237,8 @@ export default function Favorites() {
                 <span>{message}</span>
               </div>
             </>
-          ) : (
+          ) : null}
+          {localFavorites === null || localFavorites?.length === 0 ? (
             <div className="no-favs">
               <div className="no-favs-box">
               <span>
@@ -246,7 +247,7 @@ export default function Favorites() {
               </span>
               </div>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
       <Footer />
