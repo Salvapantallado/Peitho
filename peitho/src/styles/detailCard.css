@@ -11,9 +11,7 @@
   align-items: center;
   width: 100%;
   height: auto;
-  /* padding: 1%; */
   flex-direction: row;
-  /* border: 1px solid black; */
   position: relative;
 }
 
@@ -92,25 +90,15 @@
 .image-box {
   display: flex;
 }
-/* .image-box img{
-  width: auto;
-  max-width: 20vw;
-  max-height: 52vh;
-  margin: 0 2vw;
-} */
 
 .detail-imgs {
   display: flex;
   flex-direction: column;
   height: 70vh;
-  /* margin-right: 1vw; */
   gap: 1vh;
 }
 
 .arrimgs img {
-  /* height: 100px;
-  width: 100px;
-  cursor: pointer; */
   cursor: pointer;
   height: 12vh;
   width: 6vw;
@@ -130,10 +118,9 @@
   position: absolute;
   right: 25%;
   top: 3%;
-  /* background-color: white; */
   border-radius: 50%;
   transition: 0.5s ease-in;
-  z-index: 3;
+  z-index: 2;
 }
 
 .detail-container .add-favs {
@@ -143,10 +130,9 @@
   position: absolute;
   right: 25%;
   top: 3%;
-  /* background-color: white; */
   border-radius: 50%;
   transition: 0.5s ease-in;
-  z-index: 3;
+  z-index: 2;
 }
 
 .card:hover .add-fav img {
@@ -167,14 +153,15 @@
   display: flex;
   position: absolute;
   top: 20px;
-  /* background-color: white; */
   border-radius: 50%;
   transition: 0.5s ease-in;
-  z-index: 3;
+  z-index: 2;
 }
 
 .other-items {
   margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .other-items .card img {
@@ -204,6 +191,8 @@
   animation: fade-in-right 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   transition: 1s ease-in-out;
 }
+
+
 @keyframes fade-in-right {
   0% {
     transform: translateX(50px);
@@ -255,7 +244,6 @@
   }
   .image-box {
     height: 55vh;
-    min-height: 500px;
   }
   .detail-container .add-favs {
     border-radius: 50%;
@@ -282,8 +270,6 @@
 
   .other-items .card img {
     width: 100px;
-    height: auto;
-    max-height: 110px;
     object-fit: cover;
     z-index: 1;
     transform-origin: center;

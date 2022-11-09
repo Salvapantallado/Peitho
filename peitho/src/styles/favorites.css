@@ -35,6 +35,13 @@
   justify-content: center;
 }
 
+.fav-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .fav-row {
   background-color: rgb(0, 0, 0, 0.1);
   display: flex;
@@ -42,6 +49,8 @@
   justify-content: space-around;
   border: 1px solid black;
   border-radius: 0 30px;
+  width: 75vw;
+  margin-bottom: 15px;
 }
 
 .fav-qty {
@@ -52,15 +61,6 @@
   align-items: center;
   gap: 10px;
 }
-
-/* .fav-wrapper{
-    margin: 50px;
-    border: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-} */
 
 .fav-name h2 {
   font-size: 30px;
@@ -101,6 +101,7 @@
   object-fit: cover;
   z-index: 1;
   transition: 0.5s;
+  border-radius: 0 30px;
 }
 
 .fav-card-body {
@@ -123,6 +124,16 @@
   margin: 5px;
 }
 
+.total-fav {
+  display: flex;
+  justify-content: flex-end;
+  margin: 40px 0;
+  width: 85%;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 23px;
+}
+
 .no-favs {
   display: flex;
   justify-content: center;
@@ -131,7 +142,7 @@
   height: 400px;
 }
 
-.no-favs-box{
+.no-favs-box {
   width: 70vw;
   display: flex;
   align-items: center;
@@ -140,7 +151,30 @@
   font-weight: bold;
 }
 
+.product-grid {
+  display: grid;
+    width: 100%;
+    height: auto;
+    grid-template-rows: 1fr 2.5fr;
+}
 
+.row-name {
+  text-align: center;
+  text-decoration: underline;
+  border-bottom: 1px solid;
+}
+
+.row-rest {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.fav-card-wrapper{
+  border-right: 1px solid;
+}
 
 @media screen and (max-width: 875px) {
   .fav-card img {
@@ -156,6 +190,7 @@
   }
   .fav-row {
     margin: 5px;
+    width: 80%;
   }
   .fav-card {
     width: 125px;
@@ -163,7 +198,7 @@
   }
   .fav-card-wrapper {
     display: flex;
-    /* gap: 20px; */
+    padding: 0 15px;
     width: 100px;
     justify-content: center;
     justify-items: center;
@@ -187,10 +222,16 @@
     width: 75%;
   }
   .total-fav {
-    display: flex;
-    justify-content: flex-end;
-    margin: 40px 0;
     width: 90%;
-    text-decoration: underline;
+    font-size: 18px;
+  }
+  .product-grid{
+    grid-template-rows: 1fr 1.5fr;
+  }
+  .row-name{
+    font-size: 10px;
+  }
+  .row-rest{
+    font-size: 17px;
   }
 }

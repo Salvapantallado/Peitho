@@ -15,7 +15,7 @@ import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
 import Footer from "../shared-components/Footer";
 
-export default function DetailCard({screenTransition, setScreenTransition}) {
+export default function DetailCard({ screenTransition, setScreenTransition }) {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.productDetail);
   const allProducts = useSelector((state) => state.allProducts);
@@ -23,30 +23,30 @@ export default function DetailCard({screenTransition, setScreenTransition}) {
 
   const [previewImage, setPreviewImage] = useState();
   const { id } = useParams();
-  const [others, setOthers] = useState([])
+  const [others, setOthers] = useState([]);
 
-  const noDetailArr = allProducts.filter(x => x.id !== productDetail.id)
-  const othersArr = noDetailArr.sort(() => Math.random() - 0.5).slice(0, 6)
+  const noDetailArr = allProducts.filter((x) => x.id !== productDetail.id);
+  const othersArr = noDetailArr.sort(() => Math.random() - 0.5).slice(0, 6);
   console.log(others, allProducts);
-  
+
   useEffect(() => {
     setScreenTransition(false);
-  }, [])
+  }, []);
 
   useEffect(() => {
-    setOthers(othersArr)
-  }, [productDetail])
+    setOthers(othersArr);
+  }, [productDetail]);
 
   useEffect(() => {
     setTimeout(() => {
       setPreviewImage(
-        productDetail.image?.length > 1 ? productDetail.image[0] : "lol"
+        productDetail.image?.length > 1 ? productDetail.image[0] : productDetail.image
       );
     }, 1500);
   }, [productDetail.image]);
 
   useEffect(() => {
-    dispatch(getAllProducts())
+    dispatch(getAllProducts());
     dispatch(getProductDetail(id));
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
     dispatch(getFavorites(LSArray));
@@ -69,29 +69,34 @@ export default function DetailCard({screenTransition, setScreenTransition}) {
       dispatch(getFavorites(filtered));
       localStorage.setItem("Obj", JSON.stringify(filtered));
     }
-
-    
   }
-  const LoadCurtain = async(e) => {
-    setScreenTransition(!screenTransition)
+  const LoadCurtain = async (e) => {
+    setScreenTransition(!screenTransition);
     setTimeout(() => {
-      setScreenTransition(!screenTransition)
-      window.location.href = e
-    }, 2000)
-  }
+      setScreenTransition(!screenTransition);
+      window.location.href = e;
+    }, 2000);
+  };
   return (
     <div>
       {screenTransition ? <TransitionOut /> : <TransitionIn />}
       <Ticker />
-      <Navbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
-      <MobileNavbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
+      <Navbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
+      <MobileNavbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
       <div className="detail">
         <div className="box">
           <div className="detail-link">
             <span>
-              <button onClick={() => LoadCurtain("/")}>Inicio</button> <span>/</span>{" "}
-              <button onClick={() => LoadCurtain("/catalogo")}>Catalogo</button> <span> / </span>{" "}
-              <span>{productDetail.name}</span>
+              <button onClick={() => LoadCurtain("/")}>Inicio</button>{" "}
+              <span>/</span>{" "}
+              <button onClick={() => LoadCurtain("/catalogo")}>Catalogo</button>{" "}
+              <span> / </span> <span>{productDetail.name}</span>
             </span>
           </div>
           {productDetail ? (
@@ -117,18 +122,9 @@ export default function DetailCard({screenTransition, setScreenTransition}) {
                       : null}
                   </div>
                   <div className="prev-img" key={previewImage}>
-                    {/* <img
-                  src={
-                    (productDetail.image?.length > 1 &&
-                      productDetail.image[0] === previewImage) ||
-                      (previewImage && previewImage === "lol")
-                      ? productDetail.image[0]
-                      : previewImage
-                    }
-                    alt="detailed product pic"
-                    /> */}
-                    {(previewImage && previewImage === "lol") ? (
-                      <img src={productDetail.image[0]} alt="" />
+                    {console.log(previewImage)}
+                    {previewImage?.length > 1 ? (
+                      <img src={productDetail?.image[0]} alt="" />
                     ) : (
                       <img src={previewImage} alt="" />
                     )}
@@ -177,52 +173,61 @@ export default function DetailCard({screenTransition, setScreenTransition}) {
           )}
         </div>
         <div className="other-items">
-            <div style={{width: "80vw", display: "flex", justifyContent: "flex-start"}}>
-              <h1>También te puede interesar</h1>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              width: "65vw",
+              marginLeft: "15px",
+            }}
+          >
+            <h1>También te puede interesar</h1>
+          </div>
+          <div className="cards-container" style={{width: "100%", margin: "0"}}>
+            <div className="cards-grid">
+              {others && others.length !== 0
+                ? others.map((product) => (
+                    <div className="product-card" key={product.id}>
+                      <div className="card animate__animated animate__fadeInRight">
+                        <a href={`/catalogo/${product.id}`}>
+                          <img
+                            src={
+                              product.image.length !== 1
+                                ? product.image[0]
+                                : product.image
+                            }
+                            alt="product sample"
+                          />
+                          <div className="card-body">
+                            <h3>{product.name}</h3>
+                          </div>
+                        </a>
+                        {favProducts !== null &&
+                        favProducts.some((prod) => prod.id === product.id) ? (
+                          <div className="favs-added">
+                            <button onClick={() => handleClick(product)}>
+                              <img
+                                src="/ImgHelpers/FavAdded.png"
+                                alt="added fav"
+                              />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="add-favs">
+                            <button onClick={() => handleClick(product)}>
+                              <img src="/ImgHelpers/AddFav.png" alt="add fav" />
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))
+                : null}
             </div>
-            <div className="cards-container">
-        <div className="cards-grid">
-          {others && others.length !== 0
-            ? others.map((product) => (
-                <div className="product-card" key={product.id}>
-                  <div className="card animate__animated animate__fadeInRight">
-                    <a href={`/catalogo/${product.id}`}>
-                      <img
-                        src={
-                          product.image.length !== 1
-                            ? product.image[0]
-                            : product.image
-                        }
-                        alt="product sample"
-                      />
-                      <div className="card-body">
-                        <h3>{product.name}</h3>
-                        <h4>$ {product.price}</h4>
-                      </div>
-                    </a>
-                    {favProducts !== null &&
-                    favProducts.some((prod) => prod.id === product.id) ? (
-                      <div className="favs-added">
-                        <button onClick={() => handleClick(product)}>
-                          <img src="/ImgHelpers/FavAdded.png" alt="added fav" />
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="add-favs">
-                        <button onClick={() => handleClick(product)}>
-                          <img src="/ImgHelpers/AddFav.png" alt="add fav" />
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))
-            :  null}
+          </div>
         </div>
       </div>
-        </div>
-      </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

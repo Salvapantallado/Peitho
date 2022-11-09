@@ -161,9 +161,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 15vh 0;
+    padding: 10vh 0;
     height: inherit;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
 }
 

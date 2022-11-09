@@ -165,63 +165,54 @@ export default function Favorites() {
           <div className="fav-banner">
             <h1>Lista de favoritos</h1>
           </div>
-          {localFavorites?.map((product) => (
-            <div className="fav-row" key={product.id}>
-              {/* <div className="fav-card">
-                {product.image.length !== 1 ? (
-                  <div className="fav-image">
-                    <img src={product.image[0]} alt="prenda" />
+          <div className="fav-wrapper">
+            {localFavorites?.map((product) => (
+              <div className="fav-row" key={product.id}>
+                <div className="fav-card-wrapper">
+                  <div className="fav-product-card" key={product.id}>
+                    <div className="fav-card">
+                      <Link to={`/catalogo/${product.id}`}>
+                        <img
+                          src={
+                            product.image.length !== 1
+                              ? product.image[0]
+                              : product.image
+                          }
+                          alt="product sample"
+                        />
+                        <div className="fav-card-body">
+                          <h3>{product.name}</h3>
+                        </div>
+                      </Link>
+                    </div>
                   </div>
-                ) : (
-                  <div className="fav-image">
-                    <img src={product.image} alt="prenda" />
+                </div>
+                <div className="product-grid">
+                  <div className="row-name">
+                    <h1>{product.name}</h1>
                   </div>
-                )}
-                <h2>{product.name}</h2>
-              </div> */}
-              <div className="fav-card-wrapper">
-                <div className="fav-product-card" key={product.id}>
-                  <div className="fav-card">
-                    <Link to={`/catalogo/${product.id}`}>
-                      <img
-                        src={
-                          product.image.length !== 1
-                            ? product.image[0]
-                            : product.image
-                        }
-                        alt="product sample"
-                      />
-                      <div className="fav-card-body">
-                        <h3>{product.name}</h3>
+                  <div className="row-rest">
+                    <div className="fav-qty">
+                      <FaMinus onClick={() => removeQuantity(product.id)} />
+                      <div>
+                        <span>{product.product_qty}</span>
                       </div>
-                    </Link>
+                      <FaPlus onClick={() => addQuantity(product.id)} />
+                    </div>
+
+                    <div>{`$${product.price * product.product_qty}`}</div>
+                    <div>
+                      <FaPlus
+                        style={{ transform: "rotate(45deg)", color: "red" }}
+                        onClick={() => handleDelete(product)}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
 
-              <div className="fav-qty">
-                {/* <button onClick={() => removeQuantity(product.id)}> */}
-                <FaMinus onClick={() => removeQuantity(product.id)} />
-                {/* </button> */}
-                <div>
-                  <span>{product.product_qty}</span>
-                </div>
-                {/* <button onClick={() => addQuantity(product.id)}> */}
-                <FaPlus onClick={() => addQuantity(product.id)} />
-                {/* </button> */}
-              </div>
-
-              <div>{`$${product.price * product.product_qty}`}</div>
-              <div>
-                {/* <button onClick={() => handleDelete(product.id)}> */}
-                <FaPlus
-                  style={{ transform: "rotate(45deg)", color: "red" }}
-                  onClick={() => handleDelete(product)}
-                />
-                {/* </button> */}
-              </div>
-            </div>
-          ))}
           {localFavorites === null || localFavorites?.length === 0 ? (
             <div className="no-favs">
               <div className="no-favs-box">
@@ -247,16 +238,6 @@ export default function Favorites() {
               </div>
             </>
           )}
-          {/* {localFavorites === null || localFavorites?.length === 0 ? (
-            <div className="no-favs">
-              <div className="no-favs-box">
-              <span>
-                Todavía no agregaste ninguna prenda a tu lista, podés hacerlo en
-                el <a href="/catalogo">Catálogo</a>.
-              </span>
-              </div>
-            </div>
-          ) : null} */}
         </div>
       </div>
       <Footer />
