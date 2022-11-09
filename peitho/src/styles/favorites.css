@@ -127,9 +127,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  /* width: 50vw; */
   height: 400px;
+  font-size: 26px;
 }
+
+
 
 @media screen and (max-width: 875px) {
   .fav-card img {
