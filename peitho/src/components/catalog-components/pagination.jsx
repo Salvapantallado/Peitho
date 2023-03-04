@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { nextPage, prevPage, getAllProducts } from "../../actions/index";
 import "../../styles/catalog.css"
@@ -27,7 +27,15 @@ export default function Pagination({
   const test2 = Math.ceil(products.length / productsPerPage)
   console.log(test2, 'todos');
 
-  const executeScroll = extRef.current?.scrollIntoView();
+  function executeScroll(){
+    extRef.current.scrollIntoView({behavior: 'smooth'});
+  } 
+
+  useEffect(() => {
+    setTimeout(()=> {
+      executeScroll()
+    }, 300)
+  }, [currentPage])
 
   return (
     <div className="container-pagination">
@@ -35,9 +43,8 @@ export default function Pagination({
         onClick={() => {
           if(currentPage !== 1){
             setCurrentPage(currentPage - 1)
-            executeScroll()
-            extRef.current = null
           }
+          
             // dispatch(nextPage(page + 1));
             // dispatch(getAllProducts(page + 1, filter, valueFilter));
           //   window.scroll({
@@ -55,8 +62,7 @@ export default function Pagination({
         onClick={() => {
           if (currentPage > pageNumber) {
             setCurrentPage(currentPage + 1)
-            executeScroll()
-            extRef.current = null
+            // extRef.current = null
             // dispatch(prevPage(page - 1));
             // dispatch(getAllProducts(page - 1, filter, valueFilter));
             // window.scroll({

@@ -1,0 +1,55 @@
+import React, { useState } from "react";
+import MobileNavbar from "../../components/shared-components/MobileNavbar";
+import Navbar from "../../components/shared-components/Navbar";
+import Ticker from "../../components/shared-components/Ticker";
+import TransitionIn from "../../components/shared-components/TransitionIn";
+import TransitionOut from "../../components/shared-components/TransitionOut";
+import "../../styles/measure.css";
+
+import Medida1 from "../../images/Home/Measures/Medida1.png";
+import Medida2 from "../../images/Home/Measures/Medida2.png";
+import Medida3 from "../../images/Home/Measures/Medida3.png";
+import Medida4 from "../../images/Home/Measures/Medida4.png";
+
+export default function MeasureTable() {
+  const [screenTransition, setScreenTransition] = useState(false);
+  const [flag, setFlag] = useState(true);
+
+  let fullscreenClass = flag ? "normal-img" : "fullscreen";
+
+  return (
+    <>
+      {screenTransition ? <TransitionOut /> : <TransitionIn />}
+      <Ticker />
+      <Navbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
+      <MobileNavbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
+      <div className="banner">
+        <h2>Guía de medidas</h2>
+      </div>
+
+      <div className="Measure-wrapper">
+        <h3>
+          Usa las siguientes imagenes para tomar tus medidas correctamente:
+        </h3>
+        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
+          <img src={Medida4} />
+        </div>
+        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
+          <img src={Medida1} />
+        </div>
+        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
+          <img src={Medida2} />
+        </div>
+        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
+          <img src={Medida3} />
+        </div>
+      </div>
+    </>
+  );
+}

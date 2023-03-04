@@ -1,5 +1,5 @@
 import "../../styles/catalog.css";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../../components/shared-components/Navbar";
 import Card from "../../components/catalog-components/Card";
 // import CategoryBubble from "../../components/shared-components/CategoryBubbles";
@@ -19,6 +19,8 @@ export default function Catalog({flag, setFlag}) {
   let pageNumber = 0;
 
   let myRef = useRef(null)
+
+
 
   return (
     <>

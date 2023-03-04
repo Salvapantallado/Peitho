@@ -69,7 +69,7 @@ export default function MobileNavbar({
                 {/* <button onClick={() => LoadCurtain("/admin")}>
                 <h2>Admin Add</h2>
               </button> */}
-                <button onClick={() => LoadCurtain("/")}>
+                <button onClick={() => LoadCurtain("/tabla-de-medidas")}>
                   <h2>Tabla de medidas</h2>
                 </button>
                 <button onClick={() => LoadCurtain("/telas-disponibles")}>

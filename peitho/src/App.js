@@ -15,6 +15,7 @@ import EditProduct from "./pages/Admin/EditProduct";
 import { useState } from "react";
 import AvailableCloth from "./pages/Cloth/AvailableCloth";
 import ScrollToTop from "./components/ScrollToTop";
+import MeasureTable from "./pages/MeasureTable/MeasureTable";
 
 function App() {
 	const history = createBrowserHistory();
@@ -28,8 +29,9 @@ function App() {
 					<Route exact path="/" element={<Home flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
 					<Route exact path="/catalogo" element={<Catalog flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
 					<Route exact path="/catalogo/:id" element={<DetailCard screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
-					<Route exact path="/telas-disponibles" element={<AvailableCloth screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
 					<Route exact path="/favoritos" element={<Favorites screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
+					<Route exact path="/tabla-de-medidas" element={<MeasureTable screenTransition={screenTransition} setScreenTransition={setScreenTransition} />} />
+					<Route exact path="/telas-disponibles" element={<AvailableCloth screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
 					<Route exact path="/admin" element={<Admin screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
 					<Route exact path="/admin/editar/:id" element={<EditProduct/>} />
 					<Route exact path="/admin/agregar" element={<AddProduct/>} />
