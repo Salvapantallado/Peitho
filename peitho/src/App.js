@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Catalog from "./pages/Catalog/Catalog";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import LandingPage from "./pages/Landing/Landing";
 import DetailCard from "./components/catalog-components/DetailCard";
 import Favorites from "./pages/Favorites/Favorites";
 import AddProduct from "./pages/Admin/AddProduct";
@@ -24,8 +23,6 @@ function App() {
 	return (
 		<Provider store={Store}>
 			<Router history={history}>
-				{/* <Navbar />
-			<CategoryBubble /> */}
 			<ScrollToTop />
 				<Routes>
 					<Route exact path="/" element={<Home flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />

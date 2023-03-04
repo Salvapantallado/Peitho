@@ -1,5 +1,5 @@
 import "../../styles/catalog.css";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "../../components/shared-components/Navbar";
 import Card from "../../components/catalog-components/Card";
 // import CategoryBubble from "../../components/shared-components/CategoryBubbles";
@@ -18,6 +18,8 @@ export default function Catalog({flag, setFlag}) {
   const [screenTransition, setScreenTransition] = useState(false);
   let pageNumber = 0;
 
+  let myRef = useRef(null)
+
   return (
     <>
       {screenTransition ? <TransitionOut /> : <TransitionIn />}
@@ -34,6 +36,7 @@ export default function Catalog({flag, setFlag}) {
 
           <div className="catalog-container">
             {/* <CategoryBubble /> */}
+            <div ref={myRef} />
             <Card
               pageNumber={pageNumber}
               currentPage={currentPage}
@@ -46,6 +49,7 @@ export default function Catalog({flag, setFlag}) {
             />
           </div>
             <Pagination
+              extRef={myRef}
               pageNumber={pageNumber}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}

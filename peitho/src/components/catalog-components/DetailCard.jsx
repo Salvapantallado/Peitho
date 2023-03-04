@@ -40,7 +40,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
   useEffect(() => {
     setTimeout(() => {
       setPreviewImage(
-        productDetail.image?.length > 1 ? productDetail.image[0] : productDetail.image
+        productDetail.image?.length > 1 ? productDetail.image[0] : ""
       );
     }, 1500);
   }, [productDetail.image]);
@@ -102,6 +102,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
           {productDetail ? (
             <>
               <div className="detail-box">
+            <h2 style={{fontSize: "36px", textAlign: "center", marginTop: "0"}}>{productDetail.name}</h2>
                 <div className="image-box">
                   <div className="detail-imgs">
                     {productDetail.image?.length > 1
@@ -123,7 +124,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                   </div>
                   <div className="prev-img" key={previewImage}>
                     {console.log(previewImage)}
-                    {previewImage?.length > 1 ? (
+                    {previewImage === "" ? (
                       <img src={productDetail?.image[0]} alt="" />
                     ) : (
                       <img src={previewImage} alt="" />
@@ -146,10 +147,11 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                         </button>
                       </div>
                     )}
-                    <h2>{productDetail.name}</h2>
+                    {/* <h2>{productDetail.name}</h2> */}
                     {productDetail.description2 !== "" ? (
                       <div className="detail-description">
                         <h1>ARS ${productDetail.price}</h1>
+                        <h3>Detalles del producto:</h3>
                         <p>{productDetail.description}</p>
                         <br />
                         <p>{productDetail.description2}</p>
@@ -159,7 +161,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                         <p>{productDetail.description}</p>
                       </div>
                     )}
-                    <h2>$ {productDetail.price}</h2>
+                    {/* <h2>$ {productDetail.price}</h2> */}
 
                     <div className="detail-buttons">
                       <button>Reservar</button>
@@ -181,7 +183,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
               marginLeft: "15px",
             }}
           >
-            <h1>También te puede interesar</h1>
+            <h1>Otras prendas</h1>
           </div>
           <div className="cards-container" style={{width: "100%", margin: "0"}}>
             <div className="cards-grid">

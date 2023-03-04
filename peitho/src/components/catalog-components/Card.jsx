@@ -103,6 +103,7 @@ export default function Card({
   }, [productList]);
 
   console.log(flag, "flag");
+  
 
   return (
     <>

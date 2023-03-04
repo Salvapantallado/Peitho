@@ -7,7 +7,8 @@ export default function Pagination({
   currentPage,
   setCurrentPage,
   pageNumber,
-  productsPerPage
+  productsPerPage,
+  extRef
 }) {
   var page = useSelector(state => state.page);
   // var filter = useSelector(state => state.setPagination.filter);
@@ -26,12 +27,16 @@ export default function Pagination({
   const test2 = Math.ceil(products.length / productsPerPage)
   console.log(test2, 'todos');
 
+  const executeScroll = extRef.current?.scrollIntoView();
+
   return (
     <div className="container-pagination">
       <button
         onClick={() => {
           if(currentPage !== 1){
             setCurrentPage(currentPage - 1)
+            executeScroll()
+            extRef.current = null
           }
             // dispatch(nextPage(page + 1));
             // dispatch(getAllProducts(page + 1, filter, valueFilter));
@@ -50,6 +55,8 @@ export default function Pagination({
         onClick={() => {
           if (currentPage > pageNumber) {
             setCurrentPage(currentPage + 1)
+            executeScroll()
+            extRef.current = null
             // dispatch(prevPage(page - 1));
             // dispatch(getAllProducts(page - 1, filter, valueFilter));
             // window.scroll({
@@ -58,6 +65,8 @@ export default function Pagination({
             //   behavior: 'smooth'
             // });
           }
+          
+         
           
         }}
         disabled={currentPage === test1 || currentPage === test2}
