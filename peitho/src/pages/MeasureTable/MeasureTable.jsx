@@ -13,9 +13,17 @@ import Medida4 from "../../images/Home/Measures/Medida4.png";
 
 export default function MeasureTable() {
   const [screenTransition, setScreenTransition] = useState(false);
-  const [flag, setFlag] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  let fullscreenClass = flag ? "normal-img" : "fullscreen";
+  const measureArr = [Medida1, Medida2, Medida3, Medida4];
+
+  const handleClick = (index) => {
+    if (activeIndex === index) {
+      setActiveIndex(null);
+    } else {
+      setActiveIndex(index);
+    }
+  };
 
   return (
     <>
@@ -37,7 +45,18 @@ export default function MeasureTable() {
         <h3>
           Usa las siguientes imagenes para tomar tus medidas correctamente:
         </h3>
-        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
+        {measureArr?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className={` ${index === activeIndex ? `zoom` : `normal-img`}`}
+              onClick={() => handleClick(index)}
+            >
+              <img src={item} alt="measure png" />
+            </div>
+          );
+        })}
+        {/* <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
           <img src={Medida4} />
         </div>
         <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
@@ -48,7 +67,7 @@ export default function MeasureTable() {
         </div>
         <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
           <img src={Medida3} />
-        </div>
+        </div> */}
       </div>
     </>
   );

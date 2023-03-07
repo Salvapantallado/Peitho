@@ -20,6 +20,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
   const productDetail = useSelector((state) => state.productDetail);
   const allProducts = useSelector((state) => state.allProducts);
   const favProducts = useSelector((state) => state.favoriteProducts);
+  const [activeIndex, setActiveIndex] = useState(false)
 
   const [previewImage, setPreviewImage] = useState();
   const { id } = useParams();
@@ -77,6 +78,16 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
       window.location.href = e;
     }, 2000);
   };
+
+  const handleImgClick = (index) => {
+    if (activeIndex === index) {
+      setActiveIndex(null);
+    } else {
+      setActiveIndex(index);
+    }
+  };
+
+
   return (
     <div>
       {screenTransition ? <TransitionOut /> : <TransitionIn />}
@@ -122,7 +133,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                         ))
                       : null}
                   </div>
-                  <div className="prev-img" key={previewImage}>
+                  <div className={` ${activeIndex ? `detail-zoom` : `prev-img`}`} key={previewImage} onClick={() => setActiveIndex(!activeIndex)}>
                     {console.log(previewImage)}
                     {previewImage === "" ? (
                       <img src={productDetail?.image[0]} alt="" />
