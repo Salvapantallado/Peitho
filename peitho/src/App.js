@@ -20,14 +20,15 @@ import MeasureTable from "./pages/MeasureTable/MeasureTable";
 function App() {
 	const history = createBrowserHistory();
 	const [flag, setFlag] = useState("")
+	const [extraFlag, setExtraFlag] = useState("");
 	const [screenTransition, setScreenTransition] = useState(false);
 	return (
 		<Provider store={Store}>
 			<Router history={history}>
 			<ScrollToTop />
 				<Routes>
-					<Route exact path="/" element={<Home flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
-					<Route exact path="/catalogo" element={<Catalog flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
+					<Route exact path="/" element={<Home flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition} extraFlag={extraFlag} setExtraFlag={setExtraFlag}/>} />
+					<Route exact path="/catalogo" element={<Catalog flag={flag} setFlag={setFlag} screenTransition={screenTransition} setScreenTransition={setScreenTransition} extraFlag={extraFlag} setExtraFlag={setExtraFlag}/>} />
 					<Route exact path="/catalogo/:id" element={<DetailCard screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>} />
 					<Route exact path="/favoritos" element={<Favorites screenTransition={screenTransition} setScreenTransition={setScreenTransition}/>}/>
 					<Route exact path="/tabla-de-medidas" element={<MeasureTable screenTransition={screenTransition} setScreenTransition={setScreenTransition} />} />

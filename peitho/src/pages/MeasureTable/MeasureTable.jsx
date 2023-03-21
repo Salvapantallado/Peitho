@@ -6,10 +6,10 @@ import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
 import "../../styles/measure.css";
 
-import Medida1 from "../../images/Home/Measures/Medida1.png";
-import Medida2 from "../../images/Home/Measures/Medida2.png";
+import Medida1 from "../../images/Home/Measures/Medida4.png";
+import Medida2 from "../../images/Home/Measures/Medida1.png";
 import Medida3 from "../../images/Home/Measures/Medida3.png";
-import Medida4 from "../../images/Home/Measures/Medida4.png";
+import Medida4 from "../../images/Home/Measures/Medida2.png";
 
 export default function MeasureTable() {
   const [screenTransition, setScreenTransition] = useState(false);
@@ -56,18 +56,6 @@ export default function MeasureTable() {
             </div>
           );
         })}
-        {/* <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
-          <img src={Medida4} />
-        </div>
-        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
-          <img src={Medida1} />
-        </div>
-        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
-          <img src={Medida2} />
-        </div>
-        <div className={fullscreenClass} onClick={() => setFlag(!flag)}>
-          <img src={Medida3} />
-        </div> */}
       </div>
     </>
   );

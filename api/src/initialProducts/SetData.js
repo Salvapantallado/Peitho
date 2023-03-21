@@ -12,6 +12,7 @@ async function SetDataInitial(arrayProducts) {
 					price2: arrayProducts[e].price2,
 					image: arrayProducts[e].image,
 					product_qty: parseInt(arrayProducts[e].product_qty, 10),
+					extra: arrayProducts[e].extra,
 				},
 			});
 

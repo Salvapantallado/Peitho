@@ -28,6 +28,9 @@ module.exports = (sequelize) => {
 			},
 			product_qty: {
 				type: DataTypes.INTEGER,
+			},
+			extra: {
+				type: DataTypes.TEXT,
 			}
 		},
 		{

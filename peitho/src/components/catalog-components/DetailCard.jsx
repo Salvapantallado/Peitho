@@ -79,14 +79,6 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
     }, 2000);
   };
 
-  const handleImgClick = (index) => {
-    if (activeIndex === index) {
-      setActiveIndex(null);
-    } else {
-      setActiveIndex(index);
-    }
-  };
-
 
   return (
     <div>

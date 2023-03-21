@@ -23,6 +23,8 @@ export default function Card({
   productsPerPage,
   flag,
   setFlag,
+  extraFlag,
+  setExtraFlag,
 }) {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.allProducts);
@@ -37,7 +39,8 @@ export default function Card({
   const firstPostIndex = lastPostIndex - productsPerPage;
   currentProducts = productList.slice(firstPostIndex, lastPostIndex);
 
-  currentFilter = filteredClothes.slice(firstPostIndex, lastPostIndex);
+    currentFilter = filteredClothes.slice(firstPostIndex, lastPostIndex);
+  
 
   if (filteredClothes.length === 0) {
     pageNumber = Math.ceil(productList.length / productsPerPage);
@@ -79,6 +82,8 @@ export default function Card({
   console.log(currentFilter);
   console.log(currentProducts);
 
+  //Category bubble flag for filtering
+
   useEffect(() => {
     try {
       console.log(localStorage.getItem("flag"));
@@ -94,15 +99,41 @@ export default function Card({
       console.log(err);
     }
   }, []);
+  
+    useEffect(() => {
+      if (flag !== "" && flag !== null && productList) {
+        filter(flag.name);
+        setFlag("");
+      }
+    }, [productList]);
+
+    //Category 'peitho cute / alternative' flag for filtering
 
   useEffect(() => {
-    if (flag !== "" && flag !== null && productList) {
-      filter(flag.name);
-      setFlag("");
+    try {
+      console.log(localStorage.getItem("extraFlag"));
+      let extraFlagAux = localStorage.getItem("extraFlag");
+      if (extraFlagAux !== "") {
+        setExtraFlag(JSON.parse(localStorage.getItem("extraFlag")));
+        console.log(extraFlag, "test");
+        setTimeout(() => {
+          localStorage.removeItem("extraFlag");
+        }, 400);
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }, [productList]);
+  }, []);
+
 
   console.log(flag, "flag");
+
+  const handleRemoveFilter = () => {
+    filter("all")
+    setCurrentPage(1)
+  }
+
+  console.log(extraFlag, "dis is de flag");
   
 
   return (
@@ -110,7 +141,7 @@ export default function Card({
       <div className="category-wrapper">
         <Toaster position="bottom-center" reverseOrder={false} />
         <div className="category-button">
-          <button onClick={() => (filter("all"), setCurrentPage(1))}>
+          <button onClick={() => handleRemoveFilter()}>
             Remove filter
           </button>
         </div>

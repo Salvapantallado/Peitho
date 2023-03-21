@@ -10,7 +10,7 @@ import TransitionOut from "../../components/shared-components/TransitionOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Footer from "../../components/shared-components/Footer";
 
-export default function Catalog({flag, setFlag}) {
+export default function Catalog({flag, setFlag, extraFlag, setExtraFlag}) {
   const [currentPage, setCurrentPage] = useState(1);
   let currentFilter = useState([]);
   let [currentProducts] = useState([]);
@@ -48,6 +48,8 @@ export default function Catalog({flag, setFlag}) {
               productsPerPage={productsPerPage}
               flag={flag} 
               setFlag={setFlag}
+              extraFlag={extraFlag} 
+              setExtraFlag={setExtraFlag}
             />
           </div>
             <Pagination

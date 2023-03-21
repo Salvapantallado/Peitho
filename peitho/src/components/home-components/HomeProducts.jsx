@@ -7,11 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../actions";
 import { useEffect } from "react";
 import ChooseYourStyle from "./ChooseStyle";
-import Maniqui from "./maniqui.png";
+// import Maniqui from "./maniqui.png";
 
-export default function HomeProducts() {
+export default function HomeProducts({extraFlag, setExtraFlag}) {
 	const dispatch = useDispatch();
 	const allProducts = useSelector((state) => state.allProducts);
+
 
 	useEffect(() => {
 	  dispatch(getAllProducts());
@@ -28,7 +29,7 @@ export default function HomeProducts() {
 					<button>Ver todos los productos</button>
 				</Link>
 			</div>
-			<ChooseYourStyle/>
+			<ChooseYourStyle extraFlag={extraFlag} setExtraFlag={setExtraFlag}/>
 		</div>
 	);
 }

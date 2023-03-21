@@ -1,4 +1,6 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { 
+  // Suspense, 
+  useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getFavorites } from "../actions";
 
@@ -13,14 +15,14 @@ import MobileNavbar from "../components/shared-components/MobileNavbar";
 import Footer from "../components/shared-components/Footer";
 import TransitionOut from "../components/shared-components/TransitionOut";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Sew from "../components/home-components/Sew";
+// import { Canvas } from "@react-three/fiber";
+// import { OrbitControls } from "@react-three/drei";
+// import Sew from "../components/home-components/Sew";
 
 import "../styles/home.css";
 
 export default function Home({ flag, setFlag, screenTransition,
-  setScreenTransition }) {
+  setScreenTransition, extraFlag, setExtraFlag }) {
   const dispatch = useDispatch();
   const [localFavorites, setLocalFavorites] = useState([]);
 
@@ -39,7 +41,7 @@ export default function Home({ flag, setFlag, screenTransition,
 
   useEffect(() => {
     setScreenTransition(false);
-  }, []);
+  }, [setScreenTransition]);
 
   console.log(flag, "flag home");
   return (
@@ -61,19 +63,8 @@ export default function Home({ flag, setFlag, screenTransition,
           {/* <div className="background" /> */}
           <div className="home-container">
             <div>
-              <HomeProducts />
+              <HomeProducts extraFlag={extraFlag} setExtraFlag={setExtraFlag}/>
             </div>
-            {/* <div className="wrapper">
-              <Canvas className="canvas">
-                <OrbitControls enableZoom={false}/>
-                <ambientLight intensity={1}/>
-                <directionalLight position={[0, 1, 1]} intensity={1} />
-                <directionalLight position={[1, 1, 0]} intensity={1} />
-                <Suspense fallback={null}>
-                  <Sew />
-                </Suspense>
-              </Canvas>
-            </div> */}
           </div>
         </div>
         <Footer />
