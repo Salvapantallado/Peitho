@@ -3,6 +3,7 @@
 .fav-container {
   display: flex;
   min-height: 96vh;
+  width: 100%;
   justify-content: center;
   font-family: "Kirimaru";
 }
@@ -10,18 +11,22 @@
 .fav-banner {
   background-image: url("../images/Home/Bannerfinalfinal.jpeg");
   background-size: contain;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   border-top: 1px solid lightgray;
-  margin: 30px 0 30px 0;
+  margin: 60px 0 30px 0;
   border-bottom: 1px solid lightgray;
 }
 .fav-banner h1 {
-  font-size: 40px;
+  font-size: 28px;
   /* font-family: UnifrakturCook; */
   text-align: center;
   width: 90vw;
+}
+
+.fav-list{
+  width: 100%;
 }
 
 .fav-card {
@@ -166,6 +171,7 @@
 
 .row-rest {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   font-size: 25px;
