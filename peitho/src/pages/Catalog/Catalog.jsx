@@ -1,5 +1,5 @@
 import "../../styles/catalog.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "../../components/shared-components/Navbar";
 import Card from "../../components/catalog-components/Card";
 // import CategoryBubble from "../../components/shared-components/CategoryBubbles";

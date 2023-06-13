@@ -53,14 +53,14 @@ export default function Card({
     dispatch(getAllProducts());
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
     dispatch(getFavorites(LSArray));
-  }, [dispatch]);
-
-  function handleClick(data) {
-    let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
-
-    let dataExists = LSArray.some((item) => item.id === data.id);
-    if (!dataExists) {
-      LSArray.push(data);
+  }, [dispatch, localStorage.getItem("Obj")]);
+    
+    function handleClick(data) {
+      let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
+      
+      let dataExists = LSArray.some((item) => item.id === data.id);
+      if (!dataExists) {
+        LSArray.push(data);
       dispatch(getFavorites(LSArray));
       localStorage.setItem("Obj", JSON.stringify(LSArray));
       toast.success(`${data.name} añadido a favoritos!`);
@@ -98,7 +98,7 @@ export default function Card({
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [flag]);
   
     useEffect(() => {
       if (flag !== "" && flag !== null && productList) {

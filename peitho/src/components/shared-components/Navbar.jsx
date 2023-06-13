@@ -1,8 +1,12 @@
 import { useSelector } from "react-redux";
 import "../../styles/navbar.css";
+import FavSlide from "./FavSlide";
+import { useState } from "react";
 
 
 export default function Navbar({screenTransition, setScreenTransition}) {
+  const [openFav, setOpenFav] = useState(false);
+
   const NumberOfFavorites = useSelector((state) => state.favoriteProducts);
   console.log(NumberOfFavorites);
 
@@ -48,8 +52,9 @@ export default function Navbar({screenTransition, setScreenTransition}) {
       {/* <button onClick={() => LoadCurtain("/admin")}><h2>Admin Add</h2></button> */}
       {/* <NavLink to="/inicio">Cosa 4</NavLink> */}
 
-      <div className="fav-icon">
-      <button onClick={() => LoadCurtain("/favoritos")}>
+      {/* <div className="fav-icon"> */}
+        <FavSlide openFav={openFav} setOpenFav={setOpenFav} LoadCurtain={LoadCurtain}/>
+      {/* <button onClick={() => LoadCurtain("/favoritos")}>
         {NumberOfFavorites !== null && NumberOfFavorites.length >= 1 ? (
           <div className="fav-number">
             <p>{NumberOfFavorites.length}</p>
@@ -63,8 +68,8 @@ export default function Navbar({screenTransition, setScreenTransition}) {
           alt="favoriteIcon"
           style={{ width: "50px", height: "50px" }}
           />
-          </button>
-      </div>
+          </button> */}
+      {/* </div> */}
     </nav>
     <div className="spot" />
     </>
