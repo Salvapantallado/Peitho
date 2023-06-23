@@ -27,15 +27,15 @@ export default function Pagination({
   const test2 = Math.ceil(products.length / productsPerPage)
   console.log(test2, 'todos');
 
-  function executeScroll(){
-    extRef.current.scrollIntoView({behavior: 'smooth'});
-  } 
+  // function executeScroll(){
+  //   extRef.current.scrollIntoView({behavior: 'smooth'});
+  // } 
 
-  useEffect(() => {
-    setTimeout(()=> {
-      executeScroll()
-    }, 300)
-  }, [currentPage])
+  // useEffect(() => {
+  //   setTimeout(()=> {
+  //     executeScroll()
+  //   }, 300)
+  // }, [currentPage])
 
   return (
     <div className="container-pagination">

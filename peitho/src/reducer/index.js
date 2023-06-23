@@ -15,7 +15,7 @@ const initialState = {
 	productCategories: [],
 	allProducts: [],
 	productDetail: [],
-	page: 0,
+	page: 1,
 	setPagination: {
 		filter: "",
 		valueFilter: "",

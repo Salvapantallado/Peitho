@@ -53,7 +53,7 @@ export default function Navbar({screenTransition, setScreenTransition}) {
       {/* <NavLink to="/inicio">Cosa 4</NavLink> */}
 
       {/* <div className="fav-icon"> */}
-        <FavSlide openFav={openFav} setOpenFav={setOpenFav} LoadCurtain={LoadCurtain}/>
+        <FavSlide openFav={openFav} setOpenFav={setOpenFav} LoadCurtain={LoadCurtain} favNumber={NumberOfFavorites} />
       {/* <button onClick={() => LoadCurtain("/favoritos")}>
         {NumberOfFavorites !== null && NumberOfFavorites.length >= 1 ? (
           <div className="fav-number">

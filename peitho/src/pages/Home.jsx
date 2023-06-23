@@ -46,10 +46,10 @@ export default function Home({ flag, setFlag, screenTransition,
   console.log(flag, "flag home");
   return (
     <>
-      <div className="home">
         {screenTransition ? <TransitionOut /> : <HomeLoad />}
         <Ticker />
         <MainImage />
+      <div className="home">
         <Navbar
           screenTransition={screenTransition}
           setScreenTransition={setScreenTransition}

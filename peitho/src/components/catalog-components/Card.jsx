@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { filterItems, getAllProducts, getFavorites } from "../../actions";
 import "../../styles/cards.css";
 import "animate.css";
+import { useSwipeable } from 'react-swipeable';
 
 import Top from "../../images/Home/Bubbles/circle-one.jpg";
 import Falda from "../../images/Home/Bubbles/circle-two.jpg";
@@ -13,6 +14,7 @@ import Pantalon from "../../images/Home/Bubbles/circle-four.jpg";
 import Abrigo from "../../images/Home/Bubbles/circle-five.jpg";
 import Camisa from "../../images/Home/Bubbles/circle-six.jpg";
 import "../../styles/category-bubbles.css";
+import Searchbar from "./Searchbar";
 
 export default function Card({
   currentPage,
@@ -39,8 +41,7 @@ export default function Card({
   const firstPostIndex = lastPostIndex - productsPerPage;
   currentProducts = productList.slice(firstPostIndex, lastPostIndex);
 
-    currentFilter = filteredClothes.slice(firstPostIndex, lastPostIndex);
-  
+  currentFilter = filteredClothes.slice(firstPostIndex, lastPostIndex);
 
   if (filteredClothes.length === 0) {
     pageNumber = Math.ceil(productList.length / productsPerPage);
@@ -49,18 +50,19 @@ export default function Card({
     pageNumber = Math.ceil(filteredClothes.length / productsPerPage);
   }
 
+
   useEffect(() => {
     dispatch(getAllProducts());
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
     dispatch(getFavorites(LSArray));
   }, [dispatch, localStorage.getItem("Obj")]);
-    
-    function handleClick(data) {
-      let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
-      
-      let dataExists = LSArray.some((item) => item.id === data.id);
-      if (!dataExists) {
-        LSArray.push(data);
+
+  function handleClick(data) {
+    let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
+
+    let dataExists = LSArray.some((item) => item.id === data.id);
+    if (!dataExists) {
+      LSArray.push(data);
       dispatch(getFavorites(LSArray));
       localStorage.setItem("Obj", JSON.stringify(LSArray));
       toast.success(`${data.name} añadido a favoritos!`);
@@ -77,6 +79,7 @@ export default function Card({
   const filter = (e) => {
     console.log(filteredClothes);
     dispatch(filterItems(e, productList));
+    setCurrentPage(1);
   };
 
   console.log(currentFilter);
@@ -99,15 +102,15 @@ export default function Card({
       console.log(err);
     }
   }, [flag]);
-  
-    useEffect(() => {
-      if (flag !== "" && flag !== null && productList) {
-        filter(flag.name);
-        setFlag("");
-      }
-    }, [productList]);
 
-    //Category 'peitho cute / alternative' flag for filtering
+  useEffect(() => {
+    if (flag !== "" && flag !== null && productList) {
+      filter(flag.name);
+      setFlag("");
+    }
+  }, [productList]);
+
+  //Category 'peitho cute / alternative' flag for filtering
 
   useEffect(() => {
     try {
@@ -125,25 +128,30 @@ export default function Card({
     }
   }, []);
 
+  // Handle swipe
+  const handlers = useSwipeable({
+    onSwipedLeft: () => currentPage >= 1 && currentPage < pageNumber ? setCurrentPage(currentPage+1) : null,
+    onSwipedRight: () => currentPage !== 1 ? setCurrentPage(currentPage-1) : null
+  });
 
   console.log(flag, "flag");
 
   const handleRemoveFilter = () => {
-    filter("all")
+    filter("all");
+    if(currentPage !== 1){
     setCurrentPage(1)
-  }
+    }
+  };
 
   console.log(extraFlag, "dis is de flag");
-  
 
   return (
     <>
       <div className="category-wrapper">
         <Toaster position="bottom-center" reverseOrder={false} />
+        <Searchbar clothes={productList}/>
         <div className="category-button">
-          <button onClick={() => handleRemoveFilter()}>
-            Remove filter
-          </button>
+          <button onClick={() => handleRemoveFilter()}>Todos los productos</button>
         </div>
         <div className="category-bubbles">
           <div className="category-container">
@@ -190,7 +198,7 @@ export default function Card({
         </div>
       </div>
       <div className="cards-container">
-        <div className="cards-grid">
+        <div className="cards-grid" {...handlers}>
           {currentFilter.length !== 0
             ? currentFilter.map((product) => (
                 <div className="product-card" key={product.id}>

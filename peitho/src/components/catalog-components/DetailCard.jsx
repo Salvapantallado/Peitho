@@ -153,15 +153,16 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                     {/* <h2>{productDetail.name}</h2> */}
                     {productDetail.description2 !== "" ? (
                       <div className="detail-description">
-                        <h1>ARS ${productDetail.price}</h1>
                         <h3>Detalles del producto:</h3>
                         <p>{productDetail.description}</p>
                         <br />
                         <p>{productDetail.description2}</p>
+                        <h1>ARS ${productDetail.price}</h1>
                       </div>
                     ) : (
                       <div>
                         <p>{productDetail.description}</p>
+                        <h1>ARS ${productDetail.price}</h1>
                       </div>
                     )}
                     {/* <h2>$ {productDetail.price}</h2> */}

@@ -145,7 +145,7 @@
 
 @media screen and (max-width: 875px) {
   .card img {
-    width: 205px;
+    width: 180px;
     height: auto;
     height: 310px;
     object-fit: cover;

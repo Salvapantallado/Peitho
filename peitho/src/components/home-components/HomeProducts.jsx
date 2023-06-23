@@ -12,10 +12,10 @@ import ChooseYourStyle from "./ChooseStyle";
 export default function HomeProducts({extraFlag, setExtraFlag}) {
 	const dispatch = useDispatch();
 	const allProducts = useSelector((state) => state.allProducts);
-
+	
 
 	useEffect(() => {
-	  dispatch(getAllProducts());
+		dispatch(getAllProducts())
 	}, [dispatch]);
   
 	return (

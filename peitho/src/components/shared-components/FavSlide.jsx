@@ -3,19 +3,17 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import "../../styles/navbar.css";
 import React, { useEffect, useRef, useState } from "react";
 
-import {
-  disableBodyScroll, 
-  enableBodyScroll, 
-} from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getFavorites } from "../../actions";
 import { Link } from "react-router-dom";
 
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 export default function FavSlide({ openFav, setOpenFav }) {
+  const favNumber = useSelector((state) => state.favoriteProducts);
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -35,11 +33,23 @@ export default function FavSlide({ openFav, setOpenFav }) {
       };
     }, [ref]);
   }
-const wrapperRef = useRef(null);
-useOutsideAlerter(wrapperRef);
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   const popUpRef = useRef(null);
-  const FavIcon = <FavoriteBorderIcon onClick={() =>setOpenFav(true)} />;
+  const FavIcon = (
+    <>
+      {favNumber !== null && favNumber.length >= 1 ? (
+        <div className="fav-number">
+          <p>{favNumber.length}</p>
+        </div>
+      ) : (
+        <div />
+      )}
+      <FavoriteBorderIcon onClick={() => setOpenFav(true)} />
+    </>
+  );
+
   const closeFavIcon = (
     <CloseRoundedIcon
       style={{ left: "0", right: "-15px" }}
@@ -55,22 +65,23 @@ useOutsideAlerter(wrapperRef);
   // const [deletedItem, setDeletedItem] = useState({});
   const LSFlag = localStorage.getItem("Obj");
 
-
   // Modal links clickable
 
   useEffect(() => {
-    if(openFav === true) {
-      popUpRef.current && disableBodyScroll(popUpRef.current)
+    if (openFav === true) {
+      popUpRef.current && disableBodyScroll(popUpRef.current);
       document.body.style.pointerEvents = "none";
       // document.body.style.overflow = "hidden";
-      document.getElementById('fav-slide').setAttribute('style', 'pointer-events: auto')
-    } 
-    if(openFav === false) {
-      popUpRef.current && enableBodyScroll(popUpRef.current)
+      document
+        .getElementById("fav-slide")
+        .setAttribute("style", "pointer-events: auto");
+    }
+    if (openFav === false) {
+      popUpRef.current && enableBodyScroll(popUpRef.current);
       document.body.style.pointerEvents = "auto";
       document.body.style.overflow = "auto";
     }
-  }, [openFav])
+  }, [openFav]);
 
   useEffect(() => {
     if (localStorage.length !== 0) {
@@ -95,17 +106,17 @@ useOutsideAlerter(wrapperRef);
     // let filteredItem = localFavorites.filter((x) => x.id === item.id);
     // setDeletedItem(filteredItem);
     let filteredArray = localFavorites.filter((x) => x.id !== item.id);
-    dispatch(getFavorites(filteredArray));
     setLocalFavorites(filteredArray);
+    dispatch(getFavorites(filteredArray));
 
     console.log(localFavorites);
 
     if (localFavorites.length > 1 && localFavorites !== null) {
-      localStorage.setItem("Obj", JSON.stringify(localFavorites));
-      toast.error(`${item.name} eliminado de favoritos.`);
+      localStorage.setItem("Obj", JSON.stringify(filteredArray));
+      toast.error(`${item.name} eliminado de favoritos.`, {duration: 3000});
     } else {
       localStorage.removeItem("Obj");
-      toast.error(`${item.name} eliminado de favoritos.`);
+      toast.error(`${item.name} eliminado de favoritos.`, {duration: 3000});
     }
 
     console.log(localFavorites);
@@ -199,7 +210,6 @@ useOutsideAlerter(wrapperRef);
       return;
     }
   }
-
 
   return (
     <div ref={wrapperRef} style={{ paddingRight: "3%" }}>
