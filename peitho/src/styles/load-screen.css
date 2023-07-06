@@ -71,7 +71,7 @@
     opacity: 0;
     pointer-events: none;
     z-index: 6;
-    background-color: #bfbcd1;
+    background-color: #c0bdd3;
     position: fixed;
     top: 0;
     left: 0;
@@ -106,7 +106,7 @@
     width: 100%;
     opacity: 0;
     z-index: 3;
-    background-color: #bfbcd1;
+    background-color: #c0bdd3;
     position: absolute;
     display: flex;
     justify-content: center;

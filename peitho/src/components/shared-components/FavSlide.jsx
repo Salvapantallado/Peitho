@@ -46,7 +46,7 @@ export default function FavSlide({ openFav, setOpenFav }) {
       ) : (
         <div />
       )}
-      <FavoriteBorderIcon onClick={() => setOpenFav(true)} />
+      <FavoriteBorderIcon id="favHeart" onClick={() => setOpenFav(true)} />
     </>
   );
 
@@ -212,7 +212,7 @@ export default function FavSlide({ openFav, setOpenFav }) {
   }
 
   return (
-    <div ref={wrapperRef} style={{ paddingRight: "3%" }}>
+    <div ref={wrapperRef} className="fav-slide-wrapper">
       <Toaster position="bottom-center" reverseOrder={false} />
       {FavIcon}
       {openFav ? (

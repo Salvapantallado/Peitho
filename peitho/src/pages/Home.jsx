@@ -22,7 +22,7 @@ import TransitionOut from "../components/shared-components/TransitionOut";
 import "../styles/home.css";
 
 export default function Home({ flag, setFlag, screenTransition,
-  setScreenTransition, extraFlag, setExtraFlag }) {
+  setScreenTransition}) {
   const dispatch = useDispatch();
   const [localFavorites, setLocalFavorites] = useState([]);
 
@@ -63,7 +63,7 @@ export default function Home({ flag, setFlag, screenTransition,
           {/* <div className="background" /> */}
           <div className="home-container">
             <div>
-              <HomeProducts extraFlag={extraFlag} setExtraFlag={setExtraFlag}/>
+              <HomeProducts/>
             </div>
           </div>
         </div>

@@ -27,15 +27,63 @@
   flex-direction: column;
   width: 100%;
 }
-
-.section-title {
-  font-family: UnifrakturCook;
+.style-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: #8c89a1;
+  height: 80vh;
+}
+.section-title {
+  position: relative;
+  font-family: UnifrakturCook;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   filter: drop-shadow(0px 0px 15px black);
   border-radius: 10px 0;
+}
+.videoWrapper {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.videodiv {
+  position: relative;
+  transition: all 400ms ease;
+  /* transition-delay: 300ms; */
+  z-index: 2;
+}
+.videodiv > video {
+  border-radius: 15px;;
+}
+.inactiveRight {
+  /* visibility: hidden; */
+  transform: translateX(130%);
+  scale: 0.8;
+  padding: 50px;
+  position: absolute;
+  z-index: 1;
+  filter: brightness(0.3)
+}
+.inactiveNumber{
+  scale: 0.8;
+  padding: 50px;
+  position: absolute;
+  z-index: 1;
+  filter: brightness(0.3);
+  visibility: hidden;
+}
+
+.inactiveLeft {
+  transform: translateX(-130%);
+  scale: 0.8;
+  padding: 50px;
+  position: absolute;
+  z-index: 1;
+  filter: brightness(0.3)
 }
 
 .product-info {
@@ -67,41 +115,49 @@
   flex-direction: column;
   align-items: center;
 }
+
+.popular-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  overflow: hidden;
+  flex-direction: column;
+}
 .popular-grids {
-  width: 80vw;
+  width: 100vw;
   /* display: grid;
     grid-template-columns: 300px 300px 300px; */
+  animation: Loop 50s linear infinite;
   display: flex;
   justify-items: center;
   justify-content: center;
 }
 
 .popular-grids2 {
-  width: 80vw;
+  width: 100vw;
   /* display: grid;
     grid-template-columns: 300px 300px 300px; */
+  animation: Loop2 50s linear infinite;
   display: flex;
   justify-items: center;
   justify-content: center;
 }
+.popular-grids2:hover,
+.popular-grids:hover {
+  animation-play-state: paused;
+}
 
 .popular-grids img {
-  height: 200px;
+  height: 350px;
   /* max-width: 160px; */
-  width: 140px;
+  width: 250px;
 }
 
 .popular-grids2 img {
-  height: 200px;
+  height: 350px;
   /* max-width: 160px; */
-  width: 140px;
-}
-
-.style-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #8c89a1;
+  width: 250px;
 }
 
 .peitho-style {
@@ -247,13 +303,17 @@ canvas {
 
   .section-title {
     background: #675f9c;
-    width: 95vw;
+    width: 100vw;
     margin-bottom: 20px;
     font-size: 18px;
     padding: 10px 0;
   }
   .section-title h2 {
     margin: 0;
+  }
+
+  .popular-wrapper {
+    width: 100vw;
   }
 
   .popular-grids {
@@ -265,9 +325,6 @@ canvas {
     animation: Loop 13s linear infinite;
     transition: 0.25s ease;
   }
-  .popular-grids:hover {
-    animation-play-state: paused;
-  }
 
   .popular-grids2 {
     width: 100vw;
@@ -277,8 +334,17 @@ canvas {
     animation: Loop2 13s linear infinite;
     transition: 0.1s ease;
   }
-  .popular-grids2:hover {
-    animation-play-state: paused;
+
+  .popular-grids img {
+    height: 200px;
+    /* max-width: 160px; */
+    width: 140px;
+  }
+
+  .popular-grids2 img {
+    height: 200px;
+    /* max-width: 160px; */
+    width: 140px;
   }
 
   .style-container {
@@ -375,6 +441,36 @@ canvas {
   .instagram button:active {
     transform: scale(0.9);
   }
+  .videodiv {
+    position: relative;
+    transition: all 400ms ease;
+    /* transition-delay: 300ms; */
+    z-index: 2;
+  }
+  .videodiv > video {
+    height: 60vh;
+    transition: all 400ms ease;
+    /* transition-delay: 300ms; */
+    z-index: 2;
+    border-radius: 15px;
+  }
+  .inactive {
+    /* visibility: hidden; */
+    transform: translateX(100%);
+    scale: 0.7;
+    padding: 30px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .inactive2 {
+    /* visibility: hidden; */
+    transform: translateX(-100%);
+    scale: 0.7;
+    padding: 30px;
+    position: absolute;
+    z-index: 1;
+  }
 }
 
 @keyframes Loop {
@@ -382,7 +478,7 @@ canvas {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(220vw);
+    transform: translateX(200%);
   }
 }
 @keyframes Loop2 {
@@ -390,6 +486,6 @@ canvas {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-220vw);
+    transform: translateX(-200%);
   }
 }

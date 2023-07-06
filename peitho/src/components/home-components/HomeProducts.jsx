@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import ChooseYourStyle from "./ChooseStyle";
 // import Maniqui from "./maniqui.png";
 
-export default function HomeProducts({extraFlag, setExtraFlag}) {
+export default function HomeProducts() {
 	const dispatch = useDispatch();
 	const allProducts = useSelector((state) => state.allProducts);
 	
@@ -29,7 +29,7 @@ export default function HomeProducts({extraFlag, setExtraFlag}) {
 					<button>Ver todos los productos</button>
 				</Link>
 			</div>
-			<ChooseYourStyle extraFlag={extraFlag} setExtraFlag={setExtraFlag}/>
+			<ChooseYourStyle/>
 		</div>
 	);
 }

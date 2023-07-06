@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
   overflow-x: hidden;
 }
 
@@ -66,7 +66,69 @@
   margin: 30px 0 30px 0;
 }
 
+/* .search-dropdown{} */
+
+.searchbar {
+  position: relative;
+}
+.searchbar input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #555;
+  outline: none;
+}
+
+.searchbar input:focus {
+  border-color: #87929e;
+  box-shadow: 0 0.2rem 0.2rem 0.2rem rgba(146, 111, 143, 0.534);
+}
+#hidden{
+  display: none;
+}
+
+.dropdown{
+  height: 300px;
+  border: rgb(182, 231, 182);
+  background-color: whitesmoke;
+  position: absolute;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-dropdown {
+  border: 1px solid salmon;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.search-dropdown:hover {
+  background-color: rgba(15, 151, 200, 0.2);
+}
+
+.search-dropdown p{
+  text-align: end;
+}
+
+.search-dropdown img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#ClearBtn {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+}
+
 @media screen and (max-width: 875px) {
+  .catalog-wrapper{
+    flex-direction: column;
+  }
   .catalog-container {
     display: flex;
     width: 100%;
@@ -85,5 +147,63 @@
   }
   .container h1 {
     margin: 0;
+  }
+
+  .searchbar {
+    position: relative;
+  }
+  .searchbar input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+  }
+  
+  .searchbar input:focus {
+    border-color: #87929e;
+    box-shadow: 0 0.2rem 0.2rem 0.2rem rgba(146, 111, 143, 0.534);
+  }
+  #hidden{
+    display: none;
+  }
+
+  .dropdown{
+    height: 200px;
+    border: rgb(182, 231, 182);
+    background-color: whitesmoke;
+    position: absolute;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    max-width: 220px;
+  }
+
+  .search-dropdown {
+    border: 1px solid salmon;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .search-dropdown:hover {
+    background-color: rgba(15, 151, 200, 0.2);
+  }
+
+  .search-dropdown p{
+    text-align: end;
+  }
+
+  .search-dropdown img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  #ClearBtn {
+    position: absolute;
+    top: 20%;
+    right: 5%;
   }
 }

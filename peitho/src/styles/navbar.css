@@ -206,6 +206,13 @@
   transform: translateX(70%);
 }
 
+#favHeart{
+  font-size: 2.5rem;
+}
+
+.fav-slide-wrapper {
+  padding-right: 1.5%;
+}
 
 
 
@@ -237,6 +244,10 @@
     transform: translateX(-100%);
     transition: 0.5s ease-in-out;
   }
+  .fav-slide-wrapper {
+    padding-right: 3%;
+  }
+
   .fav-slide-container{
     display: block;
     flex-direction: row;
@@ -331,8 +342,11 @@
 
   .fav-number{
     position: relative;
-    top: -6px;
+    top: -0;
     right: -6px;
+  }
+  #favHeart {
+    font-size: 1.8rem;
   }
 
 }
