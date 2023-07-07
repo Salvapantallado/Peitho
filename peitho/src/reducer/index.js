@@ -8,7 +8,10 @@ import {
 	GET_FAVORITES,
 	FILTER_ITEMS,
 	DELETE_PRODUCT,
-	EDIT_PRODUCT
+	EDIT_PRODUCT,
+	GET_STORIES,
+	DELETE_STORIES,
+	POST_STORIES
 } from "../actions/index.js";
 
 const initialState = {
@@ -23,6 +26,7 @@ const initialState = {
 	},
 	favoriteProducts: [],
 	filteredProducts: [],
+	allStories: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -31,6 +35,12 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				allProducts: action.payload,
+			};
+		}
+		case GET_STORIES: {
+			return {
+				...state,
+				allStories: action.payload,
 			};
 		}
 		case GET_CATEGORIES: {
@@ -78,6 +88,11 @@ const rootReducer = (state = initialState, action) => {
 		case DELETE_PRODUCT: {
 			return {
 			  ...state
+			};
+		}
+		case DELETE_STORIES: {
+			return {
+				...state,
 			};
 		}
 		// case EDIT_PRODUCT: {

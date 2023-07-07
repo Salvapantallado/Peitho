@@ -1,16 +1,23 @@
 import axios from "axios";
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
-export const GET_PRODUCTS = "GET_PRODUCTS";
-export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
+export const GET_FAVORITES = "GET_FAVORITES";
+
 export const NEXT_PAGE = "NEXT_PAGE";
 export const PREVIOUS_PAGE = "PREVIOUS_PAGE";
 export const SET_PAGINATION = "SET_PAGINATION";
-export const GET_FAVORITES = "GET_FAVORITES";
+
 export const FILTER_ITEMS = "FILTER_ITEMS";
+
+export const GET_PRODUCTS = "GET_PRODUCTS";
 export const EDIT_PRODUCT = "EDIT_PRODUCT";
 export const POST_PRODUCT = "POST_PRODUCT";
+export const PRODUCT_DETAIL = "PRODUCT_DETAIL";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
+
+export const GET_STORIES = "GET_STORIES";
+export const POST_STORIES = "POST_STORIES";
+export const DELETE_STORIES = "DELETE_STORIES";
 
 export function getAllProducts(page, filter, valueFilter, valueFilter2) {
   if (!page) {
@@ -50,6 +57,15 @@ export function getAllCategories() {
       `/categoryinfo` || `http://localhost:3001/categoryinfo`
     );
     dispatch({ type: GET_CATEGORIES, payload: res.data });
+  };
+}
+
+export function getAllStories() {
+  return async (dispatch) => {
+    const res = await axios.get(
+      `/stories` || `http://localhost:3001/stories`
+    );
+    dispatch({ type: GET_STORIES, payload: res.data });
   };
 }
 
@@ -146,6 +162,20 @@ export function postProduct(input) {
     }
   };
 }
+export function postStories(input) {
+  return async (dispatch) => {
+    try {
+      const res = await axios.post(
+        `/stories` || `http://localhost:3001/stories`,
+        input
+      );
+      dispatch({ type: POST_STORIES, payload: res.data });
+    } catch (err) {
+      alert("HEMOSIDO TIMADO -error en post story-");
+      console.log(err);
+    }
+  };
+}
 
 export function editProduct(input) {
   return async (dispatch) => {
@@ -176,6 +206,20 @@ export function deleteProduct(id) {
     }
   };
 }
+export function deleteStories(id) {
+  return async (dispatch) => {
+    try {
+      const res = await axios.delete(
+        `/stories/` + id || `http://localhost:3001/stories/` + id
+      );
+      dispatch({ type: DELETE_STORIES, payload: res.data });
+    } catch (err) {
+      alert(err, "error en delete");
+    }
+  };
+}
+
+
 
 // export const filterItems = (data, array) => (dispatch) => {
 // 	console.log(data);

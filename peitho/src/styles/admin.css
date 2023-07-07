@@ -20,3 +20,22 @@
     color: #ffffff;
     cursor: pointer;
 }
+
+.adminStories{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: scroll;
+}
+.adminStories > .videodiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adminStories > .videodiv video, .adminStories > .videodiv img{
+    max-height: 400px;
+    max-width: 280px;
+
+}

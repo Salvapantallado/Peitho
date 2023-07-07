@@ -4,7 +4,7 @@ import Popular from "./Popular";
 
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../actions";
+import { getAllProducts, getAllStories } from "../../actions";
 import { useEffect } from "react";
 import ChooseYourStyle from "./ChooseStyle";
 // import Maniqui from "./maniqui.png";
@@ -12,10 +12,12 @@ import ChooseYourStyle from "./ChooseStyle";
 export default function HomeProducts() {
 	const dispatch = useDispatch();
 	const allProducts = useSelector((state) => state.allProducts);
+	const allStories = useSelector((state) => state.allStories);
 	
 
 	useEffect(() => {
 		dispatch(getAllProducts())
+		dispatch(getAllStories())
 	}, [dispatch]);
   
 	return (
@@ -29,7 +31,7 @@ export default function HomeProducts() {
 					<button>Ver todos los productos</button>
 				</Link>
 			</div>
-			<ChooseYourStyle/>
+			<ChooseYourStyle allStories={allStories}/>
 		</div>
 	);
 }

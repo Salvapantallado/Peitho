@@ -22,10 +22,13 @@ import Switch from "@mui/material/Switch";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import { visuallyHidden } from "@mui/utils";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct, getAllProducts } from "../../actions";
+import { deleteProduct, deleteStories, getAllProducts, getAllStories } from "../../actions";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Edit from "@mui/icons-material/Edit";
+
+import '../../styles/admin.css'
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -90,6 +93,7 @@ const headCells = [
   },
 ];
 
+
 function EnhancedTableHead(props) {
   const { order, orderBy, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
@@ -145,8 +149,9 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-const EnhancedTableToolbar = (props) => {
+const EnhancedTableToolbar = ({setSelected}) => {
   // const { numSelected } = props;
+  
 
   return (
     <Toolbar
@@ -162,15 +167,32 @@ const EnhancedTableToolbar = (props) => {
         // }),
       }}
     >
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%'}}>
+      <div style={{display: 'flex', flexDirection: 'row', width: "50%", justifyContent: 'space-evenly'}}>
+
       <Typography
-        sx={{ flex: "1 1 100%" }}
+        sx={{ backgroundColor: 'thistle',padding: "15px", alignItems: 'center', cursor: 'pointer' }}
         variant="h6"
         id="tableTitle"
         component="div"
-      >
+        onClick={() => setSelected(true)}
+        >
         Administrar prendas
       </Typography>
 
+      <Typography
+      sx={{ backgroundColor: 'thistle', padding: "15px", alignItems: 'center', cursor: 'pointer' }}
+      variant="h6"
+      id="tableTitle"
+      component="div"
+      onClick={() => setSelected(false)}
+      >
+        Administrar Historias
+      </Typography>
+
+        </div>
+        <div>
+          
       <Tooltip title="Agregar prenda">
         <Link to="/admin/agregar">
           <IconButton>
@@ -178,6 +200,8 @@ const EnhancedTableToolbar = (props) => {
           </IconButton>
         </Link>
       </Tooltip>
+        </div>
+        </div>
     </Toolbar>
   );
 };
@@ -187,14 +211,21 @@ const EnhancedTableToolbar = (props) => {
 // };
 
 export default function EnhancedTable() {
+  const [selected, setSelected] = React.useState(true);
+
   const dispatch = useDispatch();
 
+  const allStories = useSelector((state) => state.allStories);
   const allProducts = useSelector((state) => state.allProducts);
-  console.log(allProducts);
+  console.log(allProducts, 'table products');
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllStories());
+  }, [])
 
   async function handleDelete(e) {
     try {
@@ -206,6 +237,20 @@ export default function EnhancedTable() {
     } catch (error) {
       console.log(error, "Error al eliminar");
     }
+  }
+  function handleDeleteStory(id){
+    try{
+      console.log(allStories, "prev delete dispatch");
+      dispatch(deleteStories(id));
+      alert(`Historia ${id} eliminada!`)
+      console.log(allStories, "post delete dispatch");
+      setTimeout(() => {
+        dispatch(getAllStories());
+      }, 300);
+    } catch(err) {
+      console.error(err, "Error al eliminar historia")
+    }
+
   }
 
   const [order, setOrder] = React.useState("asc");
@@ -269,38 +314,44 @@ export default function EnhancedTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - allProducts.length) : 0;
 
-  return (
-    <Box sx={{ width: "100%" }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
-        <EnhancedTableToolbar
-          // numSelected={selected.length}
-          products={allProducts}
-        />
-        <TableContainer>
-          <Table
-            sx={{ minWidth: 750 }}
-            aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
-          >
-            <EnhancedTableHead
-              // numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              // onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={allProducts.length}
-            />
-            <TableBody>
-              {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.slice().sort(getComparator(order, orderBy)) */}
-              {stableSort(allProducts, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  // const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
 
-                  return (
-                    <TableRow
+  
+
+  return (
+    <>
+    {selected ? 
+      (<Box sx={{ width: "100%" }}>
+        <Paper sx={{ width: "100%", mb: 2 }}>
+          <EnhancedTableToolbar
+            // numSelected={selected.length}
+            // products={allProducts}
+            setSelected={setSelected}
+          />
+          <TableContainer>
+            <Table
+              sx={{ minWidth: 750 }}
+              aria-labelledby="tableTitle"
+              size={dense ? "small" : "medium"}
+              >
+              <EnhancedTableHead
+                // numSelected={selected.length}
+                order={order}
+                orderBy={orderBy}
+                // onSelectAllClick={handleSelectAllClick}
+                onRequestSort={handleRequestSort}
+                rowCount={allProducts.length}
+                />
+              <TableBody>
+                {/* if you don't need to support IE11, you can replace the `stableSort` call with:
+                   rows.slice().sort(getComparator(order, orderBy)) */}
+                {stableSort(allProducts, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    // const isItemSelected = isSelected(row.name);
+                    const labelId = `enhanced-table-checkbox-${index}`;
+                    
+                    return (
+                      <TableRow
                       hover
                       // onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
@@ -308,90 +359,140 @@ export default function EnhancedTable() {
                       tabIndex={-1}
                       key={row.id}
                       // selected={isItemSelected}
-                    >
-                      {/* <TableCell padding="checkbox">
-                        <Checkbox
-                          color="primary"
-                          checked={isItemSelected}
-                          inputProps={{
-                            "aria-labelledby": labelId,
-                          }}
-                        />
-                      </TableCell> */}
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                        align="right"
                       >
-                        {row.id}
-                      </TableCell>
-                      {/* <TableCell align="right">{row.id}</TableCell> */}
-                      <TableCell align="right">{row.name}</TableCell>
-                      <TableCell align="right">
-                        <img
-                          src={row.image[0]}
-                          alt=""
-                          style={{ width: "50px", height: "50px" }}
-                        />
-                      </TableCell>
-                      <TableCell align="right">{row.price}</TableCell>
-                      <TableCell style={{ margin: "5px" }}>
-                        <Stack style={{display: "flex", justifyContent: "right"}} direction="row" spacing={2} >
-                          <Button variant="contained" color="info" startIcon={ <Edit/>}>
-                            <a style={{textDecoration: "none", color: "white"}}href={`/admin/editar/${row.id}`}>Editar</a>
-                          </Button>
-                          <Button
-                            variant="outlined"
-                            startIcon={<DeleteIcon />}
-                            color="error"
-                            onClick={(event, rowData) => {
-                              var answer = window.confirm(
-                                "Are you sure you want to delete the product: " +
+                        {/* <TableCell padding="checkbox">
+                          <Checkbox
+                            color="primary"
+                            checked={isItemSelected}
+                            inputProps={{
+                              "aria-labelledby": labelId,
+                            }}
+                            />
+                          </TableCell> */}
+                        <TableCell
+                          component="th"
+                          id={labelId}
+                          scope="row"
+                          padding="none"
+                          align="right"
+                          >
+                          {row.id}
+                        </TableCell>
+                        {/* <TableCell align="right">{row.id}</TableCell> */}
+                        <TableCell align="right">{row.name}</TableCell>
+                        <TableCell align="right">
+                          <img
+                            src={row.image[0]}
+                            alt=""
+                            style={{ width: "50px", height: "50px" }}
+                            />
+                        </TableCell>
+                        <TableCell align="right">{row.price}</TableCell>
+                        <TableCell style={{ margin: "5px" }}>
+                          <Stack style={{display: "flex", justifyContent: "right"}} direction="row" spacing={2} >
+                            <Button variant="contained" color="info" startIcon={ <Edit/>}>
+                              <a style={{textDecoration: "none", color: "white"}}href={`/admin/editar/${row.id}`}>Editar</a>
+                            </Button>
+                            <Button
+                              variant="outlined"
+                              startIcon={<DeleteIcon />}
+                              color="error"
+                              onClick={(event, rowData) => {
+                                var answer = window.confirm(
+                                  "Are you sure you want to delete the product: " +
                                   row.name +
                                   "?"
-                              );
-                              if (answer) {
-                                handleDelete(row.id);
-                              } else {
-                                return;
-                              }
-                            }}
-                          >
-                            Eliminar
-                          </Button>
-                        </Stack>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow
+                                  );
+                                  if (answer) {
+                                    handleDelete(row.id);
+                                  } else {
+                                    return;
+                                  }
+                                }}
+                                >
+                              Eliminar
+                            </Button>
+                          </Stack>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
                   style={{
                     height: (dense ? 33 : 53) * emptyRows,
                   }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={allProducts.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={allProducts.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+        </Paper>
+        <FormControlLabel
+          control={<Switch checked={dense} onChange={handleChangeDense} />}
+          label="Dense padding"
+          />
+      </Box>)
+    : ( 
+      <Box sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", mb: 2 }}>
+        <EnhancedTableToolbar
+          // numSelected={selected.length}
+          // products={allProducts}
+          setSelected={setSelected}
         />
-      </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
-    </Box>
-  );
-}
+        <div className="adminStories">
+
+        {allStories.length !== 0
+          ? allStories?.map((singleStory, index) => (
+            <React.Fragment key={singleStory.id}>
+            <div
+                className="videodiv"
+               
+                // ref={ref}
+                >
+                {singleStory.url.split(".").pop() === "mp4" ? 
+                (<video
+                  muted
+                  loop
+                  autoPlay
+                  // ref={videoRef}
+                  // videoindex={index}
+                  // onClick={() => checkOnClick(index)}
+                  >
+                  <source src={singleStory.url} type="video/mp4" />
+                </video>) : (
+                  <img
+                  src={singleStory.url}
+                  alt="Story preview"
+                  // onClick={() => checkOnClick(index)}
+                  />
+                  ) 
+                }
+            <div>
+              <button onClick={() => handleDeleteStory(singleStory.id)}>Delete All</button>
+            </div>
+              </div>
+              {console.log(allStories, "all stories")}
+              </React.Fragment> 
+            ))
+            : null}
+            </div>
+        </Paper>
+        </Box>
+        )
+  }
+    </>
+    );
+  }

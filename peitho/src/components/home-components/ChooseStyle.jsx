@@ -6,27 +6,37 @@ import OneStory from "../../images/Videos/storyTest.mp4";
 import slide1 from "../../images/Videos/slide1.mp4";
 import slide2 from "../../images/Videos/slide2.mp4";
 import slide3 from "../../images/Videos/slide3.mp4";
+import testIMG from "../../images/Navbar/peitho-black.jpeg";
+
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 
 import { useSwipeable } from "react-swipeable";
-import { useInView } from "react-intersection-observer";
 
-export default function ChooseYourStyle() {
+export default function ChooseYourStyle({allStories}) {
   let [currentIndex, setCurrentIndex] = useState(0);
-  let [indexFromMap, setIndexFromMap] = useState(0);
-  const videoStories = [
-    { url: OneStory },
-    { url: slide1 },
-    { url: slide2 },
-    { url: slide3 },
-  ];
+  // const videoStories = [
+  //   { url: OneStory },
+  //   { url: slide1 },
+  //   { url: slide2 },
+  //   { url: testIMG},
+  //   { url: slide3 },
+  // ];
 
-  const addingPrToSt = videoStories.map((vid, index) => {
+  // const addingPrToSt = videoStories.map((vid, index) => {
+  //   return {
+  //     ...vid,
+  //     dataStatus: index === currentIndex ? "active" : "inactive",
+  //   };
+  // });
+
+    const addingPrToSt = allStories.map((vid, index) => {
     return {
       ...vid,
-      id: index,
       dataStatus: index === currentIndex ? "active" : "inactive",
     };
   });
+
   // const videoRef = useRef(null);
   // const { ref, inView, entry } = useInView({
   //   threshold: 0,
@@ -90,16 +100,16 @@ export default function ChooseYourStyle() {
   console.log(addingPrToSt);
 
   function ClassCheck(index) {
-    if (currentIndex > index + 1 || currentIndex < index - 1){
-      return "videodiv inactiveNumber"
+    if (currentIndex > index + 1 || currentIndex < index - 1) {
+      return "videodiv inactiveNumber";
     } else if (index === currentIndex) {
       return "videodiv";
     } else if (index < currentIndex) {
-      return "videodiv inactiveLeft"
+      return "videodiv inactiveLeft";
     } else if (index > currentIndex) {
-      return "videodiv inactiveRight"
+      return "videodiv inactiveRight";
+    }
   }
-}
 
   return (
     <div className="style-container">
@@ -126,7 +136,8 @@ export default function ChooseYourStyle() {
                 key={index}
                 // ref={ref}
               >
-                <video
+                {singleStory.url.split(".").pop() === "mp4" ? 
+                (<video
                   muted
                   loop
                   autoPlay
@@ -135,13 +146,26 @@ export default function ChooseYourStyle() {
                   onClick={() => checkOnClick(index)}
                 >
                   <source src={singleStory.url} type="video/mp4" />
-                </video>
+                </video>) : (
+                  <img
+                  src={singleStory.url}
+                  alt="Story preview"
+                  onClick={() => checkOnClick(index)}
+                />
+                ) 
+                }
               </div>
             ))
           : null}
       </div>
-      <button onClick={() => handlePreviousSlide()}>←</button>
-      <button onClick={() => handleNextSlide()}>→</button>
+      <div className="storyButtons">
+        <button onClick={() => handlePreviousSlide()}>
+          <KeyboardDoubleArrowLeftIcon />
+        </button>
+        <button onClick={() => handleNextSlide()}>
+          <KeyboardDoubleArrowRightIcon />
+        </button>
+      </div>
     </div>
   );
 }
