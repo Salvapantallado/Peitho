@@ -99,7 +99,8 @@
   /* flex-direction: column; */
   height: -moz-fit-content;
   height: fit-content;
-  overflow-x: hidden;
+  width: 100%;
+  overflow-x: scroll;
   gap: 1vh;
   /* padding-left: 4px;*/
 }
