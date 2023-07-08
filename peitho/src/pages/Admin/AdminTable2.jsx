@@ -217,7 +217,6 @@ export default function EnhancedTable() {
 
   const allStories = useSelector((state) => state.allStories);
   const allProducts = useSelector((state) => state.allProducts);
-  console.log(allProducts, 'table products');
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -225,7 +224,7 @@ export default function EnhancedTable() {
 
   useEffect(() => {
     dispatch(getAllStories());
-  }, [])
+  }, [dispatch])
 
   async function handleDelete(e) {
     try {
@@ -240,10 +239,8 @@ export default function EnhancedTable() {
   }
   function handleDeleteStory(id){
     try{
-      console.log(allStories, "prev delete dispatch");
       dispatch(deleteStories(id));
       alert(`Historia ${id} eliminada!`)
-      console.log(allStories, "post delete dispatch");
       setTimeout(() => {
         dispatch(getAllStories());
       }, 300);
@@ -315,6 +312,40 @@ export default function EnhancedTable() {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - allProducts.length) : 0;
 
 
+    // const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    //   const files = Array.from(e.target.files)
+    //   console.log("files", files);
+    // }
+
+    const [selectedFile, setSelectedFile] = React.useState();
+    const [previewImg, setPreviewImg] = React.useState();
+    const [previewVideo, setPreviewVideo] = React.useState({
+      url: "",
+    });
+  
+    useEffect(() => {
+      if(!selectedFile) {
+        setPreviewVideo(undefined)
+        return
+      }
+      const objectUrl = URL.createObjectURL(selectedFile)
+      console.log(objectUrl, "url del archivo seleccionado");
+      setPreviewImg(objectUrl)
+
+      
+      return () => URL.revokeObjectURL(objectUrl)
+  
+      
+    }, [selectedFile])  
+  
+    const onSelectFile = (e) => {
+      if(!e.target.files || e.target.files.length === 0) {
+        setSelectedFile(undefined)
+        return
+      }
+      setSelectedFile(e.target.files[0])
+      console.log(e.target.files, "selected file");
+    }
   
 
   return (
@@ -457,7 +488,7 @@ export default function EnhancedTable() {
         {allStories.length !== 0
           ? allStories?.map((singleStory, index) => (
             <React.Fragment key={singleStory.id}>
-            <div
+            <div 
                 className="videodiv"
                
                 // ref={ref}
@@ -481,14 +512,22 @@ export default function EnhancedTable() {
                   ) 
                 }
             <div>
-              <button onClick={() => handleDeleteStory(singleStory.id)}>Delete All</button>
+              <button onClick={() => handleDeleteStory(singleStory.id)}>Borrar historia</button>
             </div>
               </div>
-              {console.log(allStories, "all stories")}
               </React.Fragment> 
             ))
             : null}
+
             </div>
+            <input onChange={onSelectFile} type="file" multiple accept="image/png, image/jpeg, video/mp4" />
+            {/* {selectedFile && previewImg && <img style={{width: "70px", height: "70px"}} src={previewImg} /> } */}
+            {selectedFile && previewVideo && <video style={{width: "170px", height: "370px"}} muted loop autoPlay >
+              <source src={previewVideo.url} type="video/mp4" />
+              </video> 
+
+
+}
         </Paper>
         </Box>
         )
