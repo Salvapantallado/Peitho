@@ -70,6 +70,7 @@
 
 .searchbar {
   position: relative;
+  width: 90%;
 }
 .searchbar input {
   padding: 10px;
@@ -78,6 +79,7 @@
   font-size: 18px;
   color: #555;
   outline: none;
+  width: 90%;
 }
 
 .searchbar input:focus {
@@ -96,6 +98,9 @@
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  z-index: 3;
+  width: 95%;
+  padding: 0 3px;
 }
 
 .search-dropdown {
@@ -124,6 +129,8 @@
   top: 20%;
   right: 5%;
 }
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 @media screen and (max-width: 875px) {
   .catalog-wrapper{
@@ -177,13 +184,14 @@
     overflow: scroll;
     display: flex;
     flex-direction: column;
-    max-width: 220px;
+    width: 95%;
+    padding: 0 3px;
   }
 
   .search-dropdown {
     border: 1px solid salmon;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 0 15px;
   }
@@ -193,12 +201,18 @@
   }
 
   .search-dropdown p{
-    text-align: end;
+    text-align: center;
+    width: 40%;
+    font-size: 18px;
+    font-family: 'Kirimaru';
+    color: black;
+    text-decoration: underline black;
+    font-weight: 800;
   }
 
   .search-dropdown img{
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
   }
   #ClearBtn {

@@ -126,7 +126,6 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                       : null}
                   </div>
                   <div className={` ${activeIndex ? `detail-zoom` : `prev-img`}`} key={previewImage} onClick={() => setActiveIndex(!activeIndex)}>
-                    {console.log(previewImage)}
                     {previewImage === "" ? (
                       <img src={productDetail?.image[0]} alt="" />
                     ) : (

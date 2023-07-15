@@ -24,9 +24,9 @@
 .adminStories{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
     overflow-x: scroll;
+    padding: 10px 0;
 }
 .adminStories > .videodiv {
     display: flex;

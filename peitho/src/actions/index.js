@@ -166,7 +166,8 @@ export function postStories(input) {
   return async (dispatch) => {
     try {
       const res = await axios.post(
-        `/stories` || `http://localhost:3001/stories`,
+        `/stories`,
+        input || `http://localhost:3001/stories/`,
         input
       );
       dispatch({ type: POST_STORIES, payload: res.data });

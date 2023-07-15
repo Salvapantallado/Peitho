@@ -26,11 +26,11 @@ export default function HomeProducts() {
 				<NewestProduct allProducts={allProducts}/>
 				<Popular allProducts={allProducts}/>
 			</div>
-			<div className="product-button">
+			{/* <div className="product-button">
 				<Link to="/catalogo">
 					<button>Ver todos los productos</button>
 				</Link>
-			</div>
+			</div> */}
 			<ChooseYourStyle allStories={allStories}/>
 		</div>
 	);

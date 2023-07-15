@@ -27,6 +27,7 @@ const initialState = {
 	favoriteProducts: [],
 	filteredProducts: [],
 	allStories: [],
+	newStories: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -94,6 +95,12 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 			};
+		}
+		case POST_STORIES: {
+			return {
+				...state,
+				allStories: state.allStories.concat(action.payload)
+			}
 		}
 		// case EDIT_PRODUCT: {
 		// 	const updateItem = state.allProducts.map(item => item.id === action.payload.id ? [...state, action.payload] : item);

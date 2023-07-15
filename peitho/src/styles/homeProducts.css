@@ -1,14 +1,15 @@
 .homeproducts-container{
-    width: 100vw;
+    width: 100%;
 }
 
 .home-products {
     display: flex;
-    justify-items: center;
+    /* justify-items: center;
     justify-content: center;
-    justify-items: center;
-    width: 90vw;
-    margin: 50px;
+    justify-items: center; */
+    /* width: 90vw;
+    margin: 50px; */
+    padding: 20px 0;
     flex-direction: column;
 }
 

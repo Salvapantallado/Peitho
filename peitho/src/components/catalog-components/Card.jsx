@@ -32,10 +32,7 @@ export default function Card({
   const productList = useSelector((state) => state.allProducts);
   const favProducts = useSelector((state) => state.favoriteProducts);
   const filteredClothes = useSelector((state) => state.filteredProducts);
-  // console.log(productList, "lista completa");
-  // console.log(filteredClothes, "filtrado");
 
-  // const [productsPerPage] = useState(4);
 
   const lastPostIndex = currentPage * productsPerPage;
   const firstPostIndex = lastPostIndex - productsPerPage;
@@ -65,13 +62,13 @@ export default function Card({
       LSArray.push(data);
       dispatch(getFavorites(LSArray));
       localStorage.setItem("Obj", JSON.stringify(LSArray));
-      toast.success(`${data.name} añadido a favoritos!`);
+      toast.success(`${data.name} añadido a favoritos!`, {duration: 2000, style: {fontFamily: "Arial"}});
     }
     if (dataExists) {
       let filtered = LSArray.filter((item) => item.id !== data.id);
       dispatch(getFavorites(filtered));
       localStorage.setItem("Obj", JSON.stringify(filtered));
-      toast.error(`${data.name} eliminado de favoritos!`);
+      toast.error(`${data.name} eliminado de favoritos!`, {duration: 2000, style: {fontFamily: "Arial"}});
     }
     console.log(LSArray);
   }
@@ -112,21 +109,21 @@ export default function Card({
 
   //Category 'peitho cute / alternative' flag for filtering
 
-  useEffect(() => {
-    try {
-      console.log(localStorage.getItem("extraFlag"));
-      let extraFlagAux = localStorage.getItem("extraFlag");
-      if (extraFlagAux !== "") {
-        setExtraFlag(JSON.parse(localStorage.getItem("extraFlag")));
-        console.log(extraFlag, "test");
-        setTimeout(() => {
-          localStorage.removeItem("extraFlag");
-        }, 400);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+  // useEffect(() => {
+  //   try {
+  //     console.log(localStorage.getItem("extraFlag"));
+  //     let extraFlagAux = localStorage.getItem("extraFlag");
+  //     if (extraFlagAux !== "") {
+  //       setExtraFlag(JSON.parse(localStorage.getItem("extraFlag")));
+  //       console.log(extraFlag, "test");
+  //       setTimeout(() => {
+  //         localStorage.removeItem("extraFlag");
+  //       }, 400);
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, []);
 
   // Handle swipe
   const handlers = useSwipeable({
@@ -148,7 +145,7 @@ export default function Card({
   return (
     <>
       <div className="category-wrapper">
-        <Toaster position="bottom-center" reverseOrder={false} />
+        {/* <Toaster position="bottom-center" reverseOrder={false} /> */}
         <Searchbar clothes={productList}/>
         <div className="category-button">
           <button onClick={() => handleRemoveFilter()}>Todos los productos</button>

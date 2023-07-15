@@ -13,59 +13,25 @@ import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrow
 
 import { useSwipeable } from "react-swipeable";
 
-export default function ChooseYourStyle({allStories}) {
+export default function ChooseYourStyle({ allStories }) {
   let [currentIndex, setCurrentIndex] = useState(0);
-  // const videoStories = [
-  //   { url: OneStory },
-  //   { url: slide1 },
-  //   { url: slide2 },
-  //   { url: testIMG},
-  //   { url: slide3 },
-  // ];
-
-  // const addingPrToSt = videoStories.map((vid, index) => {
-  //   return {
-  //     ...vid,
-  //     dataStatus: index === currentIndex ? "active" : "inactive",
-  //   };
-  // });
-
-    const addingPrToSt = allStories.map((vid, index) => {
+  const addingPrToSt = allStories.map((vid, index) => {
     return {
       ...vid,
       dataStatus: index === currentIndex ? "active" : "inactive",
     };
   });
 
-  // const videoRef = useRef(null);
-  // const { ref, inView, entry } = useInView({
-  //   threshold: 0,
-  // });
-
-  // useEffect(() => {
-  //   if (inView) {
-  //     videoRef.current.pause();
-  //     console.log(videoRef.current);
-  //   } else {
-  //     if (videoRef.current.play) {
-  //       // videoRef.current.reset();
-  //       videoRef.current.pause();
-  //     }
-  //   }
-  // });
-
   function handleNextSlide() {
     currentIndex + 1 <= addingPrToSt.length - 1
       ? setCurrentIndex(currentIndex + 1)
       : setCurrentIndex(0);
-    //  console.log(addingPrToSt.map((x) => x.dataStatus), "datastatus");
   }
 
   function handlePreviousSlide() {
     currentIndex - 1 >= 0
       ? setCurrentIndex(currentIndex - 1)
       : setCurrentIndex(0);
-    // console.log(addingPrToSt.map(/(x) => x.dataStatus), "datastatus");
   }
 
   // Changing current index on video click
@@ -114,46 +80,28 @@ export default function ChooseYourStyle({allStories}) {
   return (
     <div className="style-container">
       <div className="section-title">
-        {/* <video autoPlay muted loop data-index="0" data-status="active">
-          <source src={OneStory} type="video/mp4" />
-        </video>
-          <video autoPlay muted loop data-index="1" data-status="inactive">
-          <source src={OneStory} type="video/mp4" />
-        </video>
-        <video autoPlay muted loop data-index="2" data-status="inactive">
-          <source src={OneStory} type="video/mp4" />
-        </video>
-        <video autoPlay muted loop data-index="3" data-status="inactive">
-          <source src={OneStory} type="video/mp4" />
-        </video> */}
         <h2>Ultimas historias</h2>
       </div>
       <div className="videoWrapper" {...handlers}>
         {addingPrToSt.length !== 0
           ? addingPrToSt?.map((singleStory, index) => (
-              <div
-                className={ClassCheck(index)}
-                key={index}
-                // ref={ref}
-              >
-                {singleStory.url.split(".").pop() === "mp4" ? 
-                (<video
-                  muted
-                  loop
-                  autoPlay
-                  // ref={videoRef}
-                  // videoindex={index}
-                  onClick={() => checkOnClick(index)}
-                >
-                  <source src={singleStory.url} type="video/mp4" />
-                </video>) : (
+              <div className={ClassCheck(index)} key={index}>
+                {singleStory.type === "video" ? (
+                  <video
+                    muted
+                    loop
+                    autoPlay
+                    onClick={() => checkOnClick(index)}
+                  >
+                    <source src={singleStory.url} type="video/mp4" />
+                  </video>
+                ) : (
                   <img
-                  src={singleStory.url}
-                  alt="Story preview"
-                  onClick={() => checkOnClick(index)}
-                />
-                ) 
-                }
+                    src={singleStory.url}
+                    alt="Story preview"
+                    onClick={() => checkOnClick(index)}
+                  />
+                )}
               </div>
             ))
           : null}

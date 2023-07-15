@@ -6,6 +6,7 @@ async function SetStoryData(storiesArray) {
 			await Stories.findOrCreate({
 				where: {
 					url: storiesArray[e].url,
+					type: storiesArray[e].type,
 				},
 			});
 		}

@@ -62,9 +62,7 @@ export default function Home({ flag, setFlag, screenTransition,
         <div className="container">
           {/* <div className="background" /> */}
           <div className="home-container">
-            <div>
               <HomeProducts/>
-            </div>
           </div>
         </div>
         <Footer />

@@ -27,15 +27,16 @@
 
 .fav-list{
   width: 100%;
+  overflow-y: auto;
 }
 
 .fav-card {
   /* border: 1px solid #181818; */
-  width: 250px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   border-radius: 0 15%;
-  margin: 25px;
+  margin: 10px;
   align-items: center;
   justify-content: center;
 }
@@ -54,10 +55,10 @@
   justify-content: space-around;
   border: 1px solid black;
   border-radius: 0 30px;
-  width: -webkit-fill-available;
-  margin-bottom: 15px;
+  width: auto;
+  margin: 20px;
 }
-
+ 
 .fav-qty {
   display: flex;
   font-size: 15px;
@@ -148,7 +149,7 @@
 }
 
 .no-favs-box {
-  width: 70vw;
+  width: 15vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,9 +160,9 @@
 
 .product-grid {
   display: grid;
-    width: 100%;
+    width: 30%;
     height: auto;
-    grid-template-rows: 1fr 2.5fr;
+    grid-template-rows: 1fr 1fr;
 }
 
 .row-name {
@@ -182,6 +183,8 @@
 .fav-card-wrapper{
   border-right: 1px solid;
 }
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 @media screen and (max-width: 875px) {
   .fav-card img {
@@ -240,5 +243,11 @@
   }
   .row-rest{
     font-size: 17px;
+  }
+  .no-favs{
+    height: 300px;
+  }
+  .no-favs-box{
+    width: 60vw;
   }
 }

@@ -8,9 +8,12 @@ module.exports = (sequelize) => {
 				type: DataTypes.TEXT,
 				allowNull: false,
 			},
+			type: {
+				type: DataTypes.TEXT,
+			}
 		},
 		{
-			// timestamps: false,
+			timestamps: false,
 			freezeTableName: true,
 		}
 	);

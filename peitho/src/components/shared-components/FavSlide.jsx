@@ -50,19 +50,19 @@ export default function FavSlide({ openFav, setOpenFav }) {
     </>
   );
 
-  const closeFavIcon = (
-    <CloseRoundedIcon
-      style={{ left: "0", right: "-15px" }}
-      onClick={() => setOpenFav(false)}
-    />
-  );
+  // const closeFavIcon = (
+  //   <CloseRoundedIcon
+  //     style={{ left: "0", right: "-15px" }}
+  //     onClick={() => setOpenFav(false)}
+  //   />
+  // );
 
   // copy paste fav test
 
   const dispatch = useDispatch();
   const [localFavorites, setLocalFavorites] = useState([]);
   const [message, setMessage] = useState("");
-  // const [deletedItem, setDeletedItem] = useState({});
+  const [deletedItem, setDeletedItem] = useState({});
   const LSFlag = localStorage.getItem("Obj");
 
   // Modal links clickable
@@ -71,7 +71,6 @@ export default function FavSlide({ openFav, setOpenFav }) {
     if (openFav === true) {
       popUpRef.current && disableBodyScroll(popUpRef.current);
       document.body.style.pointerEvents = "none";
-      // document.body.style.overflow = "hidden";
       document
         .getElementById("fav-slide")
         .setAttribute("style", "pointer-events: auto");
@@ -92,19 +91,13 @@ export default function FavSlide({ openFav, setOpenFav }) {
       }
       return;
     }
-    // if(localStorage.getItem("flag")){
-    //   localStorage.removeItem("flag")
-    //  }
     return;
   }, [LSFlag]);
 
-  // useEffect(() => {
-  //   getFavorites(localFavorites);
-  // }, [localFavorites]);
 
   function handleDelete(item) {
-    // let filteredItem = localFavorites.filter((x) => x.id === item.id);
-    // setDeletedItem(filteredItem);
+    let filteredItem = localFavorites.filter((x) => x.id === item.id);
+    setDeletedItem(filteredItem);
     let filteredArray = localFavorites.filter((x) => x.id !== item.id);
     setLocalFavorites(filteredArray);
     dispatch(getFavorites(filteredArray));
@@ -113,27 +106,27 @@ export default function FavSlide({ openFav, setOpenFav }) {
 
     if (localFavorites.length > 1 && localFavorites !== null) {
       localStorage.setItem("Obj", JSON.stringify(filteredArray));
-      toast.error(`${item.name} eliminado de favoritos.`, {duration: 3000});
+      toast.error(`${item.name} eliminado de favoritos.`, {duration: 2000, style: {fontFamily: "Arial"}});
     } else {
       localStorage.removeItem("Obj");
-      toast.error(`${item.name} eliminado de favoritos.`, {duration: 3000});
+      toast.error(`${item.name} eliminado de favoritos.`, {duration: 2000, style: {fontFamily: "Arial"}});
     }
 
     console.log(localFavorites);
   }
 
-  // function restoreItem() {
-  //   if (deletedItem.length > 0 && deletedItem !== null) {
-  //     const auxArr = [];
-  //     auxArr.push(...localFavorites, deletedItem[0]);
-  //     console.log(auxArr);
-  //     auxArr.sort((a, b) => a.id - b.id);
-  //     toast.success(`${deletedItem[0].name} fue restaurado.`);
-  //     setLocalFavorites(auxArr);
-  //     setDeletedItem({});
-  //     return;
-  //   }
-  // }
+  function restoreItem() {
+    if (deletedItem.length > 0 && deletedItem !== null) {
+      const auxArr = [];
+      auxArr.push(...localFavorites, deletedItem[0]);
+      console.log(auxArr);
+      auxArr.sort((a, b) => a.id - b.id);
+      toast.success(`${deletedItem[0].name} fue restaurado.`, {style: {fontFamily: "Arial"}});
+      setLocalFavorites(auxArr);
+      setDeletedItem({});
+      return;
+    }
+  }
 
   const CopyInfo = (arr) => {
     const productQuantities = arr.map((item) => item.product_qty);
@@ -149,9 +142,6 @@ export default function FavSlide({ openFav, setOpenFav }) {
       const productNames = arr.map(
         (item) => item.name + `(${item.product_qty})`
       );
-      // const productQuantities = arr.map((item) => item.product_qty);
-      // const productMix = productNames + `(${productQuantities})`;
-      // console.log(productMix, 'mix');
       setMessage(
         `Hola! Me interesan las prendas ${productNames} que vi en la pagina web`
       );
@@ -163,11 +153,6 @@ export default function FavSlide({ openFav, setOpenFav }) {
   };
 
   const removeQuantity = (id) => {
-    // console.log(x, "sssssss");
-    // if (x.quantity === 0) return;
-    // const test = x.quantity - 1;
-    // newLocalFavorites.map((obj) => ({ ...obj, quantity: test }));
-    // return x.quantity--
     setLocalFavorites((cart) =>
       cart.map((item) =>
         id === item.id
@@ -183,10 +168,6 @@ export default function FavSlide({ openFav, setOpenFav }) {
   };
 
   const addQuantity = (id) => {
-    // console.log(x, "asdfasdf");
-    // const test = x.quantity + 1;
-    // newLocalFavorites.map((obj) => ({ ...obj, quantity: test }));
-    // return x.quantity++
     setLocalFavorites((cart) =>
       cart.map((item) =>
         id === item.id
@@ -221,7 +202,7 @@ export default function FavSlide({ openFav, setOpenFav }) {
 
           <div className="sticky-mobile">
             <div className="fav-buttons">
-              <div className="close-fav-icon">{closeFavIcon}</div>
+              {/* <div className="close-fav-icon">{closeFavIcon}</div> */}
               <div className="fav-container">
                 <div className="fav-list">
                   <div className="fav-banner">
@@ -300,9 +281,9 @@ export default function FavSlide({ openFav, setOpenFav }) {
                         </div>
                       </div>
                       <div>
-                        {/* {deletedItem.length > 0 ? (
+                        {deletedItem.length > 0 ? (
                         <button onClick={() => restoreItem()}>undo</button>
-                      ) : null} */}
+                      ) : null}
                         <button onClick={() => CopyInfo(localFavorites)}>
                           Copiar
                         </button>
@@ -321,7 +302,7 @@ export default function FavSlide({ openFav, setOpenFav }) {
 
           <div className="sticky-mobile">
             <div className="fav-buttons">
-              <div className="close-fav-icon">{closeFavIcon}</div>
+              {/* <div className="close-fav-icon">{closeFavIcon}</div> */}
               <div className="fav-container">
                 <div className="fav-list">
                   <div className="fav-banner">
@@ -400,9 +381,9 @@ export default function FavSlide({ openFav, setOpenFav }) {
                         </div>
                       </div>
                       <div>
-                        {/* {deletedItem.length > 0 ? (
+                        {deletedItem.length > 0 ? (
                         <button onClick={() => restoreItem()}>undo</button>
-                      ) : null} */}
+                      ) : null}
                         <button onClick={() => CopyInfo(localFavorites)}>
                           Copiar
                         </button>

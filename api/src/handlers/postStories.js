@@ -2,28 +2,34 @@ const { Stories } = require("../db.js");
 const { Op } = require("sequelize");
 
 async function postStories(req, res, next) {
-    const { url } = req.body;
+    console.log(req.body, "REQBODYDATA");
+//   const { url, type } = req.body;
 
-    try{
-        if(!url || url === ""){
-            return res.json({message: "Url requerido"});
-        }
+  try {
+    // if (!url || url === "" || !type || type === "") {
+    //   return res.json({ message: "Url y tipo requeridos" });
+    // }
+    const test = [];
+    const data = req.body;
+    data.forEach(async element => {
         const addStories = await Stories.findOrCreate({
-            where:{
-                url: url,
-            }
-        })
+          where: {
+            url: element.url,
+            type: element.type,
+          },
+        });
+        test.push(addStories[0])
+    });
 
-        if(addStories[1] === true) {
-            return res.status(200).json({message: "Historia añadida con éxito"});
-        } else {
-            return res.status(200).json({message: "La historia ya existe"});
-        }
-    } catch(error){
-        next(error)
-    }
+    return res
+      .status(200)
+      .send(test)
+    //   .alert({ message: "Historia añadida con éxito" });
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = {
-    postStories,
-}
+  postStories,
+};
