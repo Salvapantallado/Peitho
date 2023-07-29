@@ -93,13 +93,15 @@ export default function FavSlide({ openFav, setOpenFav }) {
   }, [LSFlag]);
 
   useEffect(() => {
+    if(message !== ""){
     setMessage("");
+  }
     return;
   }, [localFavorites]);
 
   function handleDelete(item) {
-    let filteredItem = localFavorites.filter((x) => x.id === item.id);
-    setDeletedItem(filteredItem);
+    // let filteredItem = localFavorites.filter((x) => x.id === item.id);
+    // setDeletedItem(filteredItem);
     let filteredArray = localFavorites.filter((x) => x.id !== item.id);
     setLocalFavorites(filteredArray);
     dispatch(getFavorites(filteredArray));

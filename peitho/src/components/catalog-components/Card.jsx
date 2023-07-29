@@ -47,9 +47,13 @@ export default function Card({
   }
 
   useEffect(() => {
-    dispatch(getAllProducts());
-    let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
-    dispatch(getFavorites(LSArray));
+    try{
+      dispatch(getAllProducts());
+      let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
+      dispatch(getFavorites(LSArray));
+    } catch(err){
+      console.error(err)
+    }
 }, [dispatch, localStorage.getItem("Obj")]);
 
   function handleClick(data) {
@@ -92,7 +96,7 @@ export default function Card({
     try {
       console.log(localStorage.getItem("flag"));
       let flagAux = localStorage.getItem("flag");
-      if (flagAux !== "") {
+      if (flagAux !== "" && flagAux !== null) {
         setFlag(JSON.parse(localStorage.getItem("flag")));
         console.log(flag, "test");
         setTimeout(() => {
@@ -105,9 +109,14 @@ export default function Card({
   }, [flag]);
 
   useEffect(() => {
-    if (flag !== "" && flag !== null && productsFromNewest) {
-      filter(flag.name);
-      setFlag("");
+    try{
+
+      if (flag !== "" && flag !== null && productsFromNewest) {
+        filter(flag.name);
+        setFlag("");
+      }
+    } catch(err){
+      console.error(err)
     }
   }, [productsFromNewest]);
 
@@ -129,8 +138,6 @@ export default function Card({
       setCurrentPage(1);
     }
   };
-
-  console.log(extraFlag, "dis is de flag");
 
   return (
     <>

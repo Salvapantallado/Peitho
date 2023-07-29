@@ -3,8 +3,6 @@ import React, { useRef, useState } from "react";
 import Navbar from "../../components/shared-components/Navbar";
 import Card from "../../components/catalog-components/Card";
 // import CategoryBubble from "../../components/shared-components/CategoryBubbles";
-import Ticker from "../../components/shared-components/Ticker";
-import Pagination from "../../components/catalog-components/pagination";
 import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";

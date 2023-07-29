@@ -10,7 +10,6 @@ export default function Pagination({
   productsPerPage,
 
 }) {
-  var page = useSelector((state) => state.page);
 
   const products = useSelector((state) => state.allProducts);
   const filteredProducts = useSelector((state) => state.filteredProducts);
