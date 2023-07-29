@@ -43,7 +43,7 @@ const products = [
 		description2: "También puede hacerse largo midi",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-media-campana/Falda-media-campana-1.jpeg", "/ProductImages/Falda-media-campana/Falda-media-campana-2.jpeg"],
+		image: ["/ProductImages/Falda-Media-Campana/Falda-Media-Campana-1.jpeg", "/ProductImages/Falda-Media-Campana/Falda-Media-Campana-2.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
