@@ -6,7 +6,7 @@ export default function NewestProduct({ allProducts }) {
     (x) => x.id === Math.max(...allProducts?.map((x) => x.id), 0)
   );
 
-  const [previewImage, setPreviewImage] = useState();
+  const [previewImage, setPreviewImage] = useState(lastProduct?.image[0]);
 
   useEffect(() => {
     setPreviewImage(lastProduct?.image.length > 1 ? lastProduct?.image[0] : "");
@@ -14,9 +14,6 @@ export default function NewestProduct({ allProducts }) {
 
   return (
     <>
-      <div className="section-title">
-        <h2>Último lanzamiento</h2>
-      </div>
       {lastProduct ? (
         <div className="product-info">
           <div style={{ textAlign: "center", margin: "15px" }}>
@@ -27,26 +24,33 @@ export default function NewestProduct({ allProducts }) {
           <div className="product-carousel">
             <div className="BigImage" key={previewImage}>
               {previewImage === "" ? (
-                <img src={lastProduct?.image[0]} alt="" draggable="false" />
+                <div className="BigImageContainer">
+                  <img src={lastProduct?.image[0]} alt="" draggable="false" />
+                </div>
               ) : (
-                <img src={previewImage} alt="" draggable="false" />
+                <div className="BigImageContainer">
+                  <img src={previewImage} alt="" draggable="false" />
+                </div>
               )}
             </div>
-            <div className="LittleImages">
-              {lastProduct?.image.length > 1
-                ? lastProduct?.image.map((product, index) => (
-                    <img
-                      className={
-                        product === previewImage ? null : "inactiveImages"
-                      }
-                      key={index}
-                      src={product}
-                      draggable="false"
-                      alt=""
-                      onClick={() => setPreviewImage(product)}
-                    />
-                  ))
-                : null}
+            <div className="LittleImagesWrapper">
+              <div className="LittleImages">
+                {lastProduct?.image.length > 1
+                  ? lastProduct?.image.map((product, index) => (
+                      <div className="SingleLittleImage" key={index}>
+                        <img
+                          className={
+                            product === previewImage ? null : "inactiveImages"
+                          }
+                          src={product}
+                          draggable="false"
+                          alt=""
+                          onClick={() => setPreviewImage(product)}
+                        />
+                      </div>
+                    ))
+                  : null}
+              </div>
             </div>
           </div>
         </div>

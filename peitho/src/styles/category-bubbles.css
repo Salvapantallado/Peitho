@@ -6,6 +6,7 @@
 	width: 100%;
 	background-color: transparent;
 	z-index: 2;
+	padding: 20px 0;
 }
 .category-bubbles button{
 	border: none;

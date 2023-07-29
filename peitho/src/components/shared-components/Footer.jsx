@@ -33,10 +33,6 @@ export default function Footer() {
           <h1>Redes sociales</h1>
           <p>Seguime en Instagram</p>
         </div>
-        <div>
-          <h1>Extra</h1>
-          <p>Esto es otra prueba</p>
-        </div>
       </div>
     </div>
   );

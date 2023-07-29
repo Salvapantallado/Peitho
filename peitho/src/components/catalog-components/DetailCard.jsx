@@ -14,6 +14,7 @@ import Ticker from "../shared-components/Ticker";
 import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
 import Footer from "../shared-components/Footer";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function DetailCard({ screenTransition, setScreenTransition }) {
   const dispatch = useDispatch();
@@ -64,11 +65,19 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
       LSArray.push(data);
       dispatch(getFavorites(LSArray));
       localStorage.setItem("Obj", JSON.stringify(LSArray));
+      toast.success(`${data.name} añadido a favoritos!`, {
+        duration: 2000,
+        style: { fontFamily: "Arial" },
+      });
     }
     if (dataExists) {
       let filtered = LSArray.filter((item) => item.id !== data.id);
       dispatch(getFavorites(filtered));
       localStorage.setItem("Obj", JSON.stringify(filtered));
+      toast.error(`${data.name} eliminado de favoritos!`, {
+        duration: 2000,
+        style: { fontFamily: "Arial" },
+      });
     }
   }
   const LoadCurtain = async (e) => {
@@ -92,6 +101,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
         screenTransition={screenTransition}
         setScreenTransition={setScreenTransition}
       />
+       <Toaster position="bottom-center" reverseOrder={false} />
       <div className="detail">
         <div className="box">
           <div className="detail-link">
@@ -105,7 +115,6 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
           {productDetail ? (
             <>
               <div className="detail-box">
-            <h2 style={{fontSize: "36px", textAlign: "center", marginTop: "0"}}>{productDetail.name}</h2>
                 <div className="image-box">
                   <div className="detail-imgs">
                     {productDetail.image?.length > 1
@@ -133,8 +142,9 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                     )}
                   </div>
                 </div>
+
                 <div className="detail-wrapper">
-                  <div className="detail-container">
+            <h2 style={{fontSize: "36px", textAlign: "center", marginTop: "0"}}>{productDetail.name}</h2>
                     {favProducts !== null &&
                     favProducts.some((prod) => prod.id === productDetail.id) ? (
                       <div className="favs-added">
@@ -149,6 +159,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                         </button>
                       </div>
                     )}
+                  <div className="detail-container">
                     {/* <h2>{productDetail.name}</h2> */}
                     {productDetail.description2 !== "" ? (
                       <div className="detail-description">
@@ -166,9 +177,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                     )}
                     {/* <h2>$ {productDetail.price}</h2> */}
 
-                    <div className="detail-buttons">
-                      <button>Reservar</button>
-                    </div>
+                    
                   </div>
                 </div>
               </div>

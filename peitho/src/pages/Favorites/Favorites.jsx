@@ -99,11 +99,6 @@ export default function Favorites() {
   };
 
   const removeQuantity = (id) => {
-    // console.log(x, "sssssss");
-    // if (x.quantity === 0) return;
-    // const test = x.quantity - 1;
-    // newLocalFavorites.map((obj) => ({ ...obj, quantity: test }));
-    // return x.quantity--
     setLocalFavorites((cart) =>
       cart.map((item) =>
         id === item.id
@@ -119,10 +114,6 @@ export default function Favorites() {
   };
 
   const addQuantity = (id) => {
-    // console.log(x, "asdfasdf");
-    // const test = x.quantity + 1;
-    // newLocalFavorites.map((obj) => ({ ...obj, quantity: test }));
-    // return x.quantity++
     setLocalFavorites((cart) =>
       cart.map((item) =>
         id === item.id
@@ -234,8 +225,11 @@ export default function Favorites() {
                   <button onClick={() => restoreItem()}>undo</button>
                 ) : null}
                 <button onClick={() => CopyInfo(localFavorites)}>Copiar</button>
-                <span>{message}</span>
+                  
               </div>
+                <div className="bubbles">
+                <span>{message}</span>
+                </div>
             </>
           )}
         </div>

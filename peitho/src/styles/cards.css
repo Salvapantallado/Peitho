@@ -19,7 +19,7 @@
   grid-gap: 10px;
   display: grid;
   gap: 50px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 3fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 3fr));
   justify-content: center;
   justify-items: center;
   height: 100%;
@@ -141,6 +141,19 @@
 
 .category-button {
   margin: 20px;
+}
+
+.category-button button{
+  padding: 20px;
+  all: unset;
+  background-image: url("../images/Home/Bannerfinalfinal.jpeg");
+  background-size: cover;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.category-button h1{
+  font-size: 24px;
 }
 
 @media screen and (max-width: 875px) {

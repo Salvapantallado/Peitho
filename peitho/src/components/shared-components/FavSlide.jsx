@@ -1,5 +1,5 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import InstaIcon from "../../images/Instagram.png";
 import "../../styles/navbar.css";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -31,6 +31,7 @@ export default function FavSlide({ openFav, setOpenFav }) {
         // Unbind the event listener on clean up
         document.removeEventListener("mousedown", handleClickOutside);
       };
+      
     }, [ref]);
   }
   const wrapperRef = useRef(null);
@@ -46,16 +47,13 @@ export default function FavSlide({ openFav, setOpenFav }) {
       ) : (
         <div />
       )}
-      <FavoriteBorderIcon id="favHeart" onClick={() => setOpenFav(true)} />
+      <FavoriteBorderIcon
+        id="favHeart"
+        onClick={() => setOpenFav(true)}
+        style={{ cursor: "pointer" }}
+      />
     </>
   );
-
-  // const closeFavIcon = (
-  //   <CloseRoundedIcon
-  //     style={{ left: "0", right: "-15px" }}
-  //     onClick={() => setOpenFav(false)}
-  //   />
-  // );
 
   // copy paste fav test
 
@@ -94,6 +92,10 @@ export default function FavSlide({ openFav, setOpenFav }) {
     return;
   }, [LSFlag]);
 
+  useEffect(() => {
+    setMessage("");
+    return;
+  }, [localFavorites]);
 
   function handleDelete(item) {
     let filteredItem = localFavorites.filter((x) => x.id === item.id);
@@ -106,30 +108,42 @@ export default function FavSlide({ openFav, setOpenFav }) {
 
     if (localFavorites.length > 1 && localFavorites !== null) {
       localStorage.setItem("Obj", JSON.stringify(filteredArray));
-      toast.error(`${item.name} eliminado de favoritos.`, {duration: 2000, style: {fontFamily: "Arial"}});
+      toast.error(`${item.name} eliminado de favoritos.`, {
+        duration: 2000,
+        style: { fontFamily: "Arial" },
+      });
     } else {
       localStorage.removeItem("Obj");
-      toast.error(`${item.name} eliminado de favoritos.`, {duration: 2000, style: {fontFamily: "Arial"}});
+      toast.error(`${item.name} eliminado de favoritos.`, {
+        duration: 2000,
+        style: { fontFamily: "Arial" },
+      });
     }
 
     console.log(localFavorites);
   }
 
-  function restoreItem() {
-    if (deletedItem.length > 0 && deletedItem !== null) {
-      const auxArr = [];
-      auxArr.push(...localFavorites, deletedItem[0]);
-      console.log(auxArr);
-      auxArr.sort((a, b) => a.id - b.id);
-      toast.success(`${deletedItem[0].name} fue restaurado.`, {style: {fontFamily: "Arial"}});
-      setLocalFavorites(auxArr);
-      setDeletedItem({});
-      return;
-    }
-  }
+  // function restoreItem() {
+  //   if (deletedItem.length > 0 && deletedItem !== null) {
+  //     const auxArr = [];
+  //     auxArr.push(...localFavorites, deletedItem[0]);
+  //     console.log(auxArr);
+  //     auxArr.sort((a, b) => a.id - b.id);
+  //     toast.success(`${deletedItem[0].name} fue restaurado.`, {
+  //       style: { fontFamily: "Arial" },
+  //     });
+  //     setLocalFavorites(auxArr);
+  //     setDeletedItem({});
+  //     return;
+  //   }
+  // }
 
   const CopyInfo = (arr) => {
     const productQuantities = arr.map((item) => item.product_qty);
+    toast.success(`Mensaje copiado al portapapeles`, {
+      duration: 2000,
+      style: { fontFamily: "Arial" },
+    });
     if (arr && arr.length === 1) {
       setMessage(
         `Hola! Me interesa la prenda ${arr[0].name}(${productQuantities})! :)`
@@ -149,7 +163,6 @@ export default function FavSlide({ openFav, setOpenFav }) {
         `Hola! Me interesan las prendas ${productNames} que vi en la pagina web`
       );
     }
-    return;
   };
 
   const removeQuantity = (id) => {
@@ -194,7 +207,6 @@ export default function FavSlide({ openFav, setOpenFav }) {
 
   return (
     <div ref={wrapperRef} className="fav-slide-wrapper">
-      <Toaster position="bottom-center" reverseOrder={false} />
       {FavIcon}
       {openFav ? (
         <div id="fav-slide" className="fav-slide-container opened-fav">
@@ -280,14 +292,33 @@ export default function FavSlide({ openFav, setOpenFav }) {
                           Total: {localFavorites !== null ? PriceMix() : 0}
                         </div>
                       </div>
-                      <div>
-                        {deletedItem.length > 0 ? (
+                      <div className="info">
+                        <p>
+                          Copiá tu carrito y mandamelo a mi insta{" "}
+                          <a target="_blank" rel="noreferrer" style={{fontFamily: "Unifrakturcook", color: "slateblue"}} href="https://www.instagram.com/peitho.ok/"><img style={{width: "16px", height: "16px"}} src={InstaIcon} alt="instaicon"/>Peitho Diseños</a>.
+                          Todas las compras se realizan por medio de mi
+                          instagram, ésta página solo sirve a modo de Diseños catálogo!
+                        </p>
+                      </div>
+                      <div className="copy-wrapper">
+                        {/* {deletedItem.length > 0 ? (
                         <button onClick={() => restoreItem()}>undo</button>
-                      ) : null}
-                        <button onClick={() => CopyInfo(localFavorites)}>
-                          Copiar
-                        </button>
-                        <span>{message}</span>
+                      ) : null} */}
+                        <div className="copy-button">
+                          <button onClick={() => CopyInfo(localFavorites)}>
+                            Copiar
+                          </button>
+                          <button onClick={() => setMessage("")}>
+                            Borrar
+                          </button>
+                        </div>
+                        <div
+                          className={
+                            message === "" ? "bubble not-visible" : "bubble"
+                          }
+                        >
+                          <span>{message}</span>
+                        </div>
                       </div>
                     </>
                   )}
@@ -380,14 +411,33 @@ export default function FavSlide({ openFav, setOpenFav }) {
                           Total: {localFavorites !== null ? PriceMix() : 0}
                         </div>
                       </div>
-                      <div>
-                        {deletedItem.length > 0 ? (
+                      <div className="info">
+                        <p>
+                          Copiá tu carrito y mandamelo a mi insta{" "}
+                          <a target="_blank" rel="noreferrer" style={{fontFamily: "Unifrakturcook", color: "slateblue"}} href="https://www.instagram.com/peitho.ok/"><img style={{width: "16px", height: "16px"}} src={InstaIcon} alt="instaicon"/>Peitho Diseños</a>.
+                          Todas las compras se realizan por medio de mi
+                          instagram, ésta página solo sirve a modo de catálogo!
+                        </p>
+                      </div>
+                      <div className="copy-wrapper">
+                        {/* {deletedItem.length > 0 ? (
                         <button onClick={() => restoreItem()}>undo</button>
-                      ) : null}
-                        <button onClick={() => CopyInfo(localFavorites)}>
-                          Copiar
-                        </button>
-                        <span>{message}</span>
+                      ) : null} */}
+                        <div className="copy-button">
+                          <button onClick={() => CopyInfo(localFavorites)}>
+                            Copiar
+                          </button>
+                          <button onClick={() => setMessage("")}>
+                            Borrar
+                          </button>
+                        </div>
+                        <div
+                          className={
+                            message === "" ? "bubble not-visible" : "bubble"
+                          }
+                        >
+                          <span>{message}</span>
+                        </div>
                       </div>
                     </>
                   )}

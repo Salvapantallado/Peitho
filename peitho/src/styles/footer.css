@@ -10,6 +10,7 @@
     background-color: #bfbcd1;
     justify-content: center;
     align-items: center;
+    border-top: 1px solid black;
 }
 
 .quick-links {

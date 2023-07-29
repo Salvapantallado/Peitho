@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { filterItems, getAllProducts, getFavorites } from "../../actions";
 import "../../styles/cards.css";
 import "animate.css";
-import { useSwipeable } from 'react-swipeable';
+import { useSwipeable } from "react-swipeable";
 
 import Top from "../../images/Home/Bubbles/circle-one.jpg";
 import Falda from "../../images/Home/Bubbles/circle-two.jpg";
@@ -26,33 +26,31 @@ export default function Card({
   flag,
   setFlag,
   extraFlag,
-  setExtraFlag,
 }) {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.allProducts);
+  const productsFromNewest = productList.slice(0).reverse();
   const favProducts = useSelector((state) => state.favoriteProducts);
   const filteredClothes = useSelector((state) => state.filteredProducts);
 
-
   const lastPostIndex = currentPage * productsPerPage;
   const firstPostIndex = lastPostIndex - productsPerPage;
-  currentProducts = productList.slice(firstPostIndex, lastPostIndex);
+  currentProducts = productsFromNewest.slice(firstPostIndex, lastPostIndex);
 
   currentFilter = filteredClothes.slice(firstPostIndex, lastPostIndex);
 
   if (filteredClothes.length === 0) {
-    pageNumber = Math.ceil(productList.length / productsPerPage);
+    pageNumber = Math.ceil(productsFromNewest.length / productsPerPage);
   }
   if (filteredClothes.length > 0) {
     pageNumber = Math.ceil(filteredClothes.length / productsPerPage);
   }
 
-
   useEffect(() => {
     dispatch(getAllProducts());
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
     dispatch(getFavorites(LSArray));
-  }, [dispatch, localStorage.getItem("Obj")]);
+}, [dispatch, localStorage.getItem("Obj")]);
 
   function handleClick(data) {
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
@@ -62,25 +60,31 @@ export default function Card({
       LSArray.push(data);
       dispatch(getFavorites(LSArray));
       localStorage.setItem("Obj", JSON.stringify(LSArray));
-      toast.success(`${data.name} añadido a favoritos!`, {duration: 2000, style: {fontFamily: "Arial"}});
+      toast.success(`${data.name} añadido a favoritos!`, {
+        duration: 2000,
+        style: { fontFamily: "Arial" },
+      });
     }
     if (dataExists) {
       let filtered = LSArray.filter((item) => item.id !== data.id);
       dispatch(getFavorites(filtered));
       localStorage.setItem("Obj", JSON.stringify(filtered));
-      toast.error(`${data.name} eliminado de favoritos!`, {duration: 2000, style: {fontFamily: "Arial"}});
+      toast.error(`${data.name} eliminado de favoritos!`, {
+        duration: 2000,
+        style: { fontFamily: "Arial" },
+      });
     }
     console.log(LSArray);
   }
 
   const filter = (e) => {
-    console.log(filteredClothes);
-    dispatch(filterItems(e, productList));
+    console.log(filteredClothes, "PRENDAS FILTRADAS");
+    dispatch(filterItems(e, productsFromNewest));
     setCurrentPage(1);
   };
 
-  console.log(currentFilter);
-  console.log(currentProducts);
+  console.log(currentFilter, "CURRENTFILTER");
+  console.log(currentProducts, "CURRENTPRODUCTS");
 
   //Category bubble flag for filtering
 
@@ -101,42 +105,28 @@ export default function Card({
   }, [flag]);
 
   useEffect(() => {
-    if (flag !== "" && flag !== null && productList) {
+    if (flag !== "" && flag !== null && productsFromNewest) {
       filter(flag.name);
       setFlag("");
     }
-  }, [productList]);
-
-  //Category 'peitho cute / alternative' flag for filtering
-
-  // useEffect(() => {
-  //   try {
-  //     console.log(localStorage.getItem("extraFlag"));
-  //     let extraFlagAux = localStorage.getItem("extraFlag");
-  //     if (extraFlagAux !== "") {
-  //       setExtraFlag(JSON.parse(localStorage.getItem("extraFlag")));
-  //       console.log(extraFlag, "test");
-  //       setTimeout(() => {
-  //         localStorage.removeItem("extraFlag");
-  //       }, 400);
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, []);
+  }, [productsFromNewest]);
 
   // Handle swipe
   const handlers = useSwipeable({
-    onSwipedLeft: () => currentPage >= 1 && currentPage < pageNumber ? setCurrentPage(currentPage+1) : null,
-    onSwipedRight: () => currentPage !== 1 ? setCurrentPage(currentPage-1) : null
+    onSwipedLeft: () =>
+      currentPage >= 1 && currentPage < pageNumber
+        ? setCurrentPage(currentPage + 1)
+        : null,
+    onSwipedRight: () =>
+      currentPage !== 1 ? setCurrentPage(currentPage - 1) : null,
   });
 
   console.log(flag, "flag");
 
   const handleRemoveFilter = () => {
     filter("all");
-    if(currentPage !== 1){
-    setCurrentPage(1)
+    if (currentPage !== 1) {
+      setCurrentPage(1);
     }
   };
 
@@ -145,10 +135,12 @@ export default function Card({
   return (
     <>
       <div className="category-wrapper">
-        {/* <Toaster position="bottom-center" reverseOrder={false} /> */}
-        <Searchbar clothes={productList}/>
+        <Toaster position="bottom-center" reverseOrder={false} />
+        <Searchbar clothes={productsFromNewest} />
         <div className="category-button">
-          <button onClick={() => handleRemoveFilter()}>Todos los productos</button>
+          <button onClick={() => handleRemoveFilter()}>
+            <h1>Todos los productos</h1>
+          </button>
         </div>
         <div className="category-bubbles">
           <div className="category-container">

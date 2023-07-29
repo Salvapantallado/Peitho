@@ -31,9 +31,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #8c89a1;
   min-height: 85vh;
-  max-height: 85vh;
+  /* max-height: 85vh; */
+  padding-bottom: 20px;
+  backdrop-filter: contrast(0.5);
 }
 .section-title {
   position: relative;
@@ -44,6 +45,33 @@
   align-items: center;
   filter: drop-shadow(0px 0px 15px black);
   border-radius: 10px 0;
+  width: 50vw;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.section-title h2:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  left: 100%;
+  top: 40%;
+  position: absolute;
+}
+.section-title h2:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #000;
+  right: 100%;
+  top: 40%;
+  position: absolute;
 }
 
 /* Story component */
@@ -103,12 +131,12 @@
   width: 25%;
 }
 
-.storyButtons button{
-  all:unset;
+.storyButtons button {
+  all: unset;
   cursor: pointer;
 }
 
-.storyButtons svg{
+.storyButtons svg {
   font-size: 2.5rem;
   border: 2px solid black;
   border-radius: 50%;
@@ -123,25 +151,39 @@
   justify-content: center;
   align-items: center;
 }
+.product-info a {
+  color: slateblue;
+  font-size: 24px;
+}
 
 /* Newest Product Style */
 .product-carousel {
-  /* overflow-x: scroll; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: auto;
-  /* height: 250px; */
-  align-items: center;
+  width: 50vw;
+  align-items: flex-start;
   justify-content: center;
+  background-image: url("../images/Home/Bannerfinalfinal.jpeg");
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-.BigImage{
+.BigImage {
   animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   transition: 1s ease-in-out;
-  min-height: 640px;
+  height: 640px;
 }
-.BigImage img{
+.BigImage img {
+  height: 640px;
+}
+
+.BigImageContainer {
+  min-width: 25vw;
+}
+
+.LittleImagesWrapper {
+  backdrop-filter: contrast();
   height: 640px;
 }
 
@@ -152,51 +194,113 @@
   margin: 5px;
 }
 
-.LittleImages{
-  flex-basis: 25%;
+.LittleImages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+  width: 305px;
+  gap: 5px;
 }
 
-.inactiveImages{
+.SingleLittleImage {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inactiveImages {
   filter: brightness(0.5);
 }
 
-.activeImages{
+.activeImages {
   filter: brightness(1);
 }
 
+/* Popular images component */
 
 .popular-container {
   display: flex;
   flex-direction: column;
+  background-color: #8c89a1;
   align-items: center;
 }
 
-.popular-wrapper {
+.popular-wrapper1 {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50vw;
   overflow: hidden;
   flex-direction: column;
+  position: relative;
+  height: 350px;
 }
-.popular-grids {
-  width: 100vw;
-  /* display: grid;
-    grid-template-columns: 300px 300px 300px; */
-  animation: Loop 50s linear infinite;
+.popular-wrapper2 {
   display: flex;
-  justify-items: center;
   justify-content: center;
+  align-items: center;
+  width: 50vw;
+  overflow: hidden;
+  flex-direction: column;
+  position: relative;
+  height: 350px;
+}
+
+.imgContainer {
+  width: 300px;
+  height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid dimgray ;
+  border-right: 1px solid dimgray ;
+}
+
+.imgContainer a {
+  height: 350px;
+}
+
+.imgContainer:hover{
+  filter: brightness(1.2);
+}
+
+.imgContainer .card-body{
+  width: 90%;
+  top: 70%;
+  opacity: 0;
+}
+
+.imgContainer:hover .card-body{
+  opacity: 1;
+  filter: brightness(1);
+}
+
+.popular-grids {
+  display: flex;
+  height: 350px;
+  /* width: 100vw; */
+  animation: Loop 30s linear infinite;
+  background-color: #8c89a1;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .popular-grids2 {
-  width: 100vw;
-  /* display: grid;
-    grid-template-columns: 300px 300px 300px; */
-  animation: Loop2 50s linear infinite;
+  border-top: 1px solid dimgray ;
   display: flex;
-  justify-items: center;
-  justify-content: center;
+  height: 350px;
+  /* width: 100vw; */
+  animation: Loop2 30s linear infinite;
+  background-color: #8c89a1;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 .popular-grids2:hover,
 .popular-grids:hover {
@@ -205,126 +309,14 @@
 
 .popular-grids img {
   height: 350px;
-  /* max-width: 160px; */
-  width: 250px;
+  max-width: 250px;
+  margin: 0 10px;
 }
 
 .popular-grids2 img {
   height: 350px;
-  /* max-width: 160px; */
-  width: 250px;
-}
-
-.peitho-style {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-}
-
-.peitho-cute,
-.peitho-alternativo {
-  display: flex;
-  flex-direction: column;
-  margin: 3em;
-  padding: 30px;
-}
-
-.peitho-cute h2,
-.peitho-alternativo h2 {
-  font-family: UnifrakturCook;
-  font-size: 36px;
-}
-
-.peitho-cute img,
-.peitho-alternativo img {
-  width: auto;
-  height: 60vh;
-}
-
-.peitho-cute {
-  background: #fce4ec;
-  box-shadow: #c7a7ff 4px 4px 0px 4px;
-  color: #c7a7ff;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 2px 0 #000,
-    1px 0px 0 #000;
-}
-
-.peitho-alternativo {
-  background: #2d2d33;
-  box-shadow: #5c5c5c 4px 4px 0px 4px;
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 2px 0 #fff,
-    1px 0px 0 #fff;
-}
-
-.instagram {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  width: auto;
-  margin: 50px;
-  flex-direction: column;
-}
-
-.instagram img {
-  height: auto;
-  width: 90vw;
-}
-
-.icon img {
-  height: 30px;
-  width: auto;
-}
-
-/* From cssbuttons.io */
-.instagram button {
-  align-items: center;
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #000000;
-  display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 18px;
-  justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 3px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.instagram button:active,
-.instagram button:hover {
-  outline: 0;
-}
-
-.instagram button span {
-  background-color: #ffc8dd;
-  padding: 16px 24px;
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-  transition: 300ms;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.instagram button:hover span {
-  background: none;
-}
-
-.instagram button:active {
-  transform: scale(0.9);
+  max-width: 250px;
+  margin: 0 10px;
 }
 
 .wrapper {
@@ -334,8 +326,8 @@
 
 canvas {
   height: 500px;
-
-}@keyframes fade-in-left {
+}
+@keyframes fade-in-left {
   0% {
     transform: translateX(-50px);
     opacity: 0;
@@ -353,10 +345,9 @@ canvas {
     margin-bottom: 15px;
   }
 
-  .product-info{
+  .product-info {
     width: auto;
     justify-content: unset;
-    align-items: unset;
   }
 
   .product-info h2 {
@@ -370,19 +361,41 @@ canvas {
     text-decoration: underline;
     margin: 0;
   }
-  .BigImage{
-    min-height: 60vh;
+
+  .product-carousel{
+    width: auto;
   }
-  .BigImage img{
+
+  .BigImage {
+    height: auto;
+    min-width: 300px;
+  }
+  .BigImage img {
     height: 60vh;
   }
-  .LittleImages{
+  .BigImageContainer{
+    display: flex;
+    justify-content: center;
+  }
+  .LittleImages {
     flex-basis: 100%;
     display: flex;
     overflow-x: scroll;
+    min-height: 120px;
+    width: 100%;
   }
-  .LittleImages img{
+  .LittleImages img {
     height: 120px;
+  }
+  .LittleImagesWrapper{
+    width: 100%;
+    height: auto;
+    backdrop-filter: contrast(0.7);
+  }
+
+  .SingleLittleImage{
+    height: 150px;
+    margin: 10px 0;
   }
 
   .section-title {
@@ -400,42 +413,70 @@ canvas {
     width: 100vw;
   }
 
-  .popular-grids {
+  .popular-wrapper1{
     width: 100vw;
-    gap: 3vw;
+    height: 250px;
+  }
+  .popular-grids {
+    height: 250px;
+    /* gap: 3vw; */
     justify-items: center;
     justify-content: flex-start;
     direction: rtl;
-    animation: Loop 13s linear infinite;
-    transition: 0.25s ease;
+    animation: Loop 35s linear infinite;
   }
-
-  .popular-grids2 {
+  .popular-grids:hover{
+    animation-play-state: running;
+  }
+  
+  .popular-grids2:hover{
+    animation-play-state: running;
+  }
+  .popular-wrapper2{
     width: 100vw;
-    gap: 3vw;
+    height: 250px;
+  }
+  .popular-grids2 {
+    height: 250px;
+    /* gap: 3vw; */
     justify-items: center;
     justify-content: flex-start;
-    animation: Loop2 13s linear infinite;
-    transition: 0.1s ease;
+    animation: Loop2 35s linear infinite;
+  }
+
+  .imgContainer {
+    width: 225px;
+    border: 1px solid black;
+    height: 250px;
+  }
+  .imgContainer a{
+    height: 250px;
+  }
+  .imgContainer .card-body{
+    opacity: 1;
+    padding: 0;
+    white-space: pre-wrap;
   }
 
   .popular-grids img {
-    height: 200px;
+    height: 250px;
     /* max-width: 160px; */
-    width: 140px;
+    width: 200px;
+    /* width: auto; */
+    object-fit: cover;
   }
 
   .popular-grids2 img {
-    height: 200px;
+    height: 250px;
     /* max-width: 160px; */
-    width: 140px;
+    /* width: 200px; */
   }
 
   .style-container {
     width: 100vw;
     align-items: normal;
     padding: 30px 0;
-    
+
     align-items: center;
   }
   .peitho-style {
@@ -474,57 +515,6 @@ canvas {
   .icon img {
     height: 30px;
     width: auto;
-  }
-
-  /* From cssbuttons.io */
-  .instagram button {
-    align-items: center;
-    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-    border: 0;
-    border-radius: 8px;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    box-sizing: border-box;
-    color: #000000;
-    display: flex;
-    font-family: Phantomsans, sans-serif;
-    font-size: 18px;
-    justify-content: center;
-    line-height: 1em;
-    max-width: 100%;
-    min-width: 140px;
-    padding: 3px;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .instagram button:active,
-  .instagram button:hover {
-    outline: 0;
-  }
-
-  .instagram button span {
-    background-color: #ffc8dd;
-    padding: 0;
-    border-radius: 6px;
-    width: 100%;
-    height: 100%;
-    transition: 300ms;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .instagram button:hover span {
-    background: none;
-  }
-
-  .instagram button:active {
-    transform: scale(0.9);
   }
   .videodiv {
     /* position: relative; */
@@ -573,17 +563,17 @@ canvas {
 
 @keyframes Loop {
   0% {
-    transform: translateX(0);
+    transform: translate(-50%, 0);
   }
   100% {
-    transform: translateX(200%);
+    transform: translate(0, 0);
   }
 }
 @keyframes Loop2 {
   0% {
-    transform: translateX(0);
+    transform: translate(0, 0);
   }
   100% {
-    transform: translateX(-200%);
+    transform: translate(-50%, 0);
   }
 }

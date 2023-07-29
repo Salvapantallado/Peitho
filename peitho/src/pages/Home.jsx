@@ -1,6 +1,8 @@
-import React, { 
-  // Suspense, 
-  useEffect, useState } from "react";
+import React, {
+  // Suspense,
+  useEffect,
+  useState,
+} from "react";
 import { useDispatch } from "react-redux";
 import { getFavorites } from "../actions";
 
@@ -20,12 +22,16 @@ import TransitionOut from "../components/shared-components/TransitionOut";
 // import Sew from "../components/home-components/Sew";
 
 import "../styles/home.css";
+import { Toaster } from "react-hot-toast";
 
-export default function Home({ flag, setFlag, screenTransition,
-  setScreenTransition}) {
+export default function Home({
+  flag,
+  setFlag,
+  screenTransition,
+  setScreenTransition,
+}) {
   const dispatch = useDispatch();
   const [localFavorites, setLocalFavorites] = useState([]);
-
 
   useEffect(() => {
     dispatch(getFavorites(localFavorites));
@@ -46,28 +52,31 @@ export default function Home({ flag, setFlag, screenTransition,
   console.log(flag, "flag home");
   return (
     <>
-        {screenTransition ? <TransitionOut /> : <HomeLoad />}
-        <Ticker />
-        <MainImage />
+      {screenTransition ? <TransitionOut /> : <HomeLoad />}
+      <Ticker />
+      <MainImage />
       <div className="home">
         <Navbar
           screenTransition={screenTransition}
           setScreenTransition={setScreenTransition}
-        />
+          />
         <MobileNavbar
           screenTransition={screenTransition}
           setScreenTransition={setScreenTransition}
-        />
+          />
+          <Toaster position="bottom-center" reverseOrder={false} />
         <CategoryBubble flag={flag} setFlag={setFlag} />
         <div className="container">
           {/* <div className="background" /> */}
           <div className="home-container">
-              <HomeProducts/>
+            <div className="section-title">
+              <h2>Último lanzamiento</h2>
+            </div>
+            <HomeProducts />
           </div>
         </div>
         <Footer />
-      </div> 
+      </div>
     </>
   );
 }
-

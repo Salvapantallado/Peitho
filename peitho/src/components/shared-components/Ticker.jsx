@@ -1,5 +1,5 @@
 import React from "react";
-import PeithoWhite from "../../images/Navbar/peitho-white.jpeg";
+// import PeithoWhite from "../../images/Navbar/peitho-white.jpeg";
 import PeithoBlack from "../../images/Navbar/peitho-black.jpeg";
 import "../../styles/ticker.css";
 

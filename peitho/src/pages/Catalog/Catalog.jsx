@@ -9,12 +9,13 @@ import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Footer from "../../components/shared-components/Footer";
+import PaginationComponent from "../../components/catalog-components/pagination";
 
 export default function Catalog({flag, setFlag, extraFlag, setExtraFlag}) {
   const [currentPage, setCurrentPage] = useState(1);
   let currentFilter = useState([]);
   let [currentProducts] = useState([]);
-  const [productsPerPage] = useState(8);
+  const [productsPerPage] = useState(6);
   const [screenTransition, setScreenTransition] = useState(false);
   let pageNumber = 0;
 
@@ -26,7 +27,6 @@ export default function Catalog({flag, setFlag, extraFlag, setExtraFlag}) {
     <>
       {screenTransition ? <TransitionOut /> : <TransitionIn />}
       <div> 
-        <Ticker />
         <Navbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
         <MobileNavbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
         <div className="catalog-wrapper">
@@ -52,12 +52,13 @@ export default function Catalog({flag, setFlag, extraFlag, setExtraFlag}) {
               setExtraFlag={setExtraFlag}
             />
           </div>
-            <Pagination
+            <PaginationComponent
               extRef={myRef}
               pageNumber={pageNumber}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
               productsPerPage={productsPerPage}
+              currentFilter={currentFilter}
             />
         </div>
         <Footer/>
