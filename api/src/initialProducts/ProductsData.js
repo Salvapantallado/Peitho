@@ -7,7 +7,7 @@ const products = [
 		description2: "⚠️Estampado no disponible! Puede hacerse en otras telas y cualquier medida!",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Midi/Falda-Midi.jpeg"],
+		image: ["./Product-images/Falda-Midi/Falda-Midi.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -19,7 +19,7 @@ const products = [
 		description2: "Precio Liso $2300, Precio Estampado $3100",
 		price2: 4450,
 		category: ["tops"],
-		image: ["/ProductImages/Tops-Microtul/Top-Microtul-1.jpeg", "/ProductImages/Tops-Microtul/Top-Microtul-2.jpeg", "/ProductImages/Tops-Microtul/Top-Microtul-3.jpeg"],
+		image: ["./Product-images/Tops-Microtul/Top-Microtul-1.jpeg", "./Product-images/Tops-Microtul/Top-Microtul-2.jpeg", "./Product-images/Tops-Microtul/Top-Microtul-3.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -31,7 +31,7 @@ const products = [
 		description2: "Se hace a medida! Puede hacerse en otras telas ✨",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Lea/Falda-Lea-1.jpeg", "/ProductImages/Falda-Lea/Falda-Lea-2.jpeg", "/ProductImages/Falda-Lea/Falda-Lea-3.jpeg", "/ProductImages/Falda-Lea/Falda-Lea-4.jpeg"],
+		image: ["./Product-images/Falda-Lea/Falda-Lea-1.jpeg", "./Product-images/Falda-Lea/Falda-Lea-2.jpeg", "./Product-images/Falda-Lea/Falda-Lea-3.jpeg", "./Product-images/Falda-Lea/Falda-Lea-4.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -43,7 +43,7 @@ const products = [
 		description2: "También puede hacerse largo midi",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-media-campana/Falda-media-campana-1.jpeg", "/ProductImages/Falda-media-campana/Falda-media-campana-2.jpeg"],
+		image: ["./Product-images/Falda-media-campana/Falda-media-campana-1.jpeg", "./Product-images/Falda-media-campana/Falda-media-campana-2.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -55,7 +55,7 @@ const products = [
 		description2: "Camisa tipo crop precio alternativo",
 		price2: 7380,
 		category: ["camisas"],
-		image: ["/ProductImages/Camisa-Unisex/Camisa-Unisex-1.jpeg", "/ProductImages/Camisa-Unisex/Camisa-Unisex-2.jpeg", "/ProductImages/Camisa-Unisex/Camisa-Unisex-3.jpeg", "/ProductImages/Camisa-Unisex/Camisa-Unisex-4.jpeg"],
+		image: ["./Product-images/Camisa-Unisex/Camisa-Unisex-1.jpeg", "./Product-images/Camisa-Unisex/Camisa-Unisex-2.jpeg", "./Product-images/Camisa-Unisex/Camisa-Unisex-3.jpeg", "./Product-images/Camisa-Unisex/Camisa-Unisex-4.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -67,7 +67,7 @@ const products = [
 		description2: "Se hace por talle, con el largo que deseen!",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-cuadrille/Falda-cuadrille.jpeg"],
+		image: ["./Product-images/Falda-cuadrille/Falda-cuadrille.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -79,7 +79,7 @@ const products = [
 		description2: "",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Cutie/Falda-Cutie-1.jpeg", "/ProductImages/Falda-Cutie/Falda-Cutie-2.jpeg", "/ProductImages/Falda-Cutie/Falda-Cutie-3.jpeg"],
+		image: ["./Product-images/Falda-Cutie/Falda-Cutie-1.jpeg", "./Product-images/Falda-Cutie/Falda-Cutie-2.jpeg", "./Product-images/Falda-Cutie/Falda-Cutie-3.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -90,7 +90,7 @@ const products = [
 		description2: "",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-Panda/Vestido-Panda.jpeg"],
+		image: ["./Product-images/Vestido-Panda/Vestido-Panda.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -102,7 +102,7 @@ const products = [
 		description2: "Falda Volados descripcion 2",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Volados/Falda-Volados-1.jpeg","/ProductImages/Falda-Volados/Falda-Volados-2.jpeg","/ProductImages/Falda-Volados/Falda-Volados-3.jpeg","/ProductImages/Falda-Volados/Falda-Volados-4.jpeg"],
+		image: ["./Product-images/Falda-Volados/Falda-Volados-1.jpeg","./Product-images/Falda-Volados/Falda-Volados-2.jpeg","./Product-images/Falda-Volados/Falda-Volados-3.jpeg","./Product-images/Falda-Volados/Falda-Volados-4.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -114,7 +114,7 @@ const products = [
 		description2: "Una prenda que queda bien con todo!",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Tableada/Falda-Tableada.jpeg"],
+		image: ["./Product-images/Falda-Tableada/Falda-Tableada.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -126,7 +126,7 @@ const products = [
 		description2: "Falda cuadrille elastizada descripción 2",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Cuadrille-Elastizada/Falda-Cuadrille-Elastizada-1.jpeg", "/ProductImages/Falda-Cuadrille-Elastizada/Falda-Cuadrille-Elastizada-2.jpeg"],
+		image: ["./Product-images/Falda-Cuadrille-Elastizada/Falda-Cuadrille-Elastizada-1.jpeg", "./Product-images/Falda-Cuadrille-Elastizada/Falda-Cuadrille-Elastizada-2.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -138,7 +138,7 @@ const products = [
 		description2: "Remeras descripción 2",
 		price2: 0,
 		category: ["tops"],
-		image: ["/ProductImages/Remeras/Remeras-1.jpeg", "/ProductImages/Remeras/Remeras-2.jpeg", "/ProductImages/Remeras/Remeras-3.jpeg", "/ProductImages/Remeras/Remeras-4.jpeg", "/ProductImages/Remeras/Remeras-5.jpeg"],
+		image: ["./Product-images/Remeras/Remeras-1.jpeg", "./Product-images/Remeras/Remeras-2.jpeg", "./Product-images/Remeras/Remeras-3.jpeg", "./Product-images/Remeras/Remeras-4.jpeg", "./Product-images/Remeras/Remeras-5.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -150,7 +150,7 @@ const products = [
 		description2: "Blusa Peter descripción 2",
 		price2: 0,
 		category: ["tops"],
-		image: ["/ProductImages/Blusa-Peter/Blusa-Peter-1.jpeg", "/ProductImages/Blusa-Peter/Blusa-Peter-2.jpeg", "/ProductImages/Blusa-Peter/Blusa-Peter-3.jpeg", "/ProductImages/Blusa-Peter/Blusa-Peter-4.jpeg"],
+		image: ["./Product-images/Blusa-Peter/Blusa-Peter-1.jpeg", "./Product-images/Blusa-Peter/Blusa-Peter-2.jpeg", "./Product-images/Blusa-Peter/Blusa-Peter-3.jpeg", "./Product-images/Blusa-Peter/Blusa-Peter-4.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -162,7 +162,7 @@ const products = [
 		description2: "Falda Cindy Cuadrille descripción 2",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Cindy-Cuadrille/Falda-Cindy-Cuadrille-1.jpeg", "/ProductImages/Falda-Cindy-Cuadrille/Falda-Cindy-Cuadrille-2.jpeg", "/ProductImages/Falda-Cindy-Cuadrille/Falda-Cindy-Cuadrille-3.jpeg"],
+		image: ["./Product-images/Falda-Cindy-Cuadrille/Falda-Cindy-Cuadrille-1.jpeg", "./Product-images/Falda-Cindy-Cuadrille/Falda-Cindy-Cuadrille-2.jpeg", "./Product-images/Falda-Cindy-Cuadrille/Falda-Cindy-Cuadrille-3.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -174,7 +174,7 @@ const products = [
 		description2: "Falda Cindy Lana descripción 2",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-Cindy-Lana/Falda-Cindy-Lana-1.jpeg", "/ProductImages/Falda-Cindy-Lana/Falda-Cindy-Lana-2.jpeg"],
+		image: ["./Product-images/Falda-Cindy-Lana/Falda-Cindy-Lana-1.jpeg", "./Product-images/Falda-Cindy-Lana/Falda-Cindy-Lana-2.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -186,7 +186,7 @@ const products = [
 		description2: "Vestido Peter Lino descripción 2",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-Peter-Lino/Vestido-Peter-Lino-1.jpeg", "/ProductImages/Vestido-Peter-Lino/Vestido-Peter-Lino-2.jpeg"],
+		image: ["./Product-images/Vestido-Peter-Lino/Vestido-Peter-Lino-1.jpeg", "./Product-images/Vestido-Peter-Lino/Vestido-Peter-Lino-2.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -198,7 +198,7 @@ const products = [
 		description2: "Vestido Básico Bengalina descripción 2",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-Básico-Bengalina/Vestido-Básico-Bengalina-1.jpeg", "/ProductImages/Vestido-Básico-Bengalina/Vestido-Básico-Bengalina-2.jpeg", "/ProductImages/Vestido-Básico-Bengalina/Vestido-Básico-Bengalina-3.jpeg"],
+		image: ["./Product-images/Vestido-Básico-Bengalina/Vestido-Básico-Bengalina-1.jpeg", "./Product-images/Vestido-Básico-Bengalina/Vestido-Básico-Bengalina-2.jpeg", "./Product-images/Vestido-Básico-Bengalina/Vestido-Básico-Bengalina-3.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -210,7 +210,7 @@ const products = [
 		description2: "Top microtul ángeles descripción 2",
 		price2: 4450,
 		category: ["tops"],
-		image: ["/ProductImages/Tops-Microtul/Top-Microtul-Angeles.jpeg"],
+		image: ["./Product-images/Tops-Microtul/Top-Microtul-Angeles.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -222,7 +222,7 @@ const products = [
 		description2: "Top microtul astral descripción 2",
 		price2: 4450,
 		category: ["tops"],
-		image: ["/ProductImages/Tops-Microtul/Top-Microtul-Astral.jpeg"],
+		image: ["./Product-images/Tops-Microtul/Top-Microtul-Astral.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -234,7 +234,7 @@ const products = [
 		description2: "Top microtul dragones descripción 2",
 		price2: 4450,
 		category: ["tops"],
-		image: ["/ProductImages/Tops-Microtul/Top-Microtul-Dragones.jpeg"],
+		image: ["./Product-images/Tops-Microtul/Top-Microtul-Dragones.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -246,7 +246,7 @@ const products = [
 		description2: "Vestido Liz descripción 2",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-Liz/Vestido-Liz-1.jpeg", "/ProductImages/Vestido-Liz/Vestido-Liz-2.jpeg", "/ProductImages/Vestido-Liz/Vestido-Liz-3.jpeg", "/ProductImages/Vestido-Liz/Vestido-Liz-4.jpeg"],
+		image: ["./Product-images/Vestido-Liz/Vestido-Liz-1.jpeg", "./Product-images/Vestido-Liz/Vestido-Liz-2.jpeg", "./Product-images/Vestido-Liz/Vestido-Liz-3.jpeg", "./Product-images/Vestido-Liz/Vestido-Liz-4.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -258,7 +258,7 @@ const products = [
 		description2: "Jardinero Over descripción 2",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Jardinero-Over/Jardinero-Over-1.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-2.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-Negro-1.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-Negro-2.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-Negro-3.jpeg"],
+		image: ["./Product-images/Jardinero-Over/Jardinero-Over-1.jpeg", "./Product-images/Jardinero-Over/Jardinero-Over-2.jpeg", "./Product-images/Jardinero-Over/Jardinero-Over-Negro-1.jpeg", "./Product-images/Jardinero-Over/Jardinero-Over-Negro-2.jpeg", "./Product-images/Jardinero-Over/Jardinero-Over-Negro-3.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -269,7 +269,7 @@ const products = [
 		description2: "Manga larga precio alternativo",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-San-Valentin/Vestido-San-Valentin-1.jpeg", "/ProductImages/Vestido-San-Valentin/Vestido-San-Valentin-2.jpeg"],
+		image: ["./Product-images/Vestido-San-Valentin/Vestido-San-Valentin-1.jpeg", "./Product-images/Vestido-San-Valentin/Vestido-San-Valentin-2.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -280,7 +280,7 @@ const products = [
 		description2: "Manga larga precio alternativo",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-San-Valentin/Vestido-San-Valentin-manga-larga-1.jpeg", "/ProductImages/Vestido-San-Valentin/Vestido-San-Valentin-manga-larga-2.jpeg", "/ProductImages/Vestido-San-Valentin/Vestido-San-Valentin-manga-larga-3.jpeg"],
+		image: ["./Product-images/Vestido-San-Valentin/Vestido-San-Valentin-manga-larga-1.jpeg", "./Product-images/Vestido-San-Valentin/Vestido-San-Valentin-manga-larga-2.jpeg", "./Product-images/Vestido-San-Valentin/Vestido-San-Valentin-manga-larga-3.jpeg"],
 		product_qty: 1,
 		extra: "peitho"
 	},
@@ -292,7 +292,7 @@ const products = [
 		description2: "Vestido Lexie descripción 2",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-Lexie/Vestido-Lexie-1.jpeg", "/ProductImages/Vestido-Lexie/Vestido-Lexie-2.jpeg", "/ProductImages/Vestido-Lexie/Vestido-Lexie-3.jpeg"],
+		image: ["./Product-images/Vestido-Lexie/Vestido-Lexie-1.jpeg", "./Product-images/Vestido-Lexie/Vestido-Lexie-2.jpeg", "./Product-images/Vestido-Lexie/Vestido-Lexie-3.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -304,7 +304,7 @@ const products = [
 		description2: "Sweater Hongos descripción 2",
 		price2: 0,
 		category: ["abrigos"],
-		image: ["/ProductImages/Sweaters/Sweater-Hongo-1.jpeg", "/ProductImages/Sweaters/Sweater-Hongo-2.jpeg", "/ProductImages/Sweaters/Sweaters"],
+		image: ["./Product-images/Sweaters/Sweater-Hongo-1.jpeg", "./Product-images/Sweaters/Sweater-Hongo-2.jpeg", "./Product-images/Sweaters/Sweaters"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -316,7 +316,7 @@ const products = [
 		description2: "Sweater Nubes descripción 2",
 		price2: 0,
 		category: ["abrigos"],
-		image: ["/ProductImages/Sweaters/Sweater-Nube-1.jpeg", "/ProductImages/Sweaters/Sweater-Nube-2.jpeg", "/ProductImages/Sweaters/Sweater-Nube-3.jpeg", "/ProductImages/Sweaters/Sweaters"],
+		image: ["./Product-images/Sweaters/Sweater-Nube-1.jpeg", "./Product-images/Sweaters/Sweater-Nube-2.jpeg", "./Product-images/Sweaters/Sweater-Nube-3.jpeg", "./Product-images/Sweaters/Sweaters"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -328,7 +328,7 @@ const products = [
 		description2: "Vestido Margot descripción 2",
 		price2: 0,
 		category: ["vestidos"],
-		image: ["/ProductImages/Vestido-Margot/Vestido-Margot-1.jpeg", "/ProductImages/Vestido-Margot/Vestido-Margot-2.jpeg", "/ProductImages/Vestido-Margot/Vestido-Margot-3.jpeg", "/ProductImages/Vestido-Margot/Vestido-Margot-4.jpeg", ],
+		image: ["./Product-images/Vestido-Margot/Vestido-Margot-1.jpeg", "./Product-images/Vestido-Margot/Vestido-Margot-2.jpeg", "./Product-images/Vestido-Margot/Vestido-Margot-3.jpeg", "./Product-images/Vestido-Margot/Vestido-Margot-4.jpeg", ],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
