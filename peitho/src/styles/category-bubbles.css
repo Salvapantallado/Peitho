@@ -7,8 +7,14 @@
 	width: 100%;
 	background-color: transparent;
 	z-index: 2;
-	margin: 20px;
+	gap: 40px;
+	margin: 20px 0;
 	/* padding: 20px 0; */
+}
+.bubbleGroupWrapper{
+	display: flex;
+    width: 100%;
+    justify-content: space-evenly;
 }
 .bubbleGroupWrapper button{
 	border: none;
@@ -24,7 +30,7 @@
 	transition: 0.5s ease-in-out;
 	justify-content: space-evenly;
 	display: flex;
-	width: 90%;
+	/* width: 90%; */
     margin: 5px;
 }
 .bubbleGroupWrapper a {
@@ -37,8 +43,8 @@
 }
 
 .bubbleGroupWrapper img {
-	width: 90px;
-	height: 90px;
+	width: 70px;
+	height: 70px;
 	border-radius: 50%;
 	border: 2px solid white;
 	box-shadow: 0px 0px 20px 2px;

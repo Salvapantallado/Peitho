@@ -14,6 +14,11 @@
   font-family: "Kirimaru";
   font-size: 40px;
 }
+.CatalogDivider{
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+}
 .catalog-container {
   display: flex;
   width: 100%;
@@ -28,8 +33,9 @@
   justify-content: center;
   height: auto;
   display: flex;
-  width: 90vw;
-  /* gap: 30px; */
+  /* width: 90vw; */
+  margin: 30px 0;
+  gap: 30px;
   background-color: transparent;
   justify-content: center;
   flex-direction: column;
@@ -107,7 +113,9 @@
 
 .searchbar {
   position: relative;
-  width: 90%;
+  /* width: 100%;
+  display: flex;
+  justify-content: center; */
 }
 .searchbar input {
   padding: 10px;
@@ -190,6 +198,11 @@
     /* margin: 20px; */
     flex-direction: column;
     align-items: center;
+  }
+  .CatalogDivider{
+    width: auto;
+    display: flex;
+    justify-content: center;
   }
   /* .catalog-container .category-bubbles {
     display: grid;

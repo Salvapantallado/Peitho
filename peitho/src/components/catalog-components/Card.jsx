@@ -149,6 +149,9 @@ export default function Card({
   return (
     <>
       <div className="category-wrapper">
+        <div className="CatalogDivider">
+          <div>
+
         <Toaster position="bottom-center" reverseOrder={false} />
         <Searchbar clothes={productsFromNewest} />
         <div className="category-button">
@@ -183,8 +186,8 @@ export default function Card({
         </div>
           {/* <div className="category-container">
             <button onClick={() => filter("pantalones")}>
-              <img src={Pantalon} alt="Pantalones" />
-              <span>Pantalones</span>
+            <img src={Pantalon} alt="Pantalones" />
+            <span>Pantalones</span>
             </button>
           </div> */}
         <div className="bubbleGroupWrapper">
@@ -205,11 +208,12 @@ export default function Card({
         </div>
         </div>
       </div>
+          </div>
       <div className="cards-container">
         <div className="cards-grid" {...handlers}>
           {currentFilter.length !== 0
             ? currentFilter.map((product) => (
-                <div className="product-card" key={product.id}>
+              <div className="product-card" key={product.id}>
                   <div className="card animate__animated animate__fadeInRight">
                     <Link to={`/catalogo/${product.id}`}>
                       <img
@@ -277,6 +281,7 @@ export default function Card({
                 </div>
               ))}
         </div>
+      </div>
       </div>
     </>
   );

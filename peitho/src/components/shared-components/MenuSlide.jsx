@@ -33,9 +33,9 @@ export default function MenuSlide({open, setOpen, LoadCurtain}) {
                 <button onClick={() => LoadCurtain("/tabla-de-medidas")}>
                   <h2>Tabla de medidas</h2>
                 </button>
-                <button onClick={() => LoadCurtain("/telas-disponibles")}>
+                {/* <button onClick={() => LoadCurtain("/telas-disponibles")}>
                   <h2>Telas disponibles</h2>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -53,12 +53,12 @@ export default function MenuSlide({open, setOpen, LoadCurtain}) {
                 {/* <button onClick={() => LoadCurtain("/admin")}>
             <h2>Admin Add</h2>
           </button> */}
-                <button onClick={() => LoadCurtain("/")}>
+                <button onClick={() => LoadCurtain("/tabla-de-medidas")}>
                   <h2>Tabla de medidas</h2>
                 </button>
-                <button onClick={() => LoadCurtain("/telas-disponibles")}>
+                {/* <button onClick={() => LoadCurtain("/telas-disponibles")}>
                   <h2>Telas disponibles</h2>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
