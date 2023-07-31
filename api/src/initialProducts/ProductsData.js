@@ -67,7 +67,7 @@ const products = [
 		description2: "Se hace por talle, con el largo que deseen!",
 		price2: 0,
 		category: ["faldas"],
-		image: ["/ProductImages/Falda-cuadrille/Falda-Cuadrille.jpeg"],
+		image: ["/ProductImages/Falda-Cuadrille/Falda-Cuadrille.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
