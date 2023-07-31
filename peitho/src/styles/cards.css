@@ -140,11 +140,11 @@
 }
 
 .category-button {
-  margin: 5px;
+  margin: 20px 0;
 }
 
 .category-button button{
-  padding: 20px 0;
+  padding: 5px;
   all: unset;
   background-image: url("../images/Home/Bannerfinalfinal.jpeg");
   background-size: cover;
@@ -154,6 +154,7 @@
 
 .category-button h1{
   font-size: 24px;
+  text-align: center;
 }
 
 @media screen and (max-width: 875px) {
