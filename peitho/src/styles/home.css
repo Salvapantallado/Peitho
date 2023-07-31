@@ -348,16 +348,17 @@ canvas {
   .product-info {
     width: auto;
     justify-content: unset;
+    align-items: unset;
   }
 
   .product-info h2 {
-    font-size: 36px;
+    font-size: 18px;
     text-decoration: underline;
     margin: 0;
   }
 
   .product-info h3 {
-    font-size: 20px;
+    font-size: 16px;
     text-decoration: underline;
     margin: 0;
   }
@@ -368,7 +369,7 @@ canvas {
 
   .BigImage {
     height: auto;
-    min-width: 300px;
+    max-width: 90vw;
   }
   .BigImage img {
     height: 60vh;
@@ -401,12 +402,13 @@ canvas {
   .section-title {
     background: #675f9c;
     width: 100vw;
-    margin-bottom: 20px;
+    margin-top: 20px;
     font-size: 18px;
     padding: 10px 0;
   }
   .section-title h2 {
     margin: 0;
+    font-size: 18px;
   }
 
   .popular-wrapper {
@@ -559,6 +561,10 @@ canvas {
     z-index: 1;
     visibility: hidden;
   }
+}
+
+.storyButtons {
+  width: 75%;
 }
 
 @keyframes Loop {

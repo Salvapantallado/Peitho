@@ -144,8 +144,8 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                 </div>
 
                 <div className="detail-wrapper">
-            <h2 style={{fontSize: "36px", textAlign: "center", marginTop: "0"}}>{productDetail.name}</h2>
-                    {favProducts !== null &&
+            <h2>{productDetail.name}</h2>
+                    {/* {favProducts !== null &&
                     favProducts.some((prod) => prod.id === productDetail.id) ? (
                       <div className="favs-added">
                         <button onClick={() => handleClick(productDetail)}>
@@ -158,7 +158,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                           <img src="/ImgHelpers/AddFav.png" alt="add fav" />
                         </button>
                       </div>
-                    )}
+                    )} */}
                   <div className="detail-container">
                     {/* <h2>{productDetail.name}</h2> */}
                     {productDetail.description2 !== "" ? (
@@ -176,7 +176,20 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                       </div>
                     )}
                     {/* <h2>$ {productDetail.price}</h2> */}
-
+                    {favProducts !== null && favProducts !== undefined &&
+                    favProducts.some((prod) => prod.id === productDetail.id) ? (
+                      <div className="favs-added">
+                        <button onClick={() => handleClick(productDetail)}>
+                          <img src="/ImgHelpers/FavAdded.png" alt="added fav" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="add-favs">
+                        <button onClick={() => handleClick(productDetail)}>
+                          <img src="/ImgHelpers/AddFav.png" alt="add fav" />
+                        </button>
+                      </div>
+                    )}
                     
                   </div>
                 </div>
@@ -212,7 +225,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                             }
                             alt="product sample"
                           />
-                          <div className="card-body">
+                          <div style={{margin: "0"}} className="card-body">
                             <h3>{product.name}</h3>
                           </div>
                         </a>

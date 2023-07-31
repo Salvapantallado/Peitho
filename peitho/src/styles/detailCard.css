@@ -27,7 +27,7 @@
 }
 
 .detail-description h3{
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .detail-container {
@@ -43,20 +43,21 @@
 }
 
 .detail-container h1 {
-  font-size: 45px;
+  font-size: 28px;
   margin: 0;
   font-weight: 400;
 }
 
 .detail-container h2 {
-  font-size: 40px;
+  font-size: 26px;
   margin: 0;
   font-weight: 100;
 }
 
 .detail-container p {
-  font-size: 20px;
+  font-size: 16px;
 }
+
 
 .detail-buttons img {
   width: 60px;
@@ -139,24 +140,26 @@
   width: 40px;
   height: 40px;
   display: flex;
-  position: absolute;
+  position: unset;
   right: 25%;
   top: 3%;
   border-radius: 50%;
   transition: 0.5s ease-in;
   z-index: 2;
+  margin: 5% 0;
 }
 
 .detail-container .add-favs {
   width: 40px;
   height: 40px;
   display: flex;
-  position: absolute;
+  position: unset;
   right: 25%;
   top: 3%;
   border-radius: 50%;
   transition: 0.5s ease-in;
   z-index: 2;
+  margin: 5% 0;
 }
 
 .card:hover .add-fav img {
@@ -269,9 +272,9 @@
   .detail-link {
     margin: 4vh 0 2vh 4vw;
   }
-  .detail-container {
+  /* .detail-container {
     margin: 0 10% 10% 10%;
-  }
+  } */
   .prev-img img {
     max-width: 90vw;
     min-width: 200px;
@@ -281,12 +284,21 @@
     margin: 0 2vw;
   }
 
+.arrimgs{
+  min-width: 90px;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+    -webkit-backdrop-filter: contrast(0.5);
+    backdrop-filter: contrast(0.5);
+}
+
   .arrimgs img {
-    height: 10vh;
+    /* height: 10vh; */
     min-height: 70px;
     width: auto;
-    min-width: 75px;
-    max-height: 11vh;
+    /* min-width: 75px; */
+    /* max-height: 11vh; */
   }
   /* .image-box {
     height: 55vh;
@@ -294,10 +306,12 @@
   .detail-container .add-favs {
     border-radius: 50%;
     right: 6%;
+    transition: none;
   }
   .detail-container .favs-added {
     border-radius: 50%;
     right: 6%;
+    transition: none;
   }
 
   .other-items {

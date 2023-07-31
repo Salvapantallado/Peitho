@@ -1,5 +1,7 @@
 import "../../styles/footer.css";
 import Logo from "../../images/Navbar/logo.jpg";
+import InstaIcon from "../../images/Instagram.png";
+
 
 export default function Footer() {
   return (
@@ -22,16 +24,14 @@ export default function Footer() {
               <a href="/catalogo">Catalogo</a>
             </li>
             <li>
-              <a href="/favoritos">Favoritos</a>
-            </li>
-            <li>
-              <a href="/">Etcetera</a>
+              <a href="/tabla-de-medidas">Tablas de Medidas</a>
             </li>
           </ul>
         </div>
         <div>
           <h1>Redes sociales</h1>
           <p>Seguime en Instagram</p>
+          <p><a target="_blank" rel="noreferrer" style={{fontFamily: "Unifrakturcook", color: "slateblue"}} href="https://www.instagram.com/peitho.ok/"><img style={{width: "16px", height: "16px"}} src={InstaIcon} alt="instaicon"/>Peitho Diseños</a></p>
         </div>
       </div>
     </div>

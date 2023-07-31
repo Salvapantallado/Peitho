@@ -304,7 +304,7 @@ const products = [
 		description2: "Sweater Hongos descripción 2",
 		price2: 0,
 		category: ["abrigos"],
-		image: ["/ProductImages/Sweaters/Sweater-Hongo-1.jpeg", "/ProductImages/Sweaters/Sweater-Hongo-2.jpeg", "/ProductImages/Sweaters/Sweaters"],
+		image: ["/ProductImages/Sweaters/Sweater-Hongo-1.jpeg", "/ProductImages/Sweaters/Sweater-Hongo-2.jpeg", "/ProductImages/Sweaters/Sweaters.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
@@ -316,7 +316,7 @@ const products = [
 		description2: "Sweater Nubes descripción 2",
 		price2: 0,
 		category: ["abrigos"],
-		image: ["/ProductImages/Sweaters/Sweater-Nube-1.jpeg", "/ProductImages/Sweaters/Sweater-Nube-2.jpeg", "/ProductImages/Sweaters/Sweater-Nube-3.jpeg", "/ProductImages/Sweaters/Sweaters"],
+		image: ["/ProductImages/Sweaters/Sweater-Nube-1.jpeg", "/ProductImages/Sweaters/Sweater-Nube-2.jpeg", "/ProductImages/Sweaters/Sweater-Nube-3.jpeg", "/ProductImages/Sweaters/Sweaters.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"
 	},
