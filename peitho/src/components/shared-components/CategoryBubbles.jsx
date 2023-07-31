@@ -41,37 +41,31 @@ export default function CategoryBubble({flag, setFlag }) {
           <img src={Top} alt="Tops" />
           <span>Tops</span>
         </button>
-      </div>
 
-      <div>
         <button className="category-container" onClick={() => redir("faldas")}>
           <img src={Falda} alt="Faldas" />
           <span>Faldas</span>
         </button>
-      </div>
 
-      <div>
         <button className="category-container" onClick={() => redir("vestidos")}>
           <img src={Vestido} alt="Vestidos" />
           <span>Vestidos</span>
         </button>
       </div>
 
-      <div>
+      {/* <div>
         <button className="category-container" onClick={() => redir("pantalones")}>
           <img src={Pantalon} alt="Pantalones" />
           <span>Pantalones</span>
         </button>
-      </div>
+      </div> */}
 
       <div>
         <button className="category-container" onClick={() => redir("abrigos")}>
           <img src={Abrigo} alt="Abrigos" />
           <span>Abrigos</span>
         </button>
-      </div>
 
-      <div>
         <button className="category-container" onClick={() => redir("camisas")}>
           <img src={Camisa} alt="Camisas" />
           <span>Camisas</span>

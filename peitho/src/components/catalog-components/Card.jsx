@@ -57,6 +57,12 @@ export default function Card({
     }
 }, [dispatch]);
 
+  useEffect(() => {
+    if(productList === []){
+      dispatch(getAllProducts());
+    }
+  }, [])
+
   function handleClick(data) {
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
 
@@ -150,7 +156,9 @@ export default function Card({
             <h1>Todos los productos</h1>
           </button>
         </div>
+
         <div className="category-bubbles">
+        <div>
           <div className="category-container">
             <button onClick={() => filter("tops")}>
               <img src={Top} alt="Tops" />
@@ -172,12 +180,14 @@ export default function Card({
             </button>
           </div>
 
-          <div className="category-container">
+        </div>
+          {/* <div className="category-container">
             <button onClick={() => filter("pantalones")}>
               <img src={Pantalon} alt="Pantalones" />
               <span>Pantalones</span>
             </button>
-          </div>
+          </div> */}
+        <div>
 
           <div className="category-container">
             <button onClick={() => filter("abrigos")}>
@@ -192,6 +202,7 @@ export default function Card({
               <span>Camisas</span>
             </button>
           </div>
+        </div>
         </div>
       </div>
       <div className="cards-container">

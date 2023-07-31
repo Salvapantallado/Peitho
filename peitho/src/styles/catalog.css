@@ -25,13 +25,14 @@
 }
 
 .catalog-container .category-bubbles {
-  display: grid;
   justify-content: center;
   height: auto;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
-  width: 20vw;
+  display: flex;
+  width: 90vw;
   gap: 30px;
   background-color: transparent;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .container-pagination {
