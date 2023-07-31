@@ -16,6 +16,8 @@ import Camisa from "../../images/Home/Bubbles/circle-six.jpg";
 import "../../styles/category-bubbles.css";
 import Searchbar from "./Searchbar";
 
+// HAY QUE ENCONTRAR EL ERROR QUE EJECUTA UN PERMA RENDER EN ESTE COMPONENTE
+
 export default function Card({
   currentPage,
   setCurrentPage,
@@ -25,7 +27,6 @@ export default function Card({
   productsPerPage,
   flag,
   setFlag,
-  extraFlag,
 }) {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.allProducts);
@@ -54,7 +55,7 @@ export default function Card({
     } catch(err){
       console.error(err)
     }
-}, [dispatch, localStorage.getItem("Obj")]);
+}, [dispatch]);
 
   function handleClick(data) {
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
@@ -83,7 +84,7 @@ export default function Card({
 
   const filter = (e) => {
     console.log(filteredClothes, "PRENDAS FILTRADAS");
-    dispatch(filterItems(e, productsFromNewest));
+    dispatch(filterItems(e, productList));
     setCurrentPage(1);
   };
 
@@ -111,14 +112,14 @@ export default function Card({
   useEffect(() => {
     try{
 
-      if (flag !== "" && flag !== null && productsFromNewest) {
+      if (flag !== "" && flag !== null && productList) {
         filter(flag.name);
         setFlag("");
       }
     } catch(err){
       console.error(err)
     }
-  }, [productsFromNewest]);
+  }, [productList]);
 
   // Handle swipe
   const handlers = useSwipeable({

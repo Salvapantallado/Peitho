@@ -34,7 +34,7 @@
   min-height: 85vh;
   /* max-height: 85vh; */
   padding-bottom: 20px;
-  backdrop-filter: contrast(0.5);
+  /* backdrop-filter: contrast(0.5); */
 }
 .section-title {
   position: relative;

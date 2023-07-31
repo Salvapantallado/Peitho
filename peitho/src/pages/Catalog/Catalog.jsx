@@ -9,7 +9,7 @@ import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Footer from "../../components/shared-components/Footer";
 import PaginationComponent from "../../components/catalog-components/pagination";
 
-export default function Catalog({flag, setFlag, extraFlag, setExtraFlag}) {
+export default function Catalog({flag, setFlag}) {
   const [currentPage, setCurrentPage] = useState(1);
   let currentFilter = useState([]);
   let [currentProducts] = useState([]);
@@ -46,8 +46,6 @@ export default function Catalog({flag, setFlag, extraFlag, setExtraFlag}) {
               productsPerPage={productsPerPage}
               flag={flag} 
               setFlag={setFlag}
-              extraFlag={extraFlag} 
-              setExtraFlag={setExtraFlag}
             />
           </div>
             <PaginationComponent
