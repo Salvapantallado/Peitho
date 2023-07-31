@@ -140,11 +140,11 @@
 }
 
 .category-button {
-  margin: 20px;
+  margin: 5px;
 }
 
 .category-button button{
-  padding: 20px;
+  padding: 20px 0;
   all: unset;
   background-image: url("../images/Home/Bannerfinalfinal.jpeg");
   background-size: cover;
