@@ -36,7 +36,7 @@ export default function CategoryBubble({flag, setFlag }) {
 
   return (
     <div className="category-bubbles">
-      <div>
+      <div className="bubbleGroupWrapper">
         <button className="category-container" onClick={() => redir("tops")}>
           <img src={Top} alt="Tops" />
           <span>Tops</span>
@@ -60,7 +60,7 @@ export default function CategoryBubble({flag, setFlag }) {
         </button>
       </div> */}
 
-      <div>
+      <div className="bubbleGroupWrapper">
         <button className="category-container" onClick={() => redir("abrigos")}>
           <img src={Abrigo} alt="Abrigos" />
           <span>Abrigos</span>

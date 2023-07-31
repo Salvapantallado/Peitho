@@ -158,7 +158,7 @@ export default function Card({
         </div>
 
         <div className="category-bubbles">
-        <div>
+        <div className="bubbleGroupWrapper">
           <div className="category-container">
             <button onClick={() => filter("tops")}>
               <img src={Top} alt="Tops" />
@@ -187,7 +187,7 @@ export default function Card({
               <span>Pantalones</span>
             </button>
           </div> */}
-        <div>
+        <div className="bubbleGroupWrapper">
 
           <div className="category-container">
             <button onClick={() => filter("abrigos")}>
