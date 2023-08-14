@@ -114,7 +114,9 @@
 	height: auto;
 	width: 30px;
   }
-
+.fav-number{
+  position: relative;
+}
 .fav-number p {
   z-index: 2;
   height: 20px;
@@ -123,8 +125,8 @@
   color: white;
   background-color: red;
   position: absolute;
-  right: 5%;
-  top: 5%;
+  left: 50%;
+  top: 0%;
   display: flex;
   justify-content: center;
   align-items: center;

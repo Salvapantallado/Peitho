@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
+import LogoutIcon from '@mui/icons-material/Logout';
 import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -153,8 +154,11 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-const EnhancedTableToolbar = ({ setSelected }) => {
+const EnhancedTableToolbar = ({ setSelected, setIsLogged }) => {
   // const { numSelected } = props;
+  const handleLogOut = () => {
+    localStorage.removeItem("logged");
+  }
 
   return (
     <Toolbar
@@ -184,7 +188,7 @@ const EnhancedTableToolbar = ({ setSelected }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "50%",
+            width: "70%",
             justifyContent: "space-evenly",
           }}
         >
@@ -229,6 +233,13 @@ const EnhancedTableToolbar = ({ setSelected }) => {
             </Link>
           </Tooltip>
         </div>
+          <div>
+
+          <Tooltip title="Log out">
+              <LogoutIcon onClick={handleLogOut} style={{cursor: "pointer"}}>
+              </LogoutIcon>
+          </Tooltip>
+          </div>
       </div>
     </Toolbar>
   );
