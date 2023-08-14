@@ -7,7 +7,7 @@ export default function HomeLoad() {
         <div className="aux">
 
       <div className="HomeLoad">
-        <video autoPlay muted>
+        <video autoPlay muted preload>
           <source src={PeithoGamma} type="video/mp4" />
         </video>
       </div>
