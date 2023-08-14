@@ -29,15 +29,18 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
 
   const noDetailArr = allProducts.filter((x) => x.id !== productDetail.id);
   const othersArr = noDetailArr.sort(() => Math.random() - 0.5).slice(0, 6);
-  console.log(others, allProducts);
 
   useEffect(() => {
     setScreenTransition(false);
+    /* eslint-disable */
   }, []);
+/* eslint-disable */
 
   useEffect(() => {
     setOthers(othersArr);
+    /* eslint-disable */
   }, [productDetail]);
+/* eslint-disable */
 
   useEffect(() => {
     setTimeout(() => {
@@ -61,7 +64,6 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
     let dataExists = LSArray.some((item) => item.id === data.id);
     if (!dataExists) {
-      console.log("No esta, pero se agrega");
       LSArray.push(data);
       dispatch(getFavorites(LSArray));
       localStorage.setItem("Obj", JSON.stringify(LSArray));
@@ -145,22 +147,7 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
 
                 <div className="detail-wrapper">
             <h2>{productDetail.name}</h2>
-                    {/* {favProducts !== null &&
-                    favProducts.some((prod) => prod.id === productDetail.id) ? (
-                      <div className="favs-added">
-                        <button onClick={() => handleClick(productDetail)}>
-                          <img src="/ImgHelpers/FavAdded.png" alt="added fav" />
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="add-favs">
-                        <button onClick={() => handleClick(productDetail)}>
-                          <img src="/ImgHelpers/AddFav.png" alt="add fav" />
-                        </button>
-                      </div>
-                    )} */}
                   <div className="detail-container">
-                    {/* <h2>{productDetail.name}</h2> */}
                     {productDetail.description2 !== "" ? (
                       <div className="detail-description">
                         <h3>Detalles del producto:</h3>
@@ -175,7 +162,6 @@ export default function DetailCard({ screenTransition, setScreenTransition }) {
                         <h1>ARS ${productDetail.price}</h1>
                       </div>
                     )}
-                    {/* <h2>$ {productDetail.price}</h2> */}
                     {favProducts !== null && favProducts !== undefined &&
                     favProducts.some((prod) => prod.id === productDetail.id) ? (
                       <div className="favs-added">

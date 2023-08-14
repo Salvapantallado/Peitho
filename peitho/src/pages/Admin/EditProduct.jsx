@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { createBrowserHistory } from "history";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   editProduct,
@@ -25,7 +24,6 @@ export default function EditProduct() {
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
   const onChange = (imageList) => {
-    // data for submit
     console.log(imageList);
     setImages(imageList);
   };
@@ -41,7 +39,6 @@ export default function EditProduct() {
     image: [],
     price2: 0,
     description2: "",
-    // category: []
   });
   
   const [Category, setCategory] = useState([]);
@@ -52,16 +49,16 @@ export default function EditProduct() {
         name: productToEdit.name,
         description: productToEdit.description,
         price: productToEdit.price,
-        // image: productToEdit.image?.map(x => ({data_url: x})),
         price2: productToEdit.price2,
         description2: productToEdit.description2,
-        // category: productToEdit.categories
       });
       setImages(productToEdit.image?.map((x) => ({data_url: x})))
       setCategory(productToEdit.categories[0].name)
       console.log(input, "input");
     }
-  }, [productToEdit]);
+  /* eslint-disable */
+}, [productToEdit]);
+  /* eslint-disable */
 
 
   useEffect(() => {
@@ -80,7 +77,6 @@ export default function EditProduct() {
       [e.target.name]: e.target.value,
       category: Category,
       image: images.map((x) => x.data_url),
-      //   image: images,
     });
   };
 
@@ -187,7 +183,6 @@ export default function EditProduct() {
                   isDragging,
                   dragProps,
                 }) => (
-                  // write your building UI
                   <div className="upload__image-wrapper">
                     <button
                       type="button"

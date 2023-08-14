@@ -8,7 +8,6 @@ export default function Navbar({screenTransition, setScreenTransition}) {
   const [openFav, setOpenFav] = useState(false);
 
   const NumberOfFavorites = useSelector((state) => state.favoriteProducts);
-  console.log(NumberOfFavorites);
 
   const LoadCurtain = async(e) => {
     setScreenTransition(!screenTransition)
@@ -37,39 +36,13 @@ export default function Navbar({screenTransition, setScreenTransition}) {
   const observer = new IntersectionObserver(handleScroll, options);
   if(navbar !== null) observer.observe(spot)
 
-  // useEffect(() => {
-  //   setLoadScreen(false) 
-  // }, [])
-
   return (
     <>
     <nav className="navbar">
       <button onClick={() => LoadCurtain("/")}><h2>Inicio</h2></button>
       <button onClick={() => LoadCurtain("/catalogo")}><h2>Catalogo</h2></button>
-      {/* <button onClick={() => LoadCurtain("/favoritos")}><h2>Favoritos</h2></button> */}
       <button onClick={() => LoadCurtain("/tabla-de-medidas")}><h2>Tabla de medidas</h2></button>
-      {/* <button onClick={() => LoadCurtain("/telas-disponibles")}><h2>Telas disponibles</h2></button> */}
-      {/* <button onClick={() => LoadCurtain("/admin")}><h2>Admin Add</h2></button> */}
-      {/* <NavLink to="/inicio">Cosa 4</NavLink> */}
-
-      {/* <div className="fav-icon"> */}
         <FavSlide openFav={openFav} setOpenFav={setOpenFav} LoadCurtain={LoadCurtain} favNumber={NumberOfFavorites} />
-      {/* <button onClick={() => LoadCurtain("/favoritos")}>
-        {NumberOfFavorites !== null && NumberOfFavorites.length >= 1 ? (
-          <div className="fav-number">
-            <p>{NumberOfFavorites.length}</p>
-          </div>
-        ) : (
-          <div />
-          )}
-
-        <img
-          src="/ImgHelpers/heart.png"
-          alt="favoriteIcon"
-          style={{ width: "50px", height: "50px" }}
-          />
-          </button> */}
-      {/* </div> */}
     </nav>
     <div className="spot" />
     </>

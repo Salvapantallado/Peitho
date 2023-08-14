@@ -10,13 +10,10 @@ import { useSwipeable } from "react-swipeable";
 import Top from "../../images/Home/Bubbles/circle-one.jpg";
 import Falda from "../../images/Home/Bubbles/circle-two.jpg";
 import Vestido from "../../images/Home/Bubbles/circle-three.jpg";
-import Pantalon from "../../images/Home/Bubbles/circle-four.jpg";
 import Abrigo from "../../images/Home/Bubbles/circle-five.jpg";
 import Camisa from "../../images/Home/Bubbles/circle-six.jpg";
 import "../../styles/category-bubbles.css";
 import Searchbar from "./Searchbar";
-
-// HAY QUE ENCONTRAR EL ERROR QUE EJECUTA UN PERMA RENDER EN ESTE COMPONENTE
 
 export default function Card({
   currentPage,
@@ -61,7 +58,9 @@ export default function Card({
     if(productList === []){
       dispatch(getAllProducts());
     }
+    /* eslint-disable */
   }, [])
+/* eslint-disable */
 
   function handleClick(data) {
     let LSArray = JSON.parse(localStorage.getItem("Obj")) || [];
@@ -85,27 +84,20 @@ export default function Card({
         style: { fontFamily: "Arial" },
       });
     }
-    console.log(LSArray);
   }
 
   const filter = (e) => {
-    console.log(filteredClothes, "PRENDAS FILTRADAS");
     dispatch(filterItems(e, productList));
     setCurrentPage(1);
   };
-
-  console.log(currentFilter, "CURRENTFILTER");
-  console.log(currentProducts, "CURRENTPRODUCTS");
 
   //Category bubble flag for filtering
 
   useEffect(() => {
     try {
-      console.log(localStorage.getItem("flag"));
       let flagAux = localStorage.getItem("flag");
       if (flagAux !== "" && flagAux !== null) {
         setFlag(JSON.parse(localStorage.getItem("flag")));
-        console.log(flag, "test");
         setTimeout(() => {
           localStorage.removeItem("flag");
         }, 400);
@@ -113,7 +105,9 @@ export default function Card({
     } catch (err) {
       console.log(err);
     }
+    /* eslint-disable */
   }, [flag]);
+/* eslint-disable */
 
   useEffect(() => {
     try{
@@ -125,7 +119,9 @@ export default function Card({
     } catch(err){
       console.error(err)
     }
+    /* eslint-disable */
   }, [productList]);
+/* eslint-disable */
 
   // Handle swipe
   const handlers = useSwipeable({
@@ -136,8 +132,6 @@ export default function Card({
     onSwipedRight: () =>
       currentPage !== 1 ? setCurrentPage(currentPage - 1) : null,
   });
-
-  console.log(flag, "flag");
 
   const handleRemoveFilter = () => {
     filter("all");
@@ -184,12 +178,6 @@ export default function Card({
           </div>
 
         </div>
-          {/* <div className="category-container">
-            <button onClick={() => filter("pantalones")}>
-            <img src={Pantalon} alt="Pantalones" />
-            <span>Pantalones</span>
-            </button>
-          </div> */}
         <div className="bubbleGroupWrapper">
 
           <div className="category-container">

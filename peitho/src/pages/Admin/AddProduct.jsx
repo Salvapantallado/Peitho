@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { createBrowserHistory } from "history";
 import { useNavigate } from "react-router-dom";
 import { postProduct } from "../../actions";
 import ImageUploading from "react-images-uploading";
@@ -11,15 +10,12 @@ import Navbar from "../../components/shared-components/Navbar";
 
 export default function AddProduct() {
   const dispatch = useDispatch();
-  // const history = createBrowserHistory({forceRefresh:true});
   const navigate = useNavigate();
   const [loadScreen, setLoadScreen] = useState(false);
 
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
   const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
 
@@ -27,7 +23,6 @@ export default function AddProduct() {
     name: "",
     description: "",
     price: 0,
-    // image: images,
     price2: 0,
     description2: "",
   });
@@ -35,14 +30,14 @@ export default function AddProduct() {
   const [Category, setCategory] = useState([]);
 
   useEffect(() => {
-    console.log(images);
     setInput({
       ...input,
       category: Category,
       image: images.map((x) => x.data_url),
     });
-    console.log(Category);
+  /* eslint-disable */
   }, [Category, images]);
+  /* eslint-disable */
 
   const handleChange = (e) => {
     setInput({
@@ -50,7 +45,6 @@ export default function AddProduct() {
       [e.target.name]: e.target.value,
       category: Category,
       image: images.map((x) => x.data_url),
-      //   image: images,
     });
   };
 
@@ -151,7 +145,6 @@ export default function AddProduct() {
                   isDragging,
                   dragProps,
                 }) => (
-                  // write your building UI
                   <div className="upload__image-wrapper">
                     <button
                       type="button"

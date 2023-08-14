@@ -1,19 +1,10 @@
-// import SanValentin from "/ProductImages/Vestido-SanValentin.jpeg"
-
-import { useEffect, useRef, useState } from "react";
-
-import OneStory from "../../images/Videos/storyTest.mp4";
-import slide1 from "../../images/Videos/slide1.mp4";
-import slide2 from "../../images/Videos/slide2.mp4";
-import slide3 from "../../images/Videos/slide3.mp4";
-import testIMG from "../../images/Navbar/peitho-black.jpeg";
-
+import { useState } from "react";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 
 import { useSwipeable } from "react-swipeable";
 
-export default function ChooseYourStyle({ allStories }) {
+export default function VideoSwiper({ allStories }) {
   let [currentIndex, setCurrentIndex] = useState(0);
   const addingPrToSt = allStories.map((vid, index) => {
     return {
@@ -62,8 +53,6 @@ export default function ChooseYourStyle({ allStories }) {
         ? setCurrentIndex(currentIndex - 1)
         : setCurrentIndex(0),
   });
-
-  console.log(addingPrToSt);
 
   function ClassCheck(index) {
     if (currentIndex > index + 1 || currentIndex < index - 1) {

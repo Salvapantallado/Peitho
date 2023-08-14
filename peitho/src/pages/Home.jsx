@@ -1,5 +1,4 @@
 import React, {
-  // Suspense,
   useEffect,
   useState,
 } from "react";
@@ -12,15 +11,9 @@ import CategoryBubble from "../components/shared-components/CategoryBubbles";
 import Navbar from "../components/shared-components/Navbar";
 import Ticker from "../components/shared-components/Ticker";
 import HomeLoad from "../components/shared-components/HomeLoad";
-// import HomeLoadOut from "../components/shared-components/HomeLoadOut";
 import MobileNavbar from "../components/shared-components/MobileNavbar";
 import Footer from "../components/shared-components/Footer";
 import TransitionOut from "../components/shared-components/TransitionOut";
-
-// import { Canvas } from "@react-three/fiber";
-// import { OrbitControls } from "@react-three/drei";
-// import Sew from "../components/home-components/Sew";
-
 import "../styles/home.css";
 import { Toaster } from "react-hot-toast";
 

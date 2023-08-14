@@ -51,9 +51,6 @@ function getComparator(order, orderBy) {
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
-
-// This method is created for cross-browser compatibility, if you don't
-// need to support IE11, you can use Array.prototype.sort() directly
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -146,16 +143,13 @@ function EnhancedTableHead(props) {
 }
 
 EnhancedTableHead.propTypes = {
-  // numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  // onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
 
-const EnhancedTableToolbar = ({ setSelected, setIsLogged }) => {
-  // const { numSelected } = props;
+const EnhancedTableToolbar = ({ setSelected }) => {
   const handleLogOut = () => {
     localStorage.removeItem("logged");
   }
@@ -166,13 +160,6 @@ const EnhancedTableToolbar = ({ setSelected, setIsLogged }) => {
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
         bgcolor: "pink"
-        // ...(numSelected > 0 && {
-        //   bgcolor: (theme) =>
-        //     alpha(
-        //       theme.palette.primary.main,
-        //       theme.palette.action.activatedOpacity
-        //     ),
-        // }),
       }}
     > 
       <div
@@ -245,10 +232,6 @@ const EnhancedTableToolbar = ({ setSelected, setIsLogged }) => {
   );
 };
 
-// EnhancedTableToolbar.propTypes = {
-//   numSelected: PropTypes.number.isRequired,
-// };
-
 export default function EnhancedTable() {
   const [selected, setSelected] = React.useState(true);
 
@@ -290,7 +273,6 @@ export default function EnhancedTable() {
 
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
-  // const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -300,35 +282,6 @@ export default function EnhancedTable() {
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
-
-  // const handleSelectAllClick = (event) => {
-  //   if (event.target.checked) {
-  //     const newSelected = allProducts.map((n) => n.name);
-  //     setSelected(newSelected);
-  //     return;
-  //   }
-  //   setSelected([]);
-  // };
-
-  // const handleClick = (event, name) => {
-  //   const selectedIndex = selected.indexOf(name);
-  //   let newSelected = [];
-
-  //   if (selectedIndex === -1) {
-  //     newSelected = newSelected.concat(selected, name);
-  //   } else if (selectedIndex === 0) {
-  //     newSelected = newSelected.concat(selected.slice(1));
-  //   } else if (selectedIndex === selected.length - 1) {
-  //     newSelected = newSelected.concat(selected.slice(0, -1));
-  //   } else if (selectedIndex > 0) {
-  //     newSelected = newSelected.concat(
-  //       selected.slice(0, selectedIndex),
-  //       selected.slice(selectedIndex + 1)
-  //     );
-  //   }
-
-  //   setSelected(newSelected);
-  // };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -343,16 +296,9 @@ export default function EnhancedTable() {
     setDense(event.target.checked);
   };
 
-  // const isSelected = (name) => selected.indexOf(name) !== -1;
-
-  // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - allProducts.length) : 0;
 
-  // const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>): void => {
-  //   const files = Array.from(e.target.files)
-  //   console.log("files", files);
-  // }
 
   const [selectedFile, setSelectedFile] = React.useState([]);
   const [previewImg, setPreviewImg] = React.useState();
@@ -376,18 +322,12 @@ export default function EnhancedTable() {
       for (let index = 0; index < selectedFile.length; index++) {
         const element = selectedFile[index];
         if (element.name.split(".").pop() === "mp4") {
-          // const fileUrl = URL.createObjectURL(element)
-          // ArrTest.push({url: fileUrl, type:"video"});
           getBase64(element)
             .then((data) => ArrTest.push({ url: data, type: "video" }))
-            .then(console.log(ArrTest, "url video"));
         }
         if (element.name.split(".").pop() !== "mp4") {
-          // const fileUrl = URL.createObjectURL(element)
-          // ArrTest.push({url: fileUrl, type:"img"});
           getBase64(element)
             .then((data) => ArrTest.push({ url: data, type: "img" }))
-            .then(console.log(ArrTest, "url img"));
         }
       }
       setPreviewImg(ArrTest);
@@ -396,7 +336,9 @@ export default function EnhancedTable() {
     } catch (err) {
       console.log(err);
     }
+  /* eslint-disable */
   }, [selectedFile]);
+  /* eslint-disable */
 
   const onSelectFile = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -404,7 +346,6 @@ export default function EnhancedTable() {
       return;
     }
     setSelectedFile(e.target.files);
-    console.log(e.target.files, "selected files");
   };
 
   const handleSubmit = async (e) => {
@@ -413,9 +354,7 @@ export default function EnhancedTable() {
       alert("Historias modificadas con exito!");
       dispatch(postStories(previewImg));
       dispatch(getAllStories());
-      // setTimeout(() => {
-      //   history.push("/home");
-      // }, 2000);
+
     } catch (err) {
       console.log(err);
     }
@@ -427,8 +366,7 @@ export default function EnhancedTable() {
         <Box sx={{ width: "100%" }}>
           <Paper sx={{ width: "100%", mb: 2 }}>
             <EnhancedTableToolbar
-              // numSelected={selected.length}
-              // products={allProducts}
+
               setSelected={setSelected}
             />
             <TableContainer>
@@ -438,41 +376,24 @@ export default function EnhancedTable() {
                 size={dense ? "small" : "medium"}
               >
                 <EnhancedTableHead
-                  // numSelected={selected.length}
                   order={order}
                   orderBy={orderBy}
-                  // onSelectAllClick={handleSelectAllClick}
                   onRequestSort={handleRequestSort}
                   rowCount={allProducts.length}
                 />
                 <TableBody>
-                  {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                   rows.slice().sort(getComparator(order, orderBy)) */}
                   {stableSort(allProducts, getComparator(order, orderBy))
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row, index) => {
-                      // const isItemSelected = isSelected(row.name);
                       const labelId = `enhanced-table-checkbox-${index}`;
 
                       return (
                         <TableRow
                           hover
-                          // onClick={(event) => handleClick(event, row.id)}
                           role="checkbox"
-                          // aria-checked={isItemSelected}
                           tabIndex={-1}
                           key={row.id}
-                          // selected={isItemSelected}
                         >
-                          {/* <TableCell padding="checkbox">
-                          <Checkbox
-                            color="primary"
-                            checked={isItemSelected}
-                            inputProps={{
-                              "aria-labelledby": labelId,
-                            }}
-                            />
-                          </TableCell> */}
                           <TableCell
                             component="th"
                             id={labelId}
@@ -571,8 +492,6 @@ export default function EnhancedTable() {
         <Box sx={{ width: "100%" }}>
           <Paper sx={{ width: "100%", mb: 2 }}>
             <EnhancedTableToolbar
-              // numSelected={selected.length}
-              // products={allProducts}
               setSelected={setSelected}
             />
             <div className="adminStories">
@@ -582,16 +501,12 @@ export default function EnhancedTable() {
                       <div
                         className="videodiv"
                         style={{margin: "0 20px", justifyContent: "none"}}
-                        // ref={ref}
                       >
                         {singleStory.type === "video" ? (
                           <video
                             muted
                             loop
                             autoPlay
-                            // ref={videoRef}
-                            // videoindex={index}
-                            // onClick={() => checkOnClick(index)}
                           >
                             <source src={singleStory.url} type="video/mp4" />
                           </video>
@@ -599,7 +514,6 @@ export default function EnhancedTable() {
                           <img
                             src={singleStory.url}
                             alt="Story preview"
-                            // onClick={() => checkOnClick(index)}
                           />
                         )}
                         <div>
@@ -658,13 +572,6 @@ export default function EnhancedTable() {
                 </button>
               </div>
             </form>
-            {/* {selectedFile && previewImg && <img style={{width: "70px", height: "70px"}} src={previewImg} /> } */}
-            {/* {selectedFile && previewVideo && <video style={{width: "170px", height: "370px"}} muted loop autoPlay >
-              <source src={previewVideo.url} type="video/mp4" />
-              </video> 
-              
-              
-            } */}
           </Paper>
         </Box>
       )}

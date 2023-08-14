@@ -5,8 +5,6 @@ import Navbar from "../../components/shared-components/Navbar";
 import Ticker from "../../components/shared-components/Ticker";
 import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
-
-// import "../../styles/landing.css";
 import EnhancedTable from "./AdminTable2";
 
 export default function Admin() {
@@ -21,8 +19,10 @@ export default function Admin() {
     if (!localStorage.getItem("logged")) {
       localStorage.setItem("logged", JSON.stringify(false));
     }
+    /* eslint-disable */
     localStorage.getItem("logged") == "true"
-      ? setIsLogged(true)
+      ? /* eslint-disable */
+        setIsLogged(true)
       : setIsLogged(false);
   }, [isLogged]);
 
@@ -95,7 +95,7 @@ export default function Admin() {
             </div>
           )}
           {isLogged && (
-            <EnhancedTable isLogged={isLogged} setIsLogged={setIsLogged} />
+            <EnhancedTable/>
           )}
         </div>
         <Footer />

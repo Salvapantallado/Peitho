@@ -135,7 +135,9 @@ export function filterItems(data, array) {
   return async (dispatch) => {
     try {
       let res = await array.filter(
+        /* eslint-disable */
         (x) => x.categories.map((z) => z.name) == data
+        /* eslint-disable */
       );
       if (data === "all") {
         res = [];

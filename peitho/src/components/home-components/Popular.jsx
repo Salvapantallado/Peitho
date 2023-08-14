@@ -7,7 +7,6 @@ export default function Popular({ allProducts }) {
   const popularSlice2 = mainPopular.slice(6);
   const popularItems2 = popularSlice2.concat(popularSlice2)
 
-  console.log(popularItems);
   return (
     <div className="popular-container">
       <div className="section-title">

@@ -8,7 +8,6 @@ import {
 	GET_FAVORITES,
 	FILTER_ITEMS,
 	DELETE_PRODUCT,
-	EDIT_PRODUCT,
 	GET_STORIES,
 	DELETE_STORIES,
 	POST_STORIES
@@ -102,11 +101,6 @@ const rootReducer = (state = initialState, action) => {
 				allStories: state.allStories.concat(action.payload)
 			}
 		}
-		// case EDIT_PRODUCT: {
-		// 	const updateItem = state.allProducts.map(item => item.id === action.payload.id ? [...state, action.payload] : item);
-		// 	// state = updateItem;
-		// 	return updateItem
-		// }
 		default: {
 			return state;
 		}

@@ -1,13 +1,10 @@
 import "../../styles/homeProducts.css";
 import NewestProduct from "./NewestProduct";
 import Popular from "./Popular";
-
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, getAllStories } from "../../actions";
 import { useEffect } from "react";
-import ChooseYourStyle from "./ChooseStyle";
-// import Maniqui from "./maniqui.png";
+import VideoSwiper from "./VideoSwiper";
 
 export default function HomeProducts() {
 	const dispatch = useDispatch();
@@ -26,12 +23,7 @@ export default function HomeProducts() {
 				<NewestProduct allProducts={allProducts}/>
 				<Popular allProducts={allProducts}/>
 			</div>
-			{/* <div className="product-button">
-				<Link to="/catalogo">
-					<button>Ver todos los productos</button>
-				</Link>
-			</div> */}
-			<ChooseYourStyle allStories={allStories}/>
+			<VideoSwiper allStories={allStories}/>
 		</div>
 	);
 }

@@ -29,15 +29,12 @@ export default function Favorites() {
       const localData = JSON.parse(localStorage.getItem("Obj"));
       return setLocalFavorites(localData);
     }
-    // if(localStorage.getItem("flag")){
-    //   localStorage.removeItem("flag")
-    //  }
     return;
   }, [setLocalFavorites]);
 
   useEffect(() => {
     dispatch(getFavorites(localFavorites));
-  }, [localFavorites]);
+  }, [dispatch, localFavorites]);
 
   function handleDelete(item) {
     let filteredItem = localFavorites.filter((x) => x.id === item.id);
@@ -45,7 +42,6 @@ export default function Favorites() {
     let filteredArray = localFavorites.filter((x) => x.id !== item.id);
     setLocalFavorites(filteredArray);
 
-    console.log(localFavorites);
 
     if (localFavorites.length > 1 && localFavorites !== null) {
       localStorage.setItem("Obj", JSON.stringify(localFavorites));
@@ -55,14 +51,13 @@ export default function Favorites() {
       toast.error(`${item.name} eliminado de favoritos.`);
     }
 
-    console.log(localFavorites);
   }
 
   function restoreItem() {
     if (deletedItem.length > 0 && deletedItem !== null) {
       const auxArr = [];
       auxArr.push(...localFavorites, deletedItem[0]);
-      console.log(auxArr);
+
       auxArr.sort((a, b) => a.id - b.id);
       toast.success(`${deletedItem[0].name} fue restaurado.`);
       setLocalFavorites(auxArr);
@@ -85,9 +80,6 @@ export default function Favorites() {
       const productNames = arr.map(
         (item) => item.name + `(${item.product_qty})`
       );
-      // const productQuantities = arr.map((item) => item.product_qty);
-      // const productMix = productNames + `(${productQuantities})`;
-      // console.log(productMix, 'mix');
       setMessage(
         `Hola! Me interesan las prendas ${productNames} que vi en la pagina web`
       );
@@ -127,7 +119,6 @@ export default function Favorites() {
   };
 
   function PriceMix() {
-    console.log(localFavorites);
     if (localFavorites.length !== 0 && localFavorites !== null) {
       const testing = localFavorites.map((x) => x.price * x.product_qty);
       const testingSum = testing.reduce((a, b) => a + b);

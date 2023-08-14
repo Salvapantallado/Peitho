@@ -1,7 +1,4 @@
-import { useSelector } from "react-redux";
 import "../../styles/navbar.css";
-// import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-// import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useState } from "react";
 import MenuSlide from "./MenuSlide";
 import FavSlide from "./FavSlide";
@@ -10,8 +7,6 @@ export default function MobileNavbar({
   screenTransition,
   setScreenTransition,
 }) {
-  const NumberOfFavorites = useSelector((state) => state.favoriteProducts);
-  console.log(NumberOfFavorites);
   const [open, setOpen] = useState(false);
   const [openFav, setOpenFav] = useState(false);
 
@@ -20,7 +15,6 @@ export default function MobileNavbar({
   const LoadCurtain = async (e) => {
     setScreenTransition(!screenTransition);
     setTimeout(() => {
-      // setOpen(false)
       setScreenTransition(!screenTransition);
       window.location.href = e;
     }, 1500);
