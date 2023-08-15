@@ -104,8 +104,8 @@ export default function EditProduct() {
   return (
     <>
       <Ticker />
-      <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
-      <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
+      <Navbar/>
+      <MobileNavbar/>
       <div className="container-add-product">
         <div className="add-form">
           <form className="form" onSubmit={(e) => handleFormSubmit(e)}>
