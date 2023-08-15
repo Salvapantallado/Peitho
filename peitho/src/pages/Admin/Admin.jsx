@@ -53,14 +53,8 @@ export default function Admin() {
 
       <div>
         <Ticker />
-        <Navbar
-          screenTransition={screenTransition}
-          setScreenTransition={setScreenTransition}
-        />
-        <MobileNavbar
-          screenTransition={screenTransition}
-          setScreenTransition={setScreenTransition}
-        />
+        <Navbar />
+        <MobileNavbar />
         <div className="container">
           {!isLogged && (
             <div
