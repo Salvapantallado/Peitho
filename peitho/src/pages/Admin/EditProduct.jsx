@@ -194,11 +194,11 @@ export default function EditProduct() {
                       onClick={onImageUpload}
                       {...dragProps}
                       >
-                      Click or Drop here
+                      Agregar imagen/es
                     </button>
                     &nbsp;
                     <button onClick={onImageRemoveAll} type="button">
-                      Remove all images
+                      Remover imagen/es
                     </button>
                       </div>
                     <div className="imageListContainer">
@@ -210,13 +210,13 @@ export default function EditProduct() {
                             onClick={() => onImageUpdate(index)}
                             type="button"
                           >
-                            Update
+                            Cambiar
                           </button>
                           <button
                             onClick={() => onImageRemove(index)}
                             type="button"
                           >
-                            Remove
+                            Remover
                           </button>
                         </div>
                       </div>
@@ -227,7 +227,7 @@ export default function EditProduct() {
               </ImageUploading>
             </div>
             <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
-              <button type="submit">Agregar producto</button>
+              <button type="submit">Editar producto</button>
             </div>
           </form>
         </div>

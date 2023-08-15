@@ -155,11 +155,11 @@ export default function AddProduct() {
                         onClick={onImageUpload}
                         {...dragProps}
                       >
-                        Click or Drop here
+                        Agregar imagen/es
                       </button>
                       &nbsp;
                       <button onClick={onImageRemoveAll} type="button">
-                        Remove all images
+                        Remove imagen/es
                       </button>
                     </div>
                     {imageList.map((image, index) => (
@@ -170,13 +170,13 @@ export default function AddProduct() {
                             onClick={() => onImageUpdate(index)}
                             type="button"
                           >
-                            Update
+                            Cambiar
                           </button>
                           <button
                             onClick={() => onImageRemove(index)}
                             type="button"
                           >
-                            Remove
+                            Remover
                           </button>
                         </div>
                       </div>
