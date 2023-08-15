@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  editProduct,
-  getAllProducts,
-} from "../../actions";
+import { editProduct, getAllProducts } from "../../actions";
 import ImageUploading from "react-images-uploading";
 
 import "../../styles/addProduct.css";
@@ -18,8 +15,9 @@ export default function EditProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const products = useSelector((state) => state.allProducts)
-  const productToEdit = products.find(item => item.id === parseInt(id))
+  const products = useSelector((state) => state.allProducts);
+  const productToEdit = products.find((item) => item.id === parseInt(id));
+  const [screenTransition, setScreenTransition] = useState(false);
   const [loadScreen, setLoadScreen] = useState(false);
 
   const [images, setImages] = React.useState([]);
@@ -41,7 +39,7 @@ export default function EditProduct() {
     price2: 0,
     description2: "",
   });
-  
+
   const [Category, setCategory] = useState([]);
 
   useEffect(() => {
@@ -53,14 +51,13 @@ export default function EditProduct() {
         price2: productToEdit.price2,
         description2: productToEdit.description2,
       });
-      setImages(productToEdit.image?.map((x) => ({data_url: x})))
-      setCategory(productToEdit.categories[0].name)
+      setImages(productToEdit.image?.map((x) => ({ data_url: x })));
+      setCategory(productToEdit.categories[0].name);
       console.log(input, "input");
     }
+    /* eslint-disable */
+  }, [productToEdit]);
   /* eslint-disable */
-}, [productToEdit]);
-  /* eslint-disable */
-
 
   useEffect(() => {
     console.log(input, "refresh");
@@ -81,8 +78,8 @@ export default function EditProduct() {
     });
   };
 
-  const handleCategories = (e) => { 
-    if(Category === "") return
+  const handleCategories = (e) => {
+    if (Category === "") return;
     console.log(e.target.value);
     setCategory(e.target.value);
   };
@@ -90,7 +87,7 @@ export default function EditProduct() {
   async function handleFormSubmit(e) {
     try {
       e.preventDefault();
-      dispatch(editProduct({...input, input, id: parseInt(id)} ));
+      dispatch(editProduct({ ...input, input, id: parseInt(id) }));
       console.log(input);
 
       alert("Producto editado!");
@@ -104,14 +101,20 @@ export default function EditProduct() {
   return (
     <>
       <Ticker />
-      <Navbar/>
-      <MobileNavbar/>
+      <Navbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
+      <MobileNavbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
       <div className="container-add-product">
         <div className="add-form">
           <form className="form" onSubmit={(e) => handleFormSubmit(e)}>
-          <button className="go-back-btn" onClick={() => navigate("/admin")}>
-            Volver
-          </button>
+            <button className="go-back-btn" onClick={() => navigate("/admin")}>
+              Volver
+            </button>
             <div>
               <label>Nombre:</label>
               <input
@@ -187,46 +190,51 @@ export default function EditProduct() {
                 }) => (
                   <div className="upload__image-wrapper">
                     <div>
-
-                    <button
-                      type="button"
-                      style={isDragging ? { color: "red" } : null}
-                      onClick={onImageUpload}
-                      {...dragProps}
+                      <button
+                        type="button"
+                        style={isDragging ? { color: "red" } : null}
+                        onClick={onImageUpload}
+                        {...dragProps}
                       >
-                      Agregar imagen/es
-                    </button>
-                    &nbsp;
-                    <button onClick={onImageRemoveAll} type="button">
-                      Remover imagen/es
-                    </button>
-                      </div>
+                        Agregar imagen/es
+                      </button>
+                      &nbsp;
+                      <button onClick={onImageRemoveAll} type="button">
+                        Remover imagen/es
+                      </button>
+                    </div>
                     <div className="imageListContainer">
-                    {imageList.map((image, index) => (
-                      <div key={index} className="image-item">
-                        <img src={image.data_url} alt="" width="100" />
-                        <div className="image-item__btn-wrapper">
-                          <button
-                            onClick={() => onImageUpdate(index)}
-                            type="button"
-                          >
-                            Cambiar
-                          </button>
-                          <button
-                            onClick={() => onImageRemove(index)}
-                            type="button"
-                          >
-                            Remover
-                          </button>
+                      {imageList.map((image, index) => (
+                        <div key={index} className="image-item">
+                          <img src={image.data_url} alt="" width="100" />
+                          <div className="image-item__btn-wrapper">
+                            <button
+                              onClick={() => onImageUpdate(index)}
+                              type="button"
+                            >
+                              Cambiar
+                            </button>
+                            <button
+                              onClick={() => onImageRemove(index)}
+                              type="button"
+                            >
+                              Remover
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
                     </div>
                   </div>
                 )}
               </ImageUploading>
             </div>
-            <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20px",
+              }}
+            >
               <button type="submit">Editar producto</button>
             </div>
           </form>

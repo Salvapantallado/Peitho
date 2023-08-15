@@ -15,7 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -152,19 +152,19 @@ EnhancedTableHead.propTypes = {
 const EnhancedTableToolbar = ({ setSelected }) => {
   const handleLogOut = () => {
     localStorage.removeItem("logged");
-  }
+  };
 
   return (
     <Toolbar
       sx={{
         pl: { sm: 2 },
         pr: { xs: 1, sm: 1 },
-        bgcolor: "pink"
+        bgcolor: "pink",
       }}
-    > 
+    >
       <div
         style={{
-          display: "flex", 
+          display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
           width: "100%",
@@ -185,7 +185,7 @@ const EnhancedTableToolbar = ({ setSelected }) => {
               padding: "15px",
               alignItems: "center",
               cursor: "pointer",
-              border: "1px solid salmon"
+              border: "1px solid salmon",
             }}
             variant="h6"
             id="tableTitle"
@@ -201,7 +201,7 @@ const EnhancedTableToolbar = ({ setSelected }) => {
               padding: "15px",
               alignItems: "center",
               cursor: "pointer",
-              border: "1px solid salmon"
+              border: "1px solid salmon",
             }}
             variant="h6"
             id="tableTitle"
@@ -220,13 +220,14 @@ const EnhancedTableToolbar = ({ setSelected }) => {
             </Link>
           </Tooltip>
         </div>
-          <div>
-
+        <div>
           <Tooltip title="Log out">
-              <LogoutIcon onClick={handleLogOut} style={{cursor: "pointer"}}>
-              </LogoutIcon>
+            <LogoutIcon
+              onClick={handleLogOut}
+              style={{ cursor: "pointer" }}
+            ></LogoutIcon>
           </Tooltip>
-          </div>
+        </div>
       </div>
     </Toolbar>
   );
@@ -299,7 +300,6 @@ export default function EnhancedTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - allProducts.length) : 0;
 
-
   const [selectedFile, setSelectedFile] = React.useState([]);
   const [previewImg, setPreviewImg] = React.useState();
 
@@ -322,12 +322,14 @@ export default function EnhancedTable() {
       for (let index = 0; index < selectedFile.length; index++) {
         const element = selectedFile[index];
         if (element.name.split(".").pop() === "mp4") {
-          getBase64(element)
-            .then((data) => ArrTest.push({ url: data, type: "video" }))
+          getBase64(element).then((data) =>
+            ArrTest.push({ url: data, type: "video" })
+          );
         }
         if (element.name.split(".").pop() !== "mp4") {
-          getBase64(element)
-            .then((data) => ArrTest.push({ url: data, type: "img" }))
+          getBase64(element).then((data) =>
+            ArrTest.push({ url: data, type: "img" })
+          );
         }
       }
       setPreviewImg(ArrTest);
@@ -336,7 +338,7 @@ export default function EnhancedTable() {
     } catch (err) {
       console.log(err);
     }
-  /* eslint-disable */
+    /* eslint-disable */
   }, [selectedFile]);
   /* eslint-disable */
 
@@ -354,7 +356,6 @@ export default function EnhancedTable() {
       alert("Historias modificadas con exito!");
       dispatch(postStories(previewImg));
       dispatch(getAllStories());
-
     } catch (err) {
       console.log(err);
     }
@@ -365,10 +366,7 @@ export default function EnhancedTable() {
       {selected ? (
         <Box sx={{ width: "100%" }}>
           <Paper sx={{ width: "100%", mb: 2 }}>
-            <EnhancedTableToolbar
-
-              setSelected={setSelected}
-            />
+            <EnhancedTableToolbar setSelected={setSelected} />
             <TableContainer>
               <Table
                 sx={{ minWidth: 750 }}
@@ -491,30 +489,21 @@ export default function EnhancedTable() {
       ) : (
         <Box sx={{ width: "100%" }}>
           <Paper sx={{ width: "100%", mb: 2 }}>
-            <EnhancedTableToolbar
-              setSelected={setSelected}
-            />
+            <EnhancedTableToolbar setSelected={setSelected} />
             <div className="adminStories">
               {allStories.length !== 0
                 ? allStories?.map((singleStory, index) => (
                     <React.Fragment key={singleStory.id}>
                       <div
                         className="videodiv"
-                        style={{margin: "0 20px", justifyContent: "none"}}
+                        style={{ margin: "0 20px", justifyContent: "none" }}
                       >
                         {singleStory.type === "video" ? (
-                          <video
-                            muted
-                            loop
-                            autoPlay
-                          >
+                          <video muted loop autoPlay>
                             <source src={singleStory.url} type="video/mp4" />
                           </video>
                         ) : (
-                          <img
-                            src={singleStory.url}
-                            alt="Story preview"
-                          />
+                          <img src={singleStory.url} alt="Story preview" />
                         )}
                         <div>
                           <button
@@ -550,7 +539,7 @@ export default function EnhancedTable() {
                             <source src={img.url} type="video/mp4" />
                           </video>
                         ) : (
-                          <img 
+                          <img
                             style={{ width: "70px", height: "70px" }}
                             src={img.url}
                             alt={"image-" + i}

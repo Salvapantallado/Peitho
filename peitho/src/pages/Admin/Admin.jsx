@@ -8,6 +8,7 @@ import TransitionOut from "../../components/shared-components/TransitionOut";
 import EnhancedTable from "./AdminTable2";
 
 export default function Admin() {
+  const [screenTransition, setScreenTransition] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [logInInfo, setLogInInfo] = useState({
     user: "",
@@ -50,8 +51,14 @@ export default function Admin() {
     <>
       <div>
         <Ticker />
-        <Navbar />
-        <MobileNavbar />
+        <Navbar
+          screenTransition={screenTransition}
+          setScreenTransition={setScreenTransition}
+        />
+        <MobileNavbar
+          screenTransition={screenTransition}
+          setScreenTransition={setScreenTransition}
+        />
         <div className="container">
           {!isLogged && (
             <div
@@ -85,9 +92,7 @@ export default function Admin() {
               </form>
             </div>
           )}
-          {isLogged && (
-            <EnhancedTable/>
-          )}
+          {isLogged && <EnhancedTable />}
         </div>
         <Footer />
       </div>

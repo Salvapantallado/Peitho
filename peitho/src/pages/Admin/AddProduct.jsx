@@ -12,6 +12,7 @@ import MobileNavbar from "../../components/shared-components/MobileNavbar";
 export default function AddProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [screenTransition, setScreenTransition] = useState(false);
   const [loadScreen, setLoadScreen] = useState(false);
 
   const [images, setImages] = React.useState([]);
@@ -66,8 +67,14 @@ export default function AddProduct() {
   return (
     <>
       <Ticker />
-      <Navbar />
-      <MobileNavbar />
+      <Navbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
+      <MobileNavbar
+        screenTransition={screenTransition}
+        setScreenTransition={setScreenTransition}
+      />
       <div className="container-add-product">
         <div className="add-form">
           <button className="go-back-btn" onClick={() => navigate("/admin")}>
@@ -185,7 +192,13 @@ export default function AddProduct() {
                 )}
               </ImageUploading>
             </div>
-            <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "20px",
+              }}
+            >
               <button type="submit">Agregar producto</button>
             </div>
           </form>
