@@ -1,27 +1,66 @@
 .container-add-product{
-  height: 80vh;
+  height: 100%;
   width: 100%;
+  background-color: #9692aa;
 }
 
 .add-form{
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid black;
+  position: relative;
+}
+.form {
+  border: 1px solid;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  background-color: #87a3bf;
+  padding: 40px;
+}
+.uploadImageContainer{
+  height: 30vh;
+  overflow: scroll;
+  width: 80% !important;
+  justify-content: center !important;
+  overflow-x: hidden;
+}
+.upload__image-wrapper{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form > div {
+  padding: 10px;
+    width: 35%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+.imageListContainer{
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
 
 .go-back-btn{
   display: flex;
-  position: relative;
-  right: 20%
+  position: absolute;
+  top: 3%;
+  left: 3%;
 }
 
 .image-item {
     display: flex;
-    margin: 10px 0;
+    padding: 10px;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px;
   }
   .image-item__btn-wrapper {
     display: flex;
@@ -31,3 +70,24 @@
   .image-item button {
     height: 40px;
   }
+
+  .imageListContainer{
+    width: 100%;
+  }
+
+  @media screen and (max-width: 875px) {
+    .form{
+      width: auto;
+    }
+    .form > div{
+      width: 100%;
+    }
+    .add-form{
+      height: 91vh;
+    }
+    .go-back-btn{
+      top: 1%;
+      left: 10%;
+      z-index: 2;
+    }
+    }

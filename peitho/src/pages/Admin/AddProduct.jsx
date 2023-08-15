@@ -7,6 +7,7 @@ import ImageUploading from "react-images-uploading";
 import "../../styles/addProduct.css";
 import Ticker from "../../components/shared-components/Ticker";
 import Navbar from "../../components/shared-components/Navbar";
+import MobileNavbar from "../../components/shared-components/MobileNavbar";
 
 export default function AddProduct() {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export default function AddProduct() {
       category: Category,
       image: images.map((x) => x.data_url),
     });
-  /* eslint-disable */
+    /* eslint-disable */
   }, [Category, images]);
   /* eslint-disable */
 
@@ -59,13 +60,14 @@ export default function AddProduct() {
 
     alert("Producto agregado!");
 
-    navigate("/");
+    navigate("/admin");
   }
 
   return (
     <>
-        <Ticker />
-        <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
+      <Ticker />
+      <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
+      <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
       <div className="container-add-product">
         <div className="add-form">
           <button className="go-back-btn" onClick={() => navigate("/admin")}>
@@ -83,7 +85,7 @@ export default function AddProduct() {
             </div>
             <div>
               <label>Descripcion:</label>
-              <input
+              <textarea
                 type="text"
                 name="description"
                 onChange={handleChange}
@@ -110,7 +112,7 @@ export default function AddProduct() {
             </div>
             <div>
               <label>Descripcion 2:</label>
-              <input
+              <textarea
                 type="text"
                 name="description2"
                 onChange={handleChange}
@@ -146,18 +148,20 @@ export default function AddProduct() {
                   dragProps,
                 }) => (
                   <div className="upload__image-wrapper">
-                    <button
-                      type="button"
-                      style={isDragging ? { color: "red" } : null}
-                      onClick={onImageUpload}
-                      {...dragProps}
-                    >
-                      Click or Drop here
-                    </button>
-                    &nbsp;
-                    <button onClick={onImageRemoveAll} type="button">
-                      Remove all images
-                    </button>
+                    <div>
+                      <button
+                        type="button"
+                        style={isDragging ? { color: "red" } : null}
+                        onClick={onImageUpload}
+                        {...dragProps}
+                      >
+                        Click or Drop here
+                      </button>
+                      &nbsp;
+                      <button onClick={onImageRemoveAll} type="button">
+                        Remove all images
+                      </button>
+                    </div>
                     {imageList.map((image, index) => (
                       <div key={index} className="image-item">
                         <img src={image.data_url} alt="" width="100" />
@@ -181,7 +185,7 @@ export default function AddProduct() {
                 )}
               </ImageUploading>
             </div>
-            <div>
+            <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
               <button type="submit">Agregar producto</button>
             </div>
           </form>

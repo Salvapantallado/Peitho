@@ -11,6 +11,7 @@ import "../../styles/addProduct.css";
 
 import Ticker from "../../components/shared-components/Ticker";
 import Navbar from "../../components/shared-components/Navbar";
+import MobileNavbar from "../../components/shared-components/MobileNavbar";
 
 export default function EditProduct() {
   const { id } = useParams();
@@ -94,7 +95,7 @@ export default function EditProduct() {
 
       alert("Producto editado!");
 
-      navigate("/");
+      navigate("/admin");
     } catch (err) {
       console.log(err);
     }
@@ -104,12 +105,13 @@ export default function EditProduct() {
     <>
       <Ticker />
       <Navbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
+      <MobileNavbar loadScreen={loadScreen} setLoadScreen={setLoadScreen} />
       <div className="container-add-product">
         <div className="add-form">
+          <form className="form" onSubmit={(e) => handleFormSubmit(e)}>
           <button className="go-back-btn" onClick={() => navigate("/admin")}>
             Volver
           </button>
-          <form className="form" onSubmit={(e) => handleFormSubmit(e)}>
             <div>
               <label>Nombre:</label>
               <input
@@ -121,7 +123,7 @@ export default function EditProduct() {
             </div>
             <div>
               <label>Descripcion:</label>
-              <input
+              <textarea
                 type="text"
                 name="description"
                 onChange={handleChange}
@@ -148,7 +150,7 @@ export default function EditProduct() {
             </div>
             <div>
               <label>Descripcion 2:</label>
-              <input
+              <textarea
                 type="text"
                 name="description2"
                 onChange={handleChange}
@@ -165,7 +167,7 @@ export default function EditProduct() {
                 <option value="camisas">Camisas</option>
               </select>
             </div>
-            <div>
+            <div className="uploadImageContainer">
               <ImageUploading
                 multiple
                 value={images}
@@ -184,18 +186,22 @@ export default function EditProduct() {
                   dragProps,
                 }) => (
                   <div className="upload__image-wrapper">
+                    <div>
+
                     <button
                       type="button"
                       style={isDragging ? { color: "red" } : null}
                       onClick={onImageUpload}
                       {...dragProps}
-                    >
+                      >
                       Click or Drop here
                     </button>
                     &nbsp;
                     <button onClick={onImageRemoveAll} type="button">
                       Remove all images
                     </button>
+                      </div>
+                    <div className="imageListContainer">
                     {imageList.map((image, index) => (
                       <div key={index} className="image-item">
                         <img src={image.data_url} alt="" width="100" />
@@ -215,11 +221,12 @@ export default function EditProduct() {
                         </div>
                       </div>
                     ))}
+                    </div>
                   </div>
                 )}
               </ImageUploading>
             </div>
-            <div>
+            <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
               <button type="submit">Agregar producto</button>
             </div>
           </form>
