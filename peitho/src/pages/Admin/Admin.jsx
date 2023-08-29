@@ -6,14 +6,21 @@ import Ticker from "../../components/shared-components/Ticker";
 import TransitionIn from "../../components/shared-components/TransitionIn";
 import TransitionOut from "../../components/shared-components/TransitionOut";
 import EnhancedTable from "./AdminTable2";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../../actions";
 
 export default function Admin() {
   const [screenTransition, setScreenTransition] = useState(false);
+  const dispatch = useDispatch();
   const [isLogged, setIsLogged] = useState(false);
   const [logInInfo, setLogInInfo] = useState({
     user: "",
     password: "",
   });
+
+  useEffect(() => {
+    dispatch(getAllProducts())
+  }, [])
 
   useEffect(() => {
     if (!localStorage.getItem("logged")) {

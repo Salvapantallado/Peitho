@@ -29,7 +29,7 @@ export default function AddProduct() {
     description2: "",
   });
 
-  const [Category, setCategory] = useState([]);
+  const [Category, setCategory] = useState("tops");
 
   useEffect(() => {
     setInput({
@@ -51,7 +51,7 @@ export default function AddProduct() {
   };
 
   const handleCategories = (e) => {
-    setCategory([e.target.value]);
+    setCategory(e.target.value);
   };
 
   async function handleFormSubmit(e) {
@@ -132,7 +132,6 @@ export default function AddProduct() {
                 <option value="polleras">Polleras</option>
                 <option value="vestidos">Vestidos</option>
                 <option value="pantalones">Pantalones</option>
-                <option value="abrigos">Abrigos</option>
                 <option value="camisas">Camisas</option>
               </select>
             </div>

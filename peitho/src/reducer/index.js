@@ -10,6 +10,7 @@ import {
 	DELETE_PRODUCT,
 	GET_STORIES,
 	DELETE_STORIES,
+	POST_PRODUCT,
 	POST_STORIES
 } from "../actions/index.js";
 
@@ -27,6 +28,7 @@ const initialState = {
 	filteredProducts: [],
 	allStories: [],
 	newStories: [],
+	createdProduct: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -99,6 +101,12 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				allStories: state.allStories.concat(action.payload)
+			}
+		}
+		case POST_PRODUCT: {
+			return{
+				...state,
+				allProducts: state.allProducts.concat(action.payload)
 			}
 		}
 		default: {
