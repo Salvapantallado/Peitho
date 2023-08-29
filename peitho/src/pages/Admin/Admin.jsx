@@ -79,7 +79,7 @@ export default function Admin() {
                   onChange={handleChange}
                 />
                 <br />
-                <label for="Contraseña">Contraseña</label>
+                <label htmlFor="Contraseña">Contraseña</label>
                 <br />
                 <input
                   type="password"

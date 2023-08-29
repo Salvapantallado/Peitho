@@ -517,7 +517,7 @@ export default function EnhancedTable() {
                   ))
                 : null}
             </div>
-            <form onSubmit={handleSubmit}>
+            <form className="adminStoriesForm" onSubmit={handleSubmit}>
               <input
                 onChange={onSelectFile}
                 type="file"

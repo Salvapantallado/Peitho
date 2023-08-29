@@ -39,3 +39,10 @@
     max-width: 280px;
 
 }
+
+.adminStoriesForm {
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    gap: 15px;
+}

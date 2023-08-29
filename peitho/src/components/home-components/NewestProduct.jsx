@@ -12,6 +12,8 @@ export default function NewestProduct({ allProducts }) {
     setPreviewImage(lastProduct?.image.length > 1 ? lastProduct?.image[0] : "");
   }, [lastProduct?.image]);
 
+  console.log(lastProduct);
+
   return (
     <>
       {lastProduct ? (
@@ -33,10 +35,10 @@ export default function NewestProduct({ allProducts }) {
                 </div>
               )}
             </div>
+            {lastProduct?.image.length > 1 ?
             <div className="LittleImagesWrapper">
               <div className="LittleImages">
-                {lastProduct?.image.length > 1
-                  ? lastProduct?.image.map((product, index) => (
+                  {lastProduct?.image.map((product, index) => (
                       <div className="SingleLittleImage" key={index}>
                         <img
                           className={
@@ -49,9 +51,10 @@ export default function NewestProduct({ allProducts }) {
                         />
                       </div>
                     ))
-                  : null}
+                  }
               </div>
             </div>
+              : null}
           </div>
         </div>
       ) : (

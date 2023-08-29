@@ -82,6 +82,7 @@
   justify-content: center;
   max-height: 70vh;
   min-height: 70vh;
+  width: 100%;
 }
 .videodiv {
   position: relative;
@@ -161,7 +162,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 50vw;
+  width: 100vw;
   align-items: flex-start;
   justify-content: center;
   background-image: url("../images/Home/Bannerfinalfinal.jpeg");
@@ -180,6 +181,8 @@
 
 .BigImageContainer {
   min-width: 25vw;
+  display: flex;
+    justify-content: center;
 }
 
 .LittleImagesWrapper {
@@ -223,13 +226,14 @@
   flex-direction: column;
   background-color: #8c89a1;
   align-items: center;
+  border-radius: 0 0 10% 10%;
 }
 
 .popular-wrapper1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  width: 75vw;
   overflow: hidden;
   flex-direction: column;
   position: relative;
@@ -239,7 +243,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  width: 75vw;
   overflow: hidden;
   flex-direction: column;
   position: relative;

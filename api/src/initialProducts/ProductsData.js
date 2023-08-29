@@ -332,6 +332,18 @@ const products = [
 		product_qty: 1,
 		extra: "peithoCute"
 	},
+	// {
+	// 	name: "Vestido Margot",
+	// 	description:
+	// 		"Descripción Vestido Margot",
+	// 	price: 8300,
+	// 	description2: "Vestido Margot descripción 2",
+	// 	price2: 0,
+	// 	category: ["vestidos"],
+	// 	image: ["/ProductImages/Vestido-Margot/Vestido-Margot-1.jpeg" ],
+	// 	product_qty: 1,
+	// 	extra: "peithoCute"
+	// },
 
 
 	
