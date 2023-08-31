@@ -11,7 +11,7 @@ async function postStories(req, res, next) {
     // }
     const test = [];
     const data = req.body;
-    data.forEach(async element => {
+    await data.forEach(async element => {
         const addStories = await Stories.findOrCreate({
           where: {
             url: element.url,

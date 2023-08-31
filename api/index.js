@@ -6,7 +6,7 @@ const { SetStoryData } = require("./src/initialProducts/SetStoryData.js");
 const { stories } = require("./src/initialProducts/StoryMock.js");
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
 	SetDataInitial(products);
 	SetStoryData(stories);
 	console.log("sincroniza servidor 3001");

@@ -338,9 +338,7 @@ export default function EnhancedTable() {
     } catch (err) {
       console.log(err);
     }
-    /* eslint-disable */
   }, [selectedFile]);
-  /* eslint-disable */
 
   const onSelectFile = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -355,7 +353,9 @@ export default function EnhancedTable() {
     try {
       alert("Historias modificadas con exito!");
       dispatch(postStories(previewImg));
-      dispatch(getAllStories());
+      setTimeout(() => {
+        dispatch(getAllStories());
+      }, 300);
     } catch (err) {
       console.log(err);
     }
@@ -492,7 +492,7 @@ export default function EnhancedTable() {
             <EnhancedTableToolbar setSelected={setSelected} />
             <div className="adminStories">
               {allStories.length !== 0
-                ? allStories?.map((singleStory, index) => (
+                ? allStories?.map((singleStory) => (
                     <React.Fragment key={singleStory.id}>
                       <div
                         className="videodiv"
