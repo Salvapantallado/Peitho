@@ -142,7 +142,7 @@ export function filterItems(data, array) {
       if (data === "all") {
         res = [];
       }
-      console.log(res, "ASDFAERADSF");
+      // console.log(res, "ASDFAERADSF");
       dispatch({ type: FILTER_ITEMS, payload: [...res] });
     } catch (error) {
       console.log(error);

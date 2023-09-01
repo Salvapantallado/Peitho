@@ -81,6 +81,7 @@
 }
 .container-pagination h2 {
   font-size: 16px;
+  cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -101,7 +102,7 @@
 .banner {
   background-image: url("../images/Home/Bannerfinalfinal.jpeg");
   background-size: contain;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   border-top: 1px solid lightgray;
@@ -283,6 +284,6 @@
   }
 
   .pagination-wrapper {
-    width: 50vw;
+    width: 75vw;
   }
 }

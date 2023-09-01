@@ -89,12 +89,13 @@
   transition: all 400ms ease;
   /* transition-delay: 300ms; */
   z-index: 2;
+  width: 350px;
 }
 .videodiv > video {
   border-radius: 15px;
 }
 .videodiv > img {
-  height: 55vh;
+  width: -webkit-fill-available;
 }
 .inactiveRight {
   /* visibility: hidden; */
@@ -233,7 +234,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75vw;
+  width: 60vw;
   overflow: hidden;
   flex-direction: column;
   position: relative;
@@ -243,7 +244,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75vw;
+  width: 60vw;
   overflow: hidden;
   flex-direction: column;
   position: relative;

@@ -19,8 +19,8 @@
   grid-gap: 10px;
   display: grid;
   gap: 50px;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 3fr));
-  justify-content: center;
+  grid-template-columns: auto auto auto;
+  justify-content: space-evenly;
   justify-items: center;
   height: 100%;
   /* padding: 10px; */
@@ -74,8 +74,9 @@
   margin: 5px;
 }
 
-.card-background {
-  background-color: aqua;
+.card:has(.favs-added:hover) img, .card:has(.add-favs:hover) img {
+  opacity: 1;
+  transform: none;
 }
 
 .favs-added {
@@ -90,6 +91,7 @@
   border-radius: 50%;
   transition: 0.5s ease-in;
   z-index: 2;
+  border-radius: 50%;
 }
 
 .add-favs {
@@ -104,6 +106,7 @@
   border-radius: 50%;
   transition: 0.5s ease-in;
   z-index: 2;
+  border-radius: 50%;
 }
 .add-favs img {
   width: 100%;
@@ -118,8 +121,9 @@
   opacity: 1;
   transform: none;
 }
-.card .add-favs img:hover {
+.card:hover .favs-added img{
   opacity: 1;
+  transform: none;
 }
 
 .add-favs button,
@@ -147,6 +151,7 @@
 .category-button button{
   padding: 5px;
   all: unset;
+  cursor: pointer;
   background-image: url("../images/Home/Bannerfinalfinal.jpeg");
   background-size: cover;
   border: 1px solid black;
@@ -175,7 +180,7 @@
   .cards-grid {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 2fr));
+    grid-template-columns: auto auto;
     justify-content: center;
     justify-items: center;
     /* height: 100%;

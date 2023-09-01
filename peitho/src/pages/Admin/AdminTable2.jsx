@@ -301,7 +301,7 @@ export default function EnhancedTable() {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - allProducts.length) : 0;
 
   const [selectedFile, setSelectedFile] = React.useState([]);
-  const [previewImg, setPreviewImg] = React.useState();
+  const [previewImg, setPreviewImg] = React.useState(null);
 
   function getBase64(file) {
     return new Promise((res, rej) => {
@@ -319,6 +319,7 @@ export default function EnhancedTable() {
         setPreviewImg(undefined);
         return;
       }
+      if(selectedFile){
       for (let index = 0; index < selectedFile.length; index++) {
         const element = selectedFile[index];
         if (element.name.split(".").pop() === "mp4") {
@@ -332,9 +333,10 @@ export default function EnhancedTable() {
           );
         }
       }
-      setPreviewImg(ArrTest);
+      setTimeout(() => setPreviewImg(ArrTest), 500)
 
       return () => URL.revokeObjectURL(ArrTest);
+    }
     } catch (err) {
       console.log(err);
     }
@@ -490,7 +492,9 @@ export default function EnhancedTable() {
         <Box sx={{ width: "100%" }}>
           <Paper sx={{ width: "100%", mb: 2 }}>
             <EnhancedTableToolbar setSelected={setSelected} />
+            <h5 style={{display: 'flex', justifyContent: 'center'}}>SOLO SUBIR HISTORIAS DESCARGADAS DE IG PARA CONSERVAR TAMAÑOS CONSISTENTES</h5>
             <div className="adminStories">
+
               {allStories.length !== 0
                 ? allStories?.map((singleStory) => (
                     <React.Fragment key={singleStory.id}>
@@ -525,10 +529,10 @@ export default function EnhancedTable() {
                 accept="image/png, image/jpeg, video/mp4"
               />
               {previewImg && (
-                <div>
+                <div style={{display: "flex", flexDirection: "row", overflow: "scroll"}}>
                   {previewImg.map((img, i) => {
                     return (
-                      <div key={i}>
+                      <div key={i} style={{ padding: "30px"}}>
                         {img.type === "video" ? (
                           <video
                             style={{ width: "170px", height: "370px" }}
@@ -540,7 +544,7 @@ export default function EnhancedTable() {
                           </video>
                         ) : (
                           <img
-                            style={{ width: "70px", height: "70px" }}
+                            style={{ width: "170px", height: "170px" }}
                             src={img.url}
                             alt={"image-" + i}
                             key={i}
@@ -552,10 +556,12 @@ export default function EnhancedTable() {
                 </div>
               )}
               <div>
+                <button type="button" onClick={() => setSelectedFile(undefined)} disabled={!selectedFile || selectedFile.length === 0}>Limpiar selección</button>
+                <br/>
                 <button
                   className="SubmitBtn"
                   type="submit"
-                  disabled={!selectedFile}
+                  disabled={!selectedFile || selectedFile.length === 0}
                 >
                   Actualizar historias!
                 </button>

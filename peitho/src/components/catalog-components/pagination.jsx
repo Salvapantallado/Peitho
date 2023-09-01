@@ -12,6 +12,7 @@ export default function Pagination({
   const filteredProducts = useSelector((state) => state.filteredProducts);
   const filteredPages = Math.ceil(filteredProducts.length / productsPerPage);
   const allProductPages = Math.ceil(products.length / productsPerPage);
+
   return (
     <div className="container-pagination">
       <div className="pagination-wrapper">
@@ -40,7 +41,7 @@ export default function Pagination({
         </button>
         {filteredProducts && filteredProducts.length === 0 ? (
           <>
-            <h2 className={currentPage === 1 ? "activePage" : null}>{1}</h2>
+            <h2 className={currentPage === 1 ? "activePage" : null} onClick={() => setCurrentPage(1)}>{1}</h2>
             {currentPage === allProductPages ||
             currentPage === 1 ||
             currentPage === 2 ? null : (
@@ -64,7 +65,8 @@ export default function Pagination({
               <h2>. . .</h2>
             )}
             <h2
-              className={currentPage === allProductPages ? "activePage" : null}
+                onClick={() => setCurrentPage(allProductPages)}
+                className={currentPage === allProductPages ? "activePage" : null}
             >
               {allProductPages}
             </h2>
@@ -104,7 +106,8 @@ export default function Pagination({
             {filteredPages === 1 ? null : (
               <>
                 <h2
-                  className={
+                onClick={() => setCurrentPage(filteredPages)}
+                className={
                     currentPage === filteredPages ? "activePage" : null
                   }
                 >

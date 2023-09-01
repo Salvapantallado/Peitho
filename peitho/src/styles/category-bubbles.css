@@ -11,10 +11,11 @@
 	margin: 20px 0;
 	/* padding: 20px 0; */
 }
-.bubbleGroupWrapper{
+.home .category-bubbles .bubbleGroupWrapper{
 	display: flex;
     width: 100%;
     justify-content: space-evenly;
+	margin: 20px 0;
 }
 .bubbleGroupWrapper button{
 	border: none;
@@ -63,6 +64,12 @@
 	font-weight: bold;
 	font-family: "Kirimaru";
 }
+.category-bubbles .bubbleGroupWrapper{
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 30px;
+}
+
 
 @media screen and (max-width: 875px) {
 
@@ -87,5 +94,17 @@
 	.category-bubbles div:hover {
 		transform: none;
 		transition: none;
+	}
+	.bubbleGroupWrapper{
+		display: grid;
+		width: 100%;
+		grid-template-columns: auto auto auto;
+		gap: 15px 0;
+	}
+	.category-bubbles .bubbleGroupWrapper{
+		display: grid;
+		width: 100%;
+		grid-template-columns: auto auto auto;
+		gap: 20px;
 	}
 }

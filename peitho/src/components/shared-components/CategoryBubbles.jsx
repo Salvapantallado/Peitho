@@ -5,6 +5,7 @@ import Falda from "../../images/Home/Bubbles/circle-two.jpg";
 import Vestido from "../../images/Home/Bubbles/circle-three.jpg";
 import Abrigo from "../../images/Home/Bubbles/circle-five.jpg";
 import Camisa from "../../images/Home/Bubbles/circle-six.jpg";
+import Jardinero from "../../images/Home/Bubbles/circle-four.jpeg";
 import { useEffect } from "react";
 
 export default function CategoryBubble({flag, setFlag }) {
@@ -51,8 +52,6 @@ export default function CategoryBubble({flag, setFlag }) {
           <img src={Vestido} alt="Vestidos" />
           <span>Vestidos</span>
         </button>
-      </div>
-      <div className="bubbleGroupWrapper">
         <button className="category-container" onClick={() => redir("abrigos")}>
           <img src={Abrigo} alt="Abrigos" />
           <span>Abrigos</span>
@@ -61,6 +60,10 @@ export default function CategoryBubble({flag, setFlag }) {
         <button className="category-container" onClick={() => redir("camisas")}>
           <img src={Camisa} alt="Camisas" />
           <span>Camisas</span>
+        </button>
+        <button className="category-container" onClick={() => redir("jardinero")}>
+          <img src={Jardinero} alt="Jardinero" />
+          <span>Jardineros</span>
         </button>
       </div>
     </div>

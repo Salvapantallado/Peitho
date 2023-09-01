@@ -10,6 +10,7 @@ import { useSwipeable } from "react-swipeable";
 import Top from "../../images/Home/Bubbles/circle-one.jpg";
 import Falda from "../../images/Home/Bubbles/circle-two.jpg";
 import Vestido from "../../images/Home/Bubbles/circle-three.jpg";
+import Jardinero from "../../images/Home/Bubbles/circle-four.jpeg";
 import Abrigo from "../../images/Home/Bubbles/circle-five.jpg";
 import Camisa from "../../images/Home/Bubbles/circle-six.jpg";
 import "../../styles/category-bubbles.css";
@@ -177,9 +178,6 @@ export default function Card({
             </button>
           </div>
 
-        </div>
-        <div className="bubbleGroupWrapper">
-
           <div className="category-container">
             <button onClick={() => filter("abrigos")}>
               <img src={Abrigo} alt="Abrigos" />
@@ -191,6 +189,12 @@ export default function Card({
             <button onClick={() => filter("camisas")}>
               <img src={Camisa} alt="Camisas" />
               <span>Camisas</span>
+            </button>
+          </div>
+          <div className="category-container">
+            <button onClick={() => filter("jardinero")}>
+              <img src={Jardinero} alt="Jardineros" />
+              <span>Jardineros</span>
             </button>
           </div>
         </div>

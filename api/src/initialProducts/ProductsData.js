@@ -257,7 +257,7 @@ const products = [
 		price: 14800,
 		description2: "Jardinero Over descripción 2",
 		price2: 0,
-		category: ["vestidos"],
+		category: ["jardinero"],
 		image: ["/ProductImages/Jardinero-Over/Jardinero-Over-1.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-2.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-Negro-1.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-Negro-2.jpeg", "/ProductImages/Jardinero-Over/Jardinero-Over-Negro-3.jpeg"],
 		product_qty: 1,
 		extra: "peithoCute"

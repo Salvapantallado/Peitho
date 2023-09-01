@@ -7,6 +7,7 @@ import TransitionOut from "../../components/shared-components/TransitionOut";
 import MobileNavbar from "../../components/shared-components/MobileNavbar";
 import Footer from "../../components/shared-components/Footer";
 import PaginationComponent from "../../components/catalog-components/pagination";
+import Ticker from "../../components/shared-components/Ticker";
 
 export default function Catalog({flag, setFlag}) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,6 +23,7 @@ export default function Catalog({flag, setFlag}) {
   return (
     <>
       {screenTransition ? <TransitionOut /> : <TransitionIn />}
+      <Ticker />
       <div> 
         <Navbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
         <MobileNavbar screenTransition={screenTransition} setScreenTransition={setScreenTransition} />
